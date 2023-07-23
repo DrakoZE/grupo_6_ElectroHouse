@@ -27,3 +27,4 @@ Para tener un solido concepto de la imagen del proyecto destacamos las utilidade
 - Lopez Silvia Andrea: Tengo 16 años, soy de San Pedro y estudio en la Escuela Normal Gral. Jose de San Martin. Me gusta editar soy principiante en la programacion pero estoy dispuesta a colaborar y disfrutar de esta experiencia. 
 - Rosario Gallardo: Estudio en Escuela Tecnica Provincial n°1, tengo 17 años, me gusta la programacion, pretendo mejorar y aprovechar al maximo esta cursada.  
 - Dalma Celeste Solis: Soy estudiante, tengo 18 años quiero aprender a programar y ganarme la vida con ello. Me esforzare por aprender y disfrutar de esta experiencia.
+- Ana Victoria Ruiz: Estudio en la escuela Normal, tengo 17 años, quiero aprender a programar y aprovechar esta oportunidad tanto como sea posible.
