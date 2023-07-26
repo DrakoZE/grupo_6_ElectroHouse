@@ -17,33 +17,18 @@ rel="stylesheet" />
 <main>
     <h2 class="titular">Ingresa tus datos</h2>
     <form action="/register" method="post" class="formulario">
-        
+
         <label for="Nombre">Ingresa tu nombre y apellido</label>
         <input class="espacios" type="text" name="Nombre" id="Nombre" required>
     
         <label for="Usuario">Ingresa tu nombre de usuario</label>
         <input class="espacios" type="text" name="Usuario" id="Usuario" required minlength="4">
     
-        <label for="Fecha">Ingresa tu fecha de nacimiento</label>
+        <label for="Fecha">Ingresa tu correo electronico</label>
         <input class="espacios" type="date" name="nacimiento" id="Fecha" required>
     
         <label for="Ubicacion">Ingresa tu Domicilio</label>
         <input class="espacios" type="text" name="Domicilio" id="Ubicacion" required>
-        
-        <div class="instrucciones" required>¿Que deseas hacer?</div>
-        <ul>
-        <li>Comprar<input type="radio" name="eleccion"  value="Comprar"></li>
-        <li>Vender<input type="radio" name="eleccion"  value="Vender"></li>
-     <div class="instrucciones">Indica tus preferencias</div>
-     <ul>
-        <li>Electro<input type="checkbox" name="categorias"  value="Electro"></li>
-        <li>Moda<input type="checkbox" name="categorias"  value="Moda"></li>
-        <li>Hogar<input type="checkbox" name="categorias"  value="Hogar"></li>
-        <li>Jugueteria<input type="checkbox" name="categorias"  value="Jugueteria"></li>
-        <li>Vida sana<input type="checkbox" name="categorias"  value="Vida sana"></li>
-        </ul>
-    <div class="instrucciones">Ingrese una foto suya</div>
-    <input type="file" name="Foto" value="Pic" accept=".jpg" required>
     
     <div class="instrucciones">Elija una contraseña</div>
     <input type="password" name="contraseña" value="contraseña" required minlength="6">
