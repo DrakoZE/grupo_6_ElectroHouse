@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -15,27 +15,34 @@ rel="stylesheet" />
 
 <body>
 <main>
-    <h2 class="titular">Ingresa tus datos</h2>
+    <h2>Datos</h2>
     <form action="/register" method="post" class="formulario">
 
-        <label for="Nombre">Ingresa tu nombre y apellido</label>
+        <label for="Nombre">Nombre completo</label>
         <input class="espacios" type="text" name="Nombre" id="Nombre" required>
     
-        <label for="Usuario">Ingresa tu nombre de usuario</label>
+        <label for="Usuario">Ingresa un nombre de usuario</label>
         <input class="espacios" type="text" name="Usuario" id="Usuario" required minlength="4">
     
-        <label for="Fecha">Ingresa tu correo electronico</label>
-        <input class="espacios" type="text" name="correo" id="Fecha" required>
-    
-    <div class="instrucciones">Elija una contraseña</div>
-    <input type="password" name="contraseña" value="contraseña" required minlength="6">
-    
-    <div class="instrucciones">Confirme su contraseña</div>
-    <input type="password" name="contraseñaconf" value="contraseñaconf" required minlength="6">
-    
+        <label for="Fecha">Correo electronico</label>
+        <input class="espacios" type="email" name="correo" id="Fecha" required >
+
+        <label for="Telefono">Numero de telefono</label>
+        <input class="espacios" type="text" alt="number" required>
+
+    <div>Contraseña</div>
+    <input class="espacios" type="password" name="contraseña" value="contraseña" required minlength="6">
+
+    <div>¿Desea recibir novedades de nuestros productos por correo?
+    <div>Si<input type="radio" name="eleccion"  value="S"></div>
+    <div>No<input type="radio" name="eleccion"  value="N"></div>
+    </div>
+
+    <div class="inv"> 1</div>
     <button type="submit" class="enviar"> Enviar datos</button>
-    <button type="reset"> Cancelar</button>
+    <button class="botoncancelar" type="reset">X</button>
     </form>
+    <a class="sesion" href="/login">¿Ya tienes una cuenta? Inicia sesion</a>
 
 </main>
 </body>

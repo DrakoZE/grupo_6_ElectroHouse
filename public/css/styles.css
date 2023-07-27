@@ -1,7 +1,43 @@
-.titular {
-    color: springgreen;
+.formulario {
+    display: flex;
+    flex-direction:column;
   }
 
-.color{
-    color: aqua;
+  main{
+    border-style: solid;
+    border-color: green;
+    width: 50%;
+    display: flex;
+    flex-direction:column;
+    position: relative;
+    padding-left: 1%;
+  }
+
+.espacios{
+  width: 65%;
+}
+
+.botoncancelar{
+  width: 4%;
+  position: absolute;
+  top: 0%;
+  left: 96%;
+}
+.enviar{
+  width: 24%;
+  position: relative;
+left: 75%;
+}
+
+.inv{
+  color: transparent;
+  text-decoration: none;
+  width: 100%;
+}
+
+.sesion{
+  position: absolute;
+top: 89%;
+left: 19%;
+color: black;
 }
