@@ -13,10 +13,14 @@ app.get("/producto", (req,res) => res.sendFile(path.join(__dirname, "views/detal
 
 app.get("/register", (req,res) => res.sendFile(path.join(__dirname, "views", "register.html")))
 
-app.get("/login", (req,res) => res.sendFile(path.join(__dirname, "views/login.html")))
+app.get("/login", (req,res) => res.sendFile(path.join(__dirname, "views", "login.html")))
 
 app.listen(PORT, ()=> console.log("El servidor esta corriendo en el puerto: " + PORT))
 
 app.post("/register", (req,res) =>{
+    res.redirect("/")
+})
+
+app.post("/login", (req,res) =>{
     res.redirect("/")
 })
