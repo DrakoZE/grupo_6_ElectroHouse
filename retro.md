@@ -4,31 +4,31 @@ Este documento tiene el objetivo de identificar los aspectos positivos, areas de
 
 
 ## Aspectos Positivos
-### * Compromiso con el equipo
+* ### Compromiso con el equipo
 Los integrantes del equipo estan abiertamente implicados a ayudar en el proyecto.
 
-### * Comunicación Fluida y Eficiente
+* ### Comunicación Fluida y Eficiente
 Las reuniones con el equipo se efectuan sin problemas a la hora de trabajar.
 
-### * Establecimiento de Metas
+* ### Establecimiento de Metas
 Con la organización de tareas y horarios se logran cumplir con los objetivos propuestos.
 
-### * Creatividad e Innovacion en la Resolución de Ideas
+* ### Creatividad e Innovacion en la Resolución de Ideas
 Mediante una "lluvia de ideas", logramos encontrar nuevos metodos y herramientas para resolver nuestras necesidades.
 
 
 ## Áreas de Mejora
-### * Reuniones incompletas
+* ### Reuniones incompletas
 Las reuniones no siempre cuentan con la asistencia de todos los integrantes debido a la indisponibilidad de horarios.
 
-### * Distribucion Equitativa de Tareas
+* ### Distribucion Equitativa de Tareas
 Aun no logramos contemplar con exactitud que tareas pueden llegar a ser mas complejas que otras.
 
 
 ## Acciones Propuestas
-### * Reuniones mas Productivas
+* ### Reuniones mas Productivas
 
-### * Mejorar la Planificación y Seguimiento
+* ### Mejorar la Planificación y Seguimiento
 
 
 ## Conclusion
