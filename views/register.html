@@ -19,19 +19,19 @@ rel="stylesheet" />
     <form action="/register" method="post" class="formulario">
 
         <label for="Nombre">Nombre completo</label>
-        <input class="espacios" type="text" name="Nombre" id="Nombre" required>
+        <input class="espacios" type="text" name="Nombre" id="Nombre" required pattern="[A-Za-z]{2,30}">
     
         <label for="Usuario">Ingresa un nombre de usuario</label>
-        <input class="espacios" type="text" name="Usuario" id="Usuario" required minlength="4">
+        <input class="espacios" type="text" name="Usuario" id="Usuario" pattern="[A-Za-z0-9-]{3,15}" >
     
         <label for="Fecha">Correo electronico</label>
-        <input class="espacios" type="email" name="correo" id="Fecha" required >
+        <input class="espacios" type="email" name="correo" id="Fecha" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
 
         <label for="Telefono">Numero de telefono</label>
-        <input class="espacios" type="text" alt="number" required>
+        <input class="espacios" type="text" alt="number" required pattern="[0-9]{10}">
 
     <div>Contraseña</div>
-    <input class="espacios" type="password" name="contraseña" value="contraseña" required minlength="6">
+    <input class="espacios" type="password" name="contraseña" value="contraseña" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
 
     <div>¿Desea recibir novedades de nuestros productos por correo?
     <div>Si<input type="radio" name="eleccion"  value="S"></div>
