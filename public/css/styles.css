@@ -70,5 +70,297 @@ color: rgb(236, 19, 19);
     top: 4%;
     left: 95%;
     transition: all 1s;
+*{
+  margin: 0px;
+  padding: 0px;    
+  box-sizing: border-box;
+}
+.home{
+  font-family: 'Roboto', sans-serif;
+  background-image: url(/images/fondo.jpg);
+  background-size: repeat-x;
+}
+div.burger-menu{
+  text-align: center;
+}
+
+div.burger-menu i{
+  background-color: #5e00aa;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 20px;
+  height: 40px;
+  margin: 10px 0px 20px 0px;
+  padding: 10px;
+  width: 40px;
+}
+span {
+  width: 180px;
+  background-color: rgb(249, 247, 247);
+  padding: 10px;
+  border-radius: 5px;
+  
+}
+.linea-arriba{
+  display: flex;
+  justify-content: space-between;
+}
+.linea-arriba ul{
+  display: flex;
+}
+.linea-arriba li{
+  margin: 0 5px;;
+}
+a {
+  text-decoration: none;
+}
+h3{
+  font-size: 24px;
+}
+
+p{
+  font-size: 12px;
+}
+
+div.top-header{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+
+header div.top-header p{
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+header{
+  background-color: #846382;
+}
+
+header div.logo,
+header .form{
+  width: 90%;
+}
+
+header div.logo{
+  padding: 10px;
+  text-align: center;
+}
+header .form{
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  font-size: 11px;
+}
+header nav{
+  font-size: 12px;
+  margin-left: 20px;
+}
+header ul li{
+  list-style-type: none;
+}
+
+header ul li a{
+  text-decoration: none;
+  color: #000;
+}
+
+header .form .input{
+  border-radius: 5px;
+  background-color: #FFF;
+  border: 1px solid #000;
+  outline: none;
+  color: #666;
+  padding: 4px;
+  text-align: center;
+}
+header .form .submit{
+  background-color: #FFF;
+  border: 1px solid #000;
+  color: #666;
+  width: 10%;
+}
+
+div.last-visit,
+div.offers{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.price{
+  font-size: 18px;
+  width: 30%;
+}
+
+.discount{
+  width: 70%;
+}
+
+.discount,
+.description{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+h3,
+.description{
+  color: #4b047d;
+}
+
+.description{
+  display: none;
+  margin-top: 20px;
+}
+
+main{
+  width: 90%;
+  margin: 0 auto;
+}
+
+main section article{
+  background-color: #fff;    
+  margin: 10px 0px;
+}
+
+main section article img{
+  width: 100%;
+}
+
+main section article i,
+.discount{
+  color: #445a85;
+}
+
+main section article i{
+  display: block;
+  font-size: 16px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #3977b5;
+  background-color: #FFF;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: -15px;
+  transition: 1s;
+
+}
+
+main section article i:hover{
+transform: rotate(-90deg);
+}
+main section h3{
+  margin: 20px 0px;
+  color: #4b047d;
+  background-color: #c2b7e2;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 20px;
+  height: 45px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+article div.main-article{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-top: 1px solid #ebebeb;
+  position: relative;
+  padding: 15px;
+  transition: opacity 1s;
+  opacity: 0;
+}
+.main-article:hover{
+opacity: 1;
+}
+footer{
+  flex-wrap: wrap;
+  display: flex;
+  position: relative;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 4%;
+  background-color: white;
+  text-align: center;
+
+}
+.icon-footer{
+font-size: 45px;
+margin-top: 50px;
+margin-bottom: 7px;
+width: 33%;
+}
+.coso{
+  display: flex;
+  flex-direction: column;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 41%;
+}
+
+form{
+  margin: auto;
+  width: 55%;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  padding: 2%;
+  border-style: solid;
+  border-radius: 2%;
+  border-color: rgb(163, 130, 202);
+  background-color:#ccb4d0;
+}
+input:focus{
+border: orange 3px solid;
+font-weight: bold;
+}
+@media (min-width: 361px){
+  main section article .description{
+      display: block;
+  }
+
+  main section article{
+      box-shadow: 0px 0px 10px rgb(100, 100, 100);
+  }
+
+  main section div.products{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+  }
+  
+  main section div.products article{
+      width: 45%;
+  }
+
+  .price,
+  .discount{
+      width: 50%;
+  }
+  .linea-arriba{
+      display: none;
+  }
+}
+
+@media (min-width: 769px){
+  
+  main section div.products article{
+      width: 22%;
+  }
+  
+  .top-header{
+      display: flex;
+      justify-content: space-between;
+  }
+  .comp{
+      max-width: 100%;
+      text-align: right;
   }
 }
