@@ -9,7 +9,7 @@ app.get("/", (req,res) => res.sendFile(path.join(__dirname, "views/home.html")))
 
 app.get("/carrito", (req,res) => res.sendFile(path.join(__dirname, "views/carritoDeCompras.html")))
 
-app.get("/producto", (req,res) => res.sendFile(path.join(__dirname, "views/detalleProductos.html")))
+app.get("/producto", (req,res) => res.sendFile(path.join(__dirname, "views/iphone-14.html")))
 
 app.get("/register", (req,res) => res.sendFile(path.join(__dirname, "views", "register.html")))
 
