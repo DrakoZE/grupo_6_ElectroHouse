@@ -1,3 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: content-box;
+}
+
+body {
+  background-color: #2B2B2B;
+}
+
+header {
+  background-color: #ffffff;
+}
+
 .formulario {
     display: flex;
     flex-direction:column;
@@ -59,4 +73,76 @@ color: black;
 top: 89%;
 left: 19%;
 color: rgb(236, 19, 19);
+}
+
+header {
+  border: 1px solid black;
+}
+
+main {
+  padding-top: 10px;
+  background-color: #2B2B2B;
+}
+
+.search-bar-carrito {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.search-bar-carrito input {
+  width: 40%;
+  border: solid 1px #ffffff;
+  border-radius: 7px 0px 0px 7px;
+  padding: 10px;
+}
+
+.search-bar-carrito button {
+  width: 5%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+}
+
+main .carrito-productos {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+}
+
+main section article {
+  display: flex;
+  width: 45%;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #ffffff;
+}
+
+main section article img {
+  width: 50%;
+  object-fit: contain;
+}
+
+main section .info-producto {
+  padding-left: 2px;
+  width: 50%;
+  border-left: #000000 solid 2px;
+  font-size: 25px
+}
+
+main section .info-producto p {
+  margin: 15px auto;
+}
+
+.oferta-producto {
+  color: #1cdb58;
+  font-weight: bold;
+}
+
+.precio-producto {
+  font-size: 2rem;
 }
