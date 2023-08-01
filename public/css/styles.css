@@ -4,13 +4,16 @@
   }
 
   .mainform{
-    border-style: solid;
-    border-color: #1cdb58;
-    width: 50%;
     display: flex;
     flex-direction:column;
-    position: relative;
-    padding-left: 1%;
+    padding-left: 20%;
+  }
+
+  .centrarform{
+      width: 75%;
+      padding-left: 5%;
+      border-style: solid;
+      position: relative;
   }
 
 .espacios{
@@ -18,10 +21,9 @@
 }
 
 .botoncancelar{
-  width: 4%;
   position: absolute;
-  top: 0%;
-  left: 96%;
+  top: 4%;
+  left: 90%;
   transition: all 1s;
 }
 
@@ -52,6 +54,7 @@ transition: all 1s;
 top: 89%;
 left: 19%;
 color: black;
+width: 60%;
 }
 
 .olv-contra{
@@ -60,6 +63,7 @@ top: 89%;
 left: 19%;
 color: rgb(236, 19, 19);
 }
+
 *{
   margin: 0px;
   padding: 0px;    
@@ -339,7 +343,8 @@ font-weight: bold;
   }
 }
 
-@media (min-width: 769px){
+@media(min-width: 769px){
+
   main section div.products article{
       width: 22%;
   }
@@ -356,5 +361,12 @@ font-weight: bold;
   .comp{
       max-width: 100%;
       text-align: right;
+  }
+
+  .botoncancelar{
+    position: absolute;
+    top: 4%;
+    left: 95%;
+    transition: all 1s;
   }
 }
