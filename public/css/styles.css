@@ -160,9 +160,10 @@ color: rgb(236, 19, 19);
   box-sizing: border-box;
 }
 .home{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Press Start 2P';
+  font-size: 2em;
   background-image: url(/images/fondo.jpg);
-  background-size: repeat-x;
+  background-size: 45%;
 }
 div.burger-menu{
   text-align: center;
@@ -219,7 +220,7 @@ header div.top-header p{
 }
 
 header{
-  background-color: #846382;
+  background-color: #070707;
 }
 
 header div.logo,
