@@ -10,17 +10,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesCarrito.css">
+    <link rel="stylesheet" href="css/stylesA.css">
 </head>
 
 <body>
 
+    <header>
+        <div class="top-header">
+            <div>
+                <div class="logo"> 
+                   <img src="images/logo.jpg" alt="Logo de electroHouse" width="150px" height="150px">
+                </div>
+            </div>
+            <form class="form-home" action="#" method="GET">
+                <input placeholder="Buscar productos..."><button type="submit" class="fa fa-search"></button>
+            </form>
+        </div>
+        <div class="burger-menu">
+            <i class="fa fa-bars burger"></i>
+        </div>
+     
+        <nav class="linea-arriba">
+            <ul>
+                <li><a href="#">Off</a></li>
+                <li><a href="#">Tiendas Oficiales</a></li>
+                <li><a href="#">Vender</a></li>
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+            <ul>
+                <li><a href="/register">Creá tu cuenta <i class="far fa-id-card"></i></a></li>
+                <li><a href="/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
+                <li><a href="/carrito">Mis compras <i class="fas fa-shopping-basket"></i></a></li>
+            </ul>
+        </nav>
+
+    </header>
+
     <main class="carrito-de-compras">
 
-        <form action="/carrito" method="get" class="search-bar-carrito">
-            <input type="text" placeholder="Busque sus productos">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
 
 
         <div class="carrito-main">
@@ -31,7 +59,7 @@
             <section class="carrito-productos">
 
                 <article class="producto">
-                    <img src="images/xbox-control.jpg" alt="Mando de XBOX" class="imagen-producto">
+                    <img src="images/xbox-control.png" alt="Mando de XBOX" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">44000</p>
                         <p class="oferta-producto">10%</p>
@@ -41,7 +69,7 @@
                 </article>
 
                 <article class="producto">
-                    <img src="images/cat-parlante.jpg" alt="xd" class="imagen-producto">
+                    <img src="images/cat-parlante.png" alt="xd" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">60000</p>
                         <p class="oferta-producto">25%</p>
@@ -51,7 +79,7 @@
                 </article>
 
                 <article class="producto">
-                    <img src="images/iphone-14-promax.jpg" alt="xd" class="imagen-producto">
+                    <img src="images/iphone-14-promax.png" alt="xd" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">650000</p>
                         <p class="oferta-producto">8%</p>
@@ -65,7 +93,7 @@
             <section class="carrito-productos">
 
                 <article class="producto">
-                    <img src="images/xbox-control.jpg" alt="Mando de XBOX" class="imagen-producto">
+                    <img src="images/xbox-control.png" alt="Mando de XBOX" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">44000</p>
                         <p class="oferta-producto">10%</p>
@@ -75,7 +103,7 @@
                 </article>
 
                 <article class="producto">
-                    <img src="images/cat-parlante.jpg" alt="xd" class="imagen-producto">
+                    <img src="images/cat-parlante.png" alt="xd" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">60000</p>
                         <p class="oferta-producto">25%</p>
@@ -85,7 +113,7 @@
                 </article>
 
                 <article class="producto">
-                    <img src="images/iphone-14-promax.jpg" alt="xd" class="imagen-producto">
+                    <img src="images/iphone-14-promax.png" alt="xd" class="imagen-producto">
                     <div class="info-producto">
                         <p class="precio-producto">650000</p>
                         <p class="oferta-producto">8%</p>
@@ -97,11 +125,11 @@
 
         </section>
 
-        <footer>
-
-        </footer>
-
     </main>
+
+    <footer>
+
+    </footer>
 </body>
 
 </html>
