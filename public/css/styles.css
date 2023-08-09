@@ -7,6 +7,9 @@
     display: flex;
     flex-direction:column;
     padding-left: 20%;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
   .centrarform{
@@ -14,6 +17,8 @@
       padding-left: 5%;
       border-style: solid;
       position: relative;
+      border-radius: 2%;
+      border-color: rgb(9, 5, 13);
   }
 
 .espacios{
@@ -24,6 +29,7 @@
   position: absolute;
   top: 4%;
   left: 90%;
+  color: white;
   transition: all 1s;
 }
 
@@ -35,6 +41,7 @@
   width: 24%;
   position: relative;
 left: 75%;
+color: white;
 transition: all 1s;
 }
 
@@ -42,7 +49,9 @@ transition: all 1s;
   color: rgb(0, 0, 0);
   background-color: #12e0d9 
 }
-
+.fondoregister{
+  background: linear-gradient(#0D0C0C, #12e0d9)
+}
 .inv{
   color: transparent;
   text-decoration: none;
@@ -300,15 +309,8 @@ width: 33%;
 
 form{
   margin: auto;
-  width: 55%;
-  display: flex;
   text-align: left;
-  flex-direction: column;
   padding: 2%;
-  border-style: solid;
-  border-radius: 2%;
-  border-color: rgb(163, 130, 202);
-  background-color:#ccb4d0;
 }
 input:focus{
 border: orange 3px solid;
