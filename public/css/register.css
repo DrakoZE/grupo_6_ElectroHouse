@@ -1,0 +1,66 @@
+div.top-header{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+ 
+ .mainform{
+    display: flex;
+    flex-direction:column;
+    padding-left: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .centrarform{
+    width: 75%;
+    padding-left: 5%;
+    border-style: solid;
+    position: relative;
+    border-radius: 2%;
+    border-color: rgb(9, 5, 13);
+}
+
+.botoncancelar{
+  position: absolute;
+  top: 4%;
+  left: 90%;
+  transition: all 1s;
+}
+
+.botoncancelar:hover{
+  background-color: rgb(235, 77, 50);
+}
+.enviar{
+  width: 24%;
+  position: relative;
+left: 75%;
+transition: all 1s;
+}
+
+.enviar:hover{
+  color: rgb(9, 5, 13);
+  background-color: #12e0d9 
+}
+
+.formulario {
+  display: flex;
+  flex-direction:column;
+}
+
+.sesion{
+  position: absolute;
+top: 89%;
+left: 19%;
+width: 60%;
+}
+
+.espacios{
+  width: 65%;
+}
+
+.inv{
+  color: transparent;
+  text-decoration: none;
+  width: 100%;
+}

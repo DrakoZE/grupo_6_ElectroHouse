@@ -1,71 +1,17 @@
-.formulario {
-    display: flex;
-    flex-direction:column;
-  }
-
-  .mainform{
-    display: flex;
-    flex-direction:column;
-    padding-left: 20%;
-    color: white;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
-
-  .centrarform{
-      width: 75%;
-      padding-left: 5%;
-      border-style: solid;
-      position: relative;
-      border-radius: 2%;
-      border-color: rgb(9, 5, 13);
-  }
-
-.espacios{
-  width: 65%;
-}
-
-.botoncancelar{
-  position: absolute;
-  top: 4%;
-  left: 90%;
-  color: white;
-  transition: all 1s;
-}
-
-.botoncancelar:hover{
-  background-color: rgb(235, 77, 50);
-  color: aliceblue;
-}
-.enviar{
-  width: 24%;
-  position: relative;
-left: 75%;
-color: white;
-transition: all 1s;
-}
-
-.enviar:hover{
-  color: rgb(0, 0, 0);
-  background-color: #12e0d9 
-}
+/* color celeste */
 .fondoregister{
   background: linear-gradient(#0D0C0C, #12e0d9)
 }
-.inv{
-  color: transparent;
-  text-decoration: none;
-  width: 100%;
+/* color blanco */
+.color-blanco{
+color: white;
+}
+/* color-negro */
+.color-negro{
+color:rgb(9, 5, 13)
 }
 
-.sesion{
-  position: absolute;
-top: 89%;
-left: 19%;
-color: black;
-width: 60%;
-}
-
+/*  */
 .olv-contra{
   position: absolute;
 top: 89%;
