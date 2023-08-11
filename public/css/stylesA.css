@@ -199,6 +199,87 @@ article div.main-article{
 .main-article:hover{
   opacity: 1;
 }
+<!-----FOOTER--Estilos--/
+footer {
+    background: #eef8ff;
+}
+footer {
+  background: linear-gradient(to right, #00093c,#2d0b00);
+  color: #fff;
+  padding: 15px;
+  border-top-left-radius: 125px;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.logo h3 {
+  
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(238, 0, 186, 0.5);
+    margin: 45px;
+}
+
+.col h2 {
+  width: fit-content;
+  position: relative;
+  color: #df67f7;
+  font-family: "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+}
+.col ul  {
+  list-style: none;
+}
+.col ul li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+.col ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Arial", Helvetica, sans-serif
+}
+hr{
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+.copyright {
+    text-align: center;
+}
+.underline {
+    width: 100%;
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+.underline span{
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+@keyframes moving{
+    0%{
+        left: -20px;
+    }
+    100%{
+        left: 100%;
+
+    }
+}
+
 @media (min-width: 361px){
     main section article .description{
         display: block;
