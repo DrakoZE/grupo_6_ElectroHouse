@@ -231,6 +231,8 @@ footer {
 }
 .col ul  {
   list-style: none;
+  margin: 0px;
+  padding: 10px;
 }
 .col ul li{
     list-style: none;
@@ -276,7 +278,6 @@ hr{
     }
     100%{
         left: 100%;
-
     }
 }
 
