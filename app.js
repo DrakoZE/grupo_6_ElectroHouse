@@ -3,24 +3,19 @@ const path = require("path");
 const app = express();
 const PORT = 3001;
 
-app.use(express.static(path.join(__dirname, "/public")))
+app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req,res) => res.sendFile(path.join(__dirname, "views/home.html")))
+const homeController = require("./controllers/homeController");
+const productoController = require("./controllers/productoController");
+const registerController = require("./controllers/registerController");
+const loginController = require("./controllers/loginController");
 
-app.get("/carrito", (req,res) => res.sendFile(path.join(__dirname, "views/carritoDeCompras.html")))
+app.get("/", homeController.getHomePage);
+app.get("/producto", productoController.getProductoPage);
+app.get("/register", registerController.getRegisterPage);
+app.post("/register", registerController.registerUser);
+app.get("/login", loginController.getLoginPage);
+app.post("/login", loginController.postLoginPage);
 
-app.get("/producto", (req,res) => res.sendFile(path.join(__dirname, "views/iphone-14.html")))
-
-app.get("/register", (req,res) => res.sendFile(path.join(__dirname, "views", "register.html")))
-
-app.get("/login", (req,res) => res.sendFile(path.join(__dirname, "views", "login.html")))
-
-app.listen(PORT, ()=> console.log("El servidor esta corriendo en el puerto: " + PORT))
-
-app.post("/register", (req,res) =>{
-    res.redirect("/")
-})
-
-app.post("/login", (req,res) =>{
-    res.redirect("/")
-})
+app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
+app.set("view engine", "ejs");
