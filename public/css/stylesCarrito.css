@@ -1,0 +1,126 @@
+.carrito-de-compras {
+    background: url("/images/fondo.jpg");
+    background-size: 45%;
+  }
+  
+  .search-bar-carrito {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-bar-carrito input {
+    width: 40%;
+    border: solid 1px #ffffff;
+    border-radius: 7px 0px 0px 7px;
+    padding: 10px;
+  }
+  
+  .search-bar-carrito button {
+    width: 5%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+  }
+  
+  
+  .carrito-main .carrito-titulo-contenedor {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .carrito-titulo {
+   margin: 0px auto 10px;
+   color: #ED72E3;
+  }
+  
+  .carrito-de-compras .carrito-productos {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .carrito-de-compras .carrito-productos .producto {
+    display: flex;
+    width: 25%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #ffffff;
+  }
+  
+  .carrito-de-compras .carrito-productos .producto .imagen-producto {
+    width: 50%;
+    object-fit: contain;
+  }
+  
+  .carrito-de-compras .carrito-productos .info-producto {
+    padding-left: 2px;
+    width: 50%;
+    border-left: #000000 solid 2px;
+    font-size: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0px;
+  }
+  
+  .oferta-producto {
+    color: #1cdb58;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .precio-producto {
+    font-size: 1em;
+    width: 100%;
+  }
+  
+  .titulo-producto {
+    width: 1em;
+  }
+
+  .search-bar-carrito {
+    flex-direction: row;
+  }
+  
+  .carrito-de-compras {
+    width: 100%;
+  }
+  
+  .carrito-de-compras .carrito-productos .info-producto i {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background-color: #ffffff;
+    border: solid 2px black;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #000000;
+    transition: 
+      color 0.5s,
+      border 0.5s
+  }
+  
+  .carrito-de-compras .carrito-productos .info-producto i:hover {
+    transform: none;
+    color: #ED72E3;
+    border: #ED72E3 2px solid;
+  }
+  
+  header .top-header .form-home{
+    margin: auto;
+    width: 55%;
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+    padding: 2%;
+    border-style: solid;
+    border-radius: 2%;
+    border-color: #000000;
+    background-color: #000000;
+  }
+
