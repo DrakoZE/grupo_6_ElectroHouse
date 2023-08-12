@@ -2,7 +2,7 @@ const loginController ={
     getLoginPage: (req, res) =>{
         res.render("login");
       },
-    postLoginPage: (req,res) =>{
+    loginUser: (req,res) =>{
         res.redirect("/")
     }
     };

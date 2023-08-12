@@ -13,9 +13,10 @@ const loginController = require("./controllers/loginController");
 app.get("/", homeController.getHomePage);
 app.get("/producto", productoController.getProductoPage);
 app.get("/register", registerController.getRegisterPage);
-app.post("/register", registerController.registerUser);
 app.get("/login", loginController.getLoginPage);
-app.post("/login", loginController.postLoginPage);
+
+app.post("/register", registerController.registerUser);
+app.post("/login", loginController.loginUser);
 
 app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
 app.set("view engine", "ejs");
