@@ -1,6 +1,6 @@
 const productoController ={
     getProductoPage: (req, res) => {
-        res.render("producto");
+        res.render("products/producto");
       },
     };
 module.exports = productoController;

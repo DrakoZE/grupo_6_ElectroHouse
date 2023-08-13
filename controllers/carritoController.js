@@ -1,6 +1,6 @@
 const carritoController ={
     getCarritoPage: (req, res) => {
-        res.render("carritoDeCompras");
+        res.render("products/carritoDeCompras");
       },
     };
 module.exports = carritoController;

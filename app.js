@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3001;
 
 app.use(express.static(path.join(__dirname, "/public")));
+app.set("view engine", "ejs");
 
 const homeRouter = require("./routers/home");
 const productoRouter = require("./routers/productos");
@@ -18,4 +19,3 @@ app.use("/", loginRouter);
 app.use("/", carritoRouter);
 
 app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
-app.set("view engine", "ejs");

@@ -1,6 +1,6 @@
 const loginController ={
     getLoginPage: (req, res) =>{
-        res.render("login");
+        res.render("users/login");
       },
     loginUser: (req,res) =>{
         res.redirect("/")
