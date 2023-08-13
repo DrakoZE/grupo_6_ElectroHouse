@@ -5,18 +5,17 @@ const PORT = 3001;
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-const homeController = require("./controllers/homeController");
-const productoController = require("./controllers/productoController");
-const registerController = require("./controllers/registerController");
-const loginController = require("./controllers/loginController");
+const homeRouter = require("./routers/home");
+const productoRouter = require("./routers/productos");
+const registerRouter = require("./routers/login");
+const loginRouter = require("./routers/register");
+const carritoRouter = require("./routers/carrito");
 
-app.get("/", homeController.getHomePage);
-app.get("/producto", productoController.getProductoPage);
-app.get("/register", registerController.getRegisterPage);
-app.get("/login", loginController.getLoginPage);
-
-app.post("/register", registerController.registerUser);
-app.post("/login", loginController.loginUser);
+app.use("/", homeRouter);
+app.use("/", productoRouter);
+app.use("/", registerRouter);
+app.use("/", loginRouter);
+app.use("/", carritoRouter);
 
 app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
 app.set("view engine", "ejs");
