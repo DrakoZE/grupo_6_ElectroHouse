@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito De Compras</title>
 
+    <title>Carrito De Compras</title>
+    <link rel="stylesheet" href="css/stylesCarrito.css">
+
+    <link rel="stylesheet" href="/css/stylesA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/stylesCarrito.css">
-    <link rel="stylesheet" href="css/stylesA.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display&family=Roboto:wght@100;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -19,8 +22,8 @@
     <header>
         <div class="top-header">
             <div>
-                <div class="logo"> 
-                   <img src="images/logo.jpg" alt="Logo de electroHouse" width="150px" height="150px">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Logo de electroHouse" width="150px" height="150px">
                 </div>
             </div>
             <form class="form-home" action="#" method="GET">
@@ -30,7 +33,7 @@
         <div class="burger-menu">
             <i class="fa fa-bars burger"></i>
         </div>
-     
+
         <nav class="linea-arriba">
             <ul>
                 <li><a href="#">Off</a></li>
@@ -50,17 +53,64 @@
     <main class="carrito-de-compras">
 
         <section class="carrito-container-productos">
-            PRODUCTOS
+
+            <div>
+                <h3 class="carrito-container-productos-item-titulo">PRODUCTOS AGREGADOS AL CARRITO</h3>
+            </div>
+
+            <article class="carrito-container-productos-item-producto">
+                <img src="images/cat-parlante.png" alt="" class="carrito-container-productos-item-producto-img">
+                <p class="carrito-container-productos-item-producto-texto-titulo">Parlante CAT</p>
+                <p class="carrito-container-productos-item-producto-texto-precio">$6.770</p>
+                <p class="carrito-container-productos-item-producto-texto-oferta">40% off</p>
+                <div class="carrito-container-productos-item-producto-contenedor">
+                    <span><i class="fa-solid fa-minus"></i></span>
+                    <p class="carrito-container-productos-item-producto-texto-cantidad">1</p>
+                    <span><i class="fa-solid fa-plus"></i></span>
+                </div>
+                <i class="fa-solid fa-x"></i>
+            </article>
+
+            <article class="carrito-container-productos-item-producto">
+                <img src="images/iphone-14-promax.png" alt="" class="carrito-container-productos-item-producto-img">
+                <p class="carrito-container-productos-item-producto-texto-titulo">Iphone 14 PRO MAX</p>
+                <p class="carrito-container-productos-item-producto-texto-precio">$230000</p>
+                <p class="carrito-container-productos-item-producto-texto-oferta">20% off</p>
+                <div class="carrito-container-productos-item-producto-contenedor">
+                    <span><i class="fa-solid fa-minus"></i></span>
+                    <p class="carrito-container-productos-item-producto-texto-cantidad">1</p>
+                    <span><i class="fa-solid fa-plus"></i></span>
+                </div>
+                <i class="fa-solid fa-x"></i>
+            </article>
+
+            <article class="carrito-container-productos-item-producto">
+                
+                <img src="images/xbox-control.png" alt="" class="carrito-container-productos-item-producto-img">
+                <p class="carrito-container-productos-item-producto-texto-titulo">Control de Xbox</p>
+                <p class="carrito-container-productos-item-producto-texto-precio">$23200</p>
+                <p class="carrito-container-productos-item-producto-texto-oferta">5% off</p>
+                <div class="carrito-container-productos-item-producto-contenedor">
+                    <span><i class="fa-solid fa-minus"></i></span>
+                    <p class="carrito-container-productos-item-producto-texto-cantidad">1</p>
+                    <span><i class="fa-solid fa-plus"></i></span>
+                </div>
+                <i class="fa-solid fa-x"></i>
+            </article>
+
         </section>
 
         <aside class="carrito-container-compraventa">
-            CARRITO
+
+            <div>
+                <h3 class="carrito-container-productos-item-titulo">RESUMEN DE COMPRA</h3>
+            </div>
         </aside>
 
     </main>
 
- <%- include("../partials/footer") %>
-    
+    <%- include("../partials/footer") %>
+
 </body>
 
 </html>
