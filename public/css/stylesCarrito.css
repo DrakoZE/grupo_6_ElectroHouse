@@ -1,4 +1,4 @@
-.carrito-de-compras {
+/* .carrito-de-compras {
     background: url("/images/fondo.jpg");
     background-size: 45%;
   }
@@ -122,5 +122,27 @@
     border-radius: 2%;
     border-color: #000000;
     background-color: #000000;
-  }
+  } */
 
+.carrito-de-compras {
+  height: 500px;
+  display: flex;
+  margin: 50px auto;
+  justify-content: space-around;
+}  
+
+.carrito-de-compras .carrito-container-productos {
+  width: 65%;
+  background-color: blue;
+  box-shadow: 0px 0px 10px #aa00ff;
+  border-radius: 20px;
+  background-color: #000000ad;
+}
+
+.carrito-de-compras .carrito-container-compraventa {
+  width: 30%;
+  background-color: azure;
+  box-shadow: 0px 0px 10px #aa00ff;
+  border-radius: 20px;
+  background-color: #000000ad;
+}
