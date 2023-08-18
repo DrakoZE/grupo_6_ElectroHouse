@@ -1,58 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
-
     <title>ElectroHouse</title>
-
-    <link rel="stylesheet" href="/css/stylesA.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display&family=Roboto:wght@100;400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+   
+    <%- include("../partials/head") %>
 </head>
 
-<body>
-    <header>
-        <div class="top-header">
-            <div>
-                <div class="logo"> 
-                   <img src="images/logo.jpg" alt="Logo de electroHouse" width="150px" height="150px">
-                </div>
-            </div>
-            <form class="form-home" action="#" method="GET">
-                <input placeholder="Buscar productos..."><button type="submit" class="fa fa-search"></button>
-            </form>
-        </div>
-        <div class="burger-menu">
-            <i class="fa fa-bars burger"></i>
-        </div>
-     
-        <nav class="linea-arriba">
-            <ul>
-                <li><a href="#">Off</a></li>
-                <li><a href="#">Tiendas Oficiales</a></li>
-                <li><a href="#">Vender</a></li>
-                <li><a href="#">Ayuda</a></li>
-            </ul>
-            <ul>
-                <li><a href="/register">Creá tu cuenta <i class="far fa-id-card"></i></a></li>
-                <li><a href="/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
-                <li><a href="/carrito">Mis compras <i class="fas fa-shopping-basket"></i></a></li>
-            </ul>
-        </nav>
 
-    </header>
- 
+<body>
+    <%- include("../partials/header") %>
     <main>
         <section class="last-visit">
-            <h3>SECCION </h3>
+            <h3 class="purpleshadowbox">SECCION </h3>
             <div class="products">
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/cat-parlante.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -61,7 +25,7 @@
                         <h4 class="description">Parlante CAT</h4>
                     </div>
                 </article>
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/iphone-14-promax.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -71,7 +35,7 @@
                     </div>
                 </article>
 
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/xbox-control.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -83,9 +47,9 @@
             </div>
         </section>
         <section class="offers">
-            <h3>Off</h3>
+            <h3 class="purpleshadowbox">Off</h3>
             <div class="products">
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/cat-parlante.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -94,7 +58,7 @@
                         <h4 class="description">Parlante CAT</h4>
                     </div>
                 </article>
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/iphone-14-promax.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -104,7 +68,7 @@
                     </div>
                 </article>
 
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/xbox-control.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -117,50 +81,7 @@
         </section>
     </main>
 
-    <footer >
-        <div class = "footer-conteiner">
-          <div class="row">
-              <div class="logo">
-                 <h3>Electro House</h2>
-              </div>
-              <div class="col">
-                 <h2>Atención al Cliente <div class="underline"><span></span></div></h2>
-                 <ul class="box-contact">
-                      <li><a href="#">Compras en linea</a></li>
-                      <li><a>Envíos</a></li>
-                      <li><a>Mis pedidos</a></li>
-                      <li><a>Opciones para regalo</a></li>
-                      <li><a>Cambios devoluciones y reembolso</a></li>
-                 </ul>
-               </div>
-               <div class="col">  
-                  <h2>Nosotros <div class="underline"><span></span></div></h2>
-                  <ul class="box-empresa">
-                     <li><a>Quienes somos</a></li>
-                      <li><a>Tiendas oficiales</a></li>
-                     <li><a>Eventos</a></li>
-                      <li><a>Trabaja con Nosotros</a></li>
-                  </ul>  
-                </div>
-               <div class="col">
-                 <h2>Siguenos <div class="underline"><span></span></div></h2>
-                  <ul class="box-social">
-                      <li><a href="#">Facebook</a></li>
-                     <li><a>Instagram</a></li>
-                     <li><a>Tik tok</a></li>
-                   </ul>
-               </div>
-              <div class="col">
-                   <h2>Metodos de Pago: <div class="underline"><span></span></div></h2>
-                   <ul class="box-pagos">
-    
-                   </ul>
-                </div>
-          </div>
-        </div> 
-        <hr>
-        <p class="copyright">ElectroHouse © 2023 - Derechos RESERVADOS alumnos de DH</p>
-    </footer>
+    <%- include("../partials/footer") %>
 
 </body>
 </html>
