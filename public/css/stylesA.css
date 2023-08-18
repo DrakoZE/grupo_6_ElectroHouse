@@ -172,6 +172,9 @@ hr{
     left: 10px;
     animation: moving 2s linear infinite;
 }
+.mainform label{
+ color: beige;
+}
 @keyframes moving{
     0%{
         left: -20px;
