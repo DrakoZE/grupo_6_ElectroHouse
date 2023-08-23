@@ -1,0 +1,197 @@
+header{
+    justify-content: space-between;
+    background-color: #050505;
+    flex-wrap: nowrap;
+    color: white;
+    display: flex;
+    border: solid 2px #090909;
+}
+header div.logo{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+header nav{
+    border-right: solid 2px #090909;
+    border-left: solid 2px #090909;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    width: 80vw;
+}
+header form{
+    justify-content: flex-end;
+    padding: 20px;
+    display: flex;
+}
+header ul{
+    border-top: solid 2px #090909;
+    align-items: flex-end;
+    align-content: center;
+    margin-bottom: 0px;
+    position: relative;
+    padding-left: 0px;
+    margin-left: 0px;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    display: flex;
+    bottom: 0px;
+    left: 0px;
+}
+header input{
+    color: #666;
+    font-size: 15px;
+    padding: 5px;
+}
+header button{
+    color: #aa00ff;
+    font-size: 15px;
+    padding: 5px;
+}
+header section{
+    align-items: center;
+    display: flex;
+}
+header section div.usericon i{
+    padding: 10px 13px;
+    position: relative;
+    
+    font-size: 40px;
+    margin: 0 15px;
+}
+header section div.subicon{
+    flex-direction: column;
+    margin: 0 15px;
+    display: flex;
+}
+header section div.subicon i{
+    color: #aa00ff;
+    padding: 4px;
+    margin: 3px;
+}
+header section div i{
+    border-radius: 50%;
+    color: #aa00ff;
+}
+/*
+<div class="burger-menu">
+
+        <i class="fa fa-bars burger"></i>
+
+    </div>
+*/
+div.burger-menu{
+    text-align: center;
+}
+div.burger-menu i{
+    background-color: #5e00aa;
+    margin: 10px 0px 20px 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #FFF;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+}
+header ul li{
+    list-style-type: none;
+    font-size: 10px;
+    padding: 7px;
+    
+} 
+header ul li:hover{
+    box-shadow: 0 0 10px #aa00ff;
+} 
+header ul li a{
+    text-decoration: none;
+    color: white;
+}
+header.form.submit{
+    background-color: #FFF;
+    border: 1px solid #000;
+    color: #666;
+    width: 10%;
+}
+
+
+
+
+
+footer {
+    background: #eef8ff;
+}
+footer {
+  background: linear-gradient(to right,  #050505, #330055);
+  color: #fff;
+  padding: 15px;
+  border-top-left-radius: 125px;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.logo h3 {
+
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(238, 0, 186, 0.5);
+    margin: 45px;
+}
+
+.col h2 {
+  width: fit-content;
+  position: relative;
+  color: #df67f7;
+  font-family: "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+}
+.col ul  {
+  list-style: none;
+}
+.col ul li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+.col ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Arial", Helvetica, sans-serif
+}
+hr{
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+.copyright {
+    text-align: center;
+}
+.underline {
+    width: 100%;
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+.underline span{
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+@keyframes moving{
+    0%{
+        left: -20px;
+    }
+    100%{
+        left: 100%;
+
+    }
+}

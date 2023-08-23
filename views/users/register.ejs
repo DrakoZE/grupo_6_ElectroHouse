@@ -1,71 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/styles.css"/>
-    <link rel="stylesheet" href="/css/stylesA.css"/>
-    <link rel="stylesheet" href="/css/register.css"/>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-rel="stylesheet" />
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-<script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
-<script src="https://kit.fontawesome.com/d11b542e83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/sign&log.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <%- include("../partials/head") %>
 </head>
 
-<header>
-    <div class="top-header">
-        <div>
-            <div class="logo"> 
-               <img src="images/logo.jpg" alt="Logo de electroHouse" width="150px" height="150px">
-            </div>
-        </div>
-        <form class="form-home" action="#" method="GET">
-            <input placeholder="Buscar productos..."><button type="submit" class="fa fa-search"></button>
-        </form>
-    </div>
-    <div class="burger-menu">
-        <i class="fa fa-bars burger"></i>
-    </div>
-    </nav>
 
-</header>
-<body class="fondoregister">
-<main class="mainform color-blanco">
-    <div class="centrarform">
+<body>
+
+    <%- include("../partials/header") %>
+
+<main>
+
+        <form class=" purpleshadowbox" action="/register" method="post">
             <h2>Datos</h2>
-    <form action="/register" method="post" class="formulario">
 
-        <label for="Nombre">Nombre completo</label>
-        <input class="espacios" type="text" name="Nombre" id="Nombre" required pattern="[A-Za-z]{2,30}">
+            <label for="nombre">Nombre completo</label>
+            <input class="grayshadowbox" type="text" name="Nombre" id="nombre" required pattern="[A-Za-z]{2,30}">
     
-        <label for="Usuario">Ingresa un nombre de usuario</label>
-        <input class="espacios" type="text" name="Usuario" id="Usuario" pattern="[A-Za-z0-9-]{3,15}" >
+            <label for="usuario">Nombre de usuario</label>
+            <input class="grayshadowbox" type="text" name="Usuario" id="usuario" pattern="[A-Za-z0-9-]{3,15}" >
     
-        <label for="Fecha">Correo electronico</label>
-        <input class="espacios" type="email" name="correo" id="Fecha" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+            <label for="fecha">Correo electronico</label>
+            <input class="grayshadowbox" type="email" name="correo" id="fecha" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
 
-        <label for="Telefono">Numero de telefono</label>
-        <input class="espacios" type="text" alt="number" required pattern="[0-9]{10}">
+            <label for="clave">Contraseña</label>
+            <input class="grayshadowbox" type="password" name="contraseña" id="clave" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
 
-    <div>Contraseña</div>
-    <input class="espacios" type="password" name="contraseña" value="contraseña" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+            <button type="submit" class="enviar">Enviar</button>
+            <button class="cancel" type="reset">X</button>
+            <a href="/login">¿Ya tienes una cuenta?</a>
+        </form>
+    
 
-    <div>¿Desea recibir novedades de nuestros productos por correo?
-    <div>Si<input type="radio" name="eleccion"  value="S"></div>
-    <div>No<input type="radio" name="eleccion"  value="N"></div>
-    </div>
-
-    <div class="inv"> 1</div>
-    <button type="submit" class="enviar color-blanco"> Enviar datos</button>
-    <button class="botoncancelar color-blanco" type="reset">X</button>
-    </form>
-    <a class="sesion color-negro" href="/login">¿Ya tienes una cuenta? Inicia sesion</a>
-    </div>
 </main>
-<%- include("../partials/footer.ejs")%>
+
 </body>
 </html>

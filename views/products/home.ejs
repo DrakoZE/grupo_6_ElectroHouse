@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <title>ElectroHouse</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+   
+    <%- include("../partials/head") %>
+</head>
 
-    <%- include("../partials/head.ejs")%>
 
 <body>
-    <%- include("../partials/header.ejs")%>
- 
+    <%- include("../partials/header") %>
+
     <main>
         <section class="last-visit">
-            <h3>SECCION </h3>
+            <h3 class="purpleshadowbox">SECCION </h3>
             <div class="products">
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/cat-parlante.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -19,7 +26,7 @@
                         <h4 class="description">Parlante CAT</h4>
                     </div>
                 </article>
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/iphone-14-promax.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -29,7 +36,7 @@
                     </div>
                 </article>
 
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/xbox-control.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -41,9 +48,9 @@
             </div>
         </section>
         <section class="offers">
-            <h3>Off</h3>
+            <h3 class="purpleshadowbox">Off</h3>
             <div class="products">
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/cat-parlante.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -52,7 +59,7 @@
                         <h4 class="description">Parlante CAT</h4>
                     </div>
                 </article>
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/iphone-14-promax.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -62,7 +69,7 @@
                     </div>
                 </article>
 
-                <article>
+                <article class="purpleshadowbox">
                     <img src="images/xbox-control.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
@@ -74,8 +81,8 @@
             </div>  
         </section>
     </main>
- 
-    <%- include("../partials/footer.ejs")%>
-    
+
+    <%- include("../partials/footer") %>
+
 </body>
 </html>

@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include("../partials/head.ejs")%>
-<body>
-    <%- include("../partials/header.ejs")%>
-    <main class="mainform">
-        <div>
-            <form action="/" method="">
-                <label for="usuario">Nombre de usuario</label>
-                <input type="text" name="usuario">
-                <label for="contra">Contraseña</label>
-                <input type="password" name="contra">
+    <head>
+        <title>Login</title>
 
-            </form>
-        </div>
-    <div class="inv"> 1</div>
-    <button type="submit" class="enviar"> Enviar datos</button>
-    <button class="botoncancelar" type="reset">X</button>
-    </form>
-    <a class="olv-contra" href="/">Olvide mi contraseña</a>
+        <link rel="stylesheet" href="/css/sign&log.css">
+        <link rel="stylesheet" href="/css/colores.css">
+        <link rel="stylesheet" href="/css/partials.css">
+        <%- include("../partials/head.ejs")%>
+
+    </head>
+
+
+<body>
+
+    <%- include("../partials/header.ejs")%>
+
+    <main>
+        <form class=" purpleshadowbox" action="/login" method="post">
+            <h2>Ingresar</h2>
+
+            <label for="usuario">Nombre de usuario</label>
+            <input class="grayshadowbox" type="text" name="usuario">
+
+            <label for="contra">Contraseña</label>
+            <input class="grayshadowbox" type="password" name="contra">
+
+            
+            <button type="submit" class="enviar"> Enviar datos</button>
+            <button class="cancel" type="reset">X</button>
+            <a href="/">Olvide mi contraseña</a>
+        </form>
     </main>
-    <%- include("../partials/footer.ejs")%>
+
 </body>
 </html>
