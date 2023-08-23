@@ -15,66 +15,36 @@
 
     <main>
         <section class="last-visit">
-<<<<<<<< HEAD:views/home.ejs
+
+
             <h3>Seccion</h3>
-            <div class="products">
 
-     
-            
-            
-            <div class="main-article">
-<article>
-    <ul>
-        <li>
 
-            <% for (let i=0; i < elementos.length; i++) { %>
-                   
-             <p>   <%= elementos[i].titulo %>     </p> 
           
-            <% } %>
-        </li>
-    </ul>
- 
-
-
-</article>
-
-       
-            </div>
             
+     <div class="main-article">
 
-========
-            <h3 class="purpleshadowbox">SECCION </h3>
-            <div class="products">
+      <div class="products">
+        
+
+            <% for (let i=0; i < productos.length; i++) { %>
+                   
                 <article class="purpleshadowbox">
                     <img src="images/cat-parlante.png" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
                         <p class="price">$6.770</p>
                         <p class="discount">40% off</p>
-                        <h4 class="description">Parlante CAT</h4>
+                        <h4 class="description"><%= productos[i].titulo %></h4>
                     </div>
                 </article>
-                <article class="purpleshadowbox">
-                    <img src="images/iphone-14-promax.png" class="product_img">
-                    <div class="main-article">
-                        <i class="fas fa-truck"></i>
-                        <p class="price">$230.000</p>
-                        <p class="discount">20% off</p>
-                        <h4 class="description">Iphone 14 Promax</h4>
-                    </div>
-                </article>
+          
+            <% } %>
+       
+            </div>
+            </div>
 
-                <article class="purpleshadowbox">
-                    <img src="images/xbox-control.png" class="product_img">
-                    <div class="main-article">
-                        <i class="fas fa-truck"></i>
-                        <p class="price">$23.200</p>
-                        <p class="discount">5% off</p>
-                        <h4 class="description">Control de XBOX</h4>
-                    </div>
-                </article>
->>>>>>>> master:views/products/home.ejs
+
             </div>
         </section>
        
