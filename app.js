@@ -17,25 +17,19 @@ app.set("view engine", "ejs");
 
 
 
-app.use(express.static(path.join(__dirname, "/public")))
+app.use(express.static(path.join(__dirname, "/public")));
+app.set("view engine", "ejs");
 
+const homeRouter = require("./routers/home");
+const productoRouter = require("./routers/productos");
+const registerRouter = require("./routers/login");
+const loginRouter = require("./routers/register");
+const carritoRouter = require("./routers/carrito");
 
-app.get("/carrito", (req,res) => res.sendFile(path.join(__dirname, "views/carritoDeCompras.html")))
+app.use("/", homeRouter);
+app.use("/", productoRouter);
+app.use("/", registerRouter);
+app.use("/", loginRouter);
+app.use("/", carritoRouter);
 
-app.get("/producto", (req,res) => res.sendFile(path.join(__dirname, "views/iphone-14.html")))
-
-app.get("/register", (req,res) => res.sendFile(path.join(__dirname, "views", "register.html")))
-
-app.get("/login", (req,res) => res.sendFile(path.join(__dirname, "views", "login.html")))
-
-app.listen(PORT, ()=> console.log("El servidor esta corriendo en el puerto: " + PORT))
-
-app.post("/register", (req,res) =>{
-    res.redirect("/")
-})
-
-app.post("/login", (req,res) =>{
-    res.redirect("/")
-})
-//Indico que voy a usa, el metodo sirve para poder usar el metodo POST para el formulario de edicion de producto
-app.use(methoOverride('_method'))
+app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));

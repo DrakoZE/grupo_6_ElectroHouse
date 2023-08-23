@@ -1,0 +1,81 @@
+
+
+
+.graybox{
+    background-color: #0a0a0a;
+    border-top:3px solid #333;
+    border-left:3px solid #333;
+    border-right:3px solid #666;
+    border-bottom:3px solid #666;
+}
+.grayshadowbox{
+    background-color:  #000000ad;
+    border: solid 1px #666;
+    box-shadow: #666
+}
+/* Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado */
+.purplelogo{
+    filter: drop-shadow(0 0 5px #aa00ff);
+}
+.purplebox{
+    background-color: #0a0a0a;
+    border-top:3px solid #330055;
+    border-left:3px solid #330055;
+    border-right:3px solid #aa00ff;
+    border-bottom:3px solid #aa00ff;
+}
+.purplebox:hover{
+box-shadow: 0 0 15px #aa00ff;
+}
+.purpleshadowbox{
+    background-color:  #000000ad;
+    border: solid 1px #aa00ff;
+    box-shadow: 0 0 15px #aa00ff;
+}
+/* Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado */
+
+
+
+/* verde azulado claro verde azulado claro verde azulado claro verde azulado claro*/
+.bluegreenlogo{
+    filter: drop-shadow(0 0 5px #00ffaa);
+}
+.bluegreenbox{
+    background-color: #0a0a0a;
+    border-top:3px solid #004c33;
+    border-left:3px solid #004c33;
+    border-right:3px solid #00ffaa;
+    border-bottom:3px solid #00ffaa;
+}
+.bluegreenbox:hover{
+    box-shadow: 0 0 15px #00ffaa;
+}
+.bluegreenshadowbox{
+    background-color:  #000000ad;
+    border: solid 1px #00ffaa;
+    box-shadow: 0 0 15px #00ffaa;
+}
+/* verde azulado claro verde azulado claro verde azulado claro verde azulado claro*/
+
+
+
+/* orange orange orange orange orange orange orange orange orange orange orange orange */
+.orangelogo{
+    filter: drop-shadow(0 0 5px #ffaa00);
+}
+.orangebox{
+    background-color: #0a0a0a;
+    border-top:3px solid #664400;
+    border-left:3px solid #664400;
+    border-right:3px solid #ffaa00;
+    border-bottom:3px solid #ffaa00;
+}
+.orangebox:hover{
+    box-shadow: 0 0 15px #ffaa00;
+}
+.orangeshadowbox{
+    background-color:  #000000ad;
+    border: solid 1px #ffaa00;
+    box-shadow: 0 0 15px #ffaa00;
+}
+/* orange orange orange orange orange orange orange orange orange orange orange orange */

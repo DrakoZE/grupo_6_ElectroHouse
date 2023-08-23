@@ -1,0 +1,68 @@
+*{
+  font-family: 'Press Start 2P';
+  box-sizing: border-box;
+}
+body{
+  background-image: url(/images/fondo.jpg);
+    background-size: 45%;
+}
+ 
+main{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  }
+main form{
+  position: absolute;
+  width: 50vw;
+  margin: 5% 0;
+  padding: 0% 5% 5% 5%;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  flex-direction:column;
+}
+main input{
+  color: white;
+  margin: 5px;
+}
+main .cancel{
+  font-size: 1.5em;
+  color: #aa00ff;
+  text-shadow: 0 0 5px #aa00ff;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transition: all 1s;
+}
+
+main .cancel:hover{
+    text-shadow: 0 0 5px #ff0000;
+    color: #ff0000;
+}
+main .enviar{
+  color: #aa00ff;
+  text-shadow: 0 0 5px #aa00ff;
+  border: none;
+  background: none;
+  width: 35%;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  
+transition: all 1s;
+}
+main .enviar:hover{
+  color: #00ffaa ;
+  text-shadow: 0 0 5px #00ffaa;
+  
+}
+main a{
+  font-size: 10px;
+  position: absolute;
+  left: 30px;
+  bottom: 15px;
+  color: #aa00ff;
+}
