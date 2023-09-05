@@ -3,7 +3,10 @@ const path = require("path");
 const app = express();
 const PORT = 3001;
 //requerir method overside para hacer formulaario de edicion de producto
-const methoOverride=require('method-override');
+
+const methodOverride=require('method-override');
+app.use(methodOverride("_method"));
+
 //confijuracion de ejs
 
 app.set("view engine", "ejs");
@@ -13,12 +16,9 @@ app.set("view engine", "ejs");
 //document.getElementById("idDelElemento".appendChild(imagen))
 
 
-
-
-
-
 app.use(express.static(path.join(__dirname, "/public")));
-app.set("view engine", "ejs");
+
+
 
 const homeRouter = require("./routers/home");
 const productoRouter = require("./routers/productos");
