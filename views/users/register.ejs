@@ -30,6 +30,9 @@
             <label for="clave">Contraseña</label>
             <input class="grayshadowbox" type="password" name="contraseña" id="clave" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Por favor ingrese una contraseña que contenga al menos un numero, un digito, y tenga como minimo 8 caracteres de longitud">
 
+            <label for="Avatar">Elija una foto de usuario</label>
+            <input class="grayshadowbox" type="file" name="foto" value="Pic" accept=".jpg" required>
+
             <button type="submit" class="enviar">Enviar</button>
             <button class="cancel" type="reset">X</button>
             <a href="/login">¿Ya tienes cuenta?</a>
