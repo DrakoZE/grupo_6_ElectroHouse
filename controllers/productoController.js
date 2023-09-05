@@ -1,18 +1,18 @@
 const fs = require("fs")
 
 class Producto {
-  builder(id, nombre, descripcion, imagen, categoria, precio) {
+  builder(id, nombre, description, image, category, price) {
     this.id = id;
     this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.imagen = imagen;
-    this.categoria = categoria;
-    this.precio = precio;
+    this.description = description;
+    this.image = image;
+    this.category = category;
+    this.price = price;
   }
 }
 
 const productoController = {
-  filePath: "./database/products.json",
+  filePath: "../data/products/products.json",
 
   getAllProducts: (req, res) => {
     return JSON.parse(fs.readFileSync(this.filePath, "utf-8"));
@@ -32,10 +32,10 @@ const productoController = {
     const producto = new Producto(
       datosProducto.Id,
       datosProducto.nombre,
-      datosProducto.descripcion,
-      datosProducto.imagenes,
-      datosProducto.categoria,
-      datosProducto.precio,
+      datosProducto.description,
+      datosProducto.image,
+      datosProducto.category,
+      datosProducto.price,
     );
     const products = this.getAllProducts();
     products.push(producto);
@@ -50,12 +50,12 @@ const productoController = {
     const producto = products.find((producto) => producto.id === idProduct);
 
     if (producto) {
-      producto.id = datosProducto.id;
-      producto.nombre = datosProducto.nombre;
-      producto.descripcion = datosProducto.descripcion;
-      producto.imagenes = datosProducto.imagenes;
-      producto.categoria = datosProducto.categoria;
-      producto.precio = datosProducto.precio;
+      producto.id = productData.id;
+      producto.nombre = productData.nombre;
+      producto.descripcion = productData.description;
+      producto.imagenes = productData.image;
+      producto.categoria = productData.category;
+      producto.precio = productData.price;
 
       fs.writeFileSync(this.filePath, JSON.stringify(products), "utf-8");
     }

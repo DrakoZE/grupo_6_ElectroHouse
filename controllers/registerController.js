@@ -3,6 +3,7 @@ const registerController ={
         res.render("users/register");
       },
       registerUser: (req,res) =>{
+        console.log(req.body)
         res.redirect("/")
     }
     };

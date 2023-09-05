@@ -30,11 +30,11 @@
             <% for (let i=0; i < productos.length; i++) { %>
                    
                 <article class="purpleshadowbox">
-                    <img src="images/cat-parlante.png" class="product_img">
+                    <img src="<%= productos[i].imagen %>" class="product_img">
                     <div class="main-article">
                         <i class="fas fa-truck"></i>
-                        <p class="price">$6.770</p>
-                        <p class="discount">40% off</p>
+                        <p class="price"><%= productos[i].precio %></p>
+                        <p class="discount"><%= productos[i].descuento %></p>
                         <h4 class="description"><%= productos[i].titulo %></h4>
                     </div>
                 </article>
