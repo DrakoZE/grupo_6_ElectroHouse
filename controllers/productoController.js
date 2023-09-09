@@ -1,5 +1,29 @@
 const fs = require("fs")
 
+let productos = [
+  {
+    id: 1,
+    titulo : "Parlante CAT",
+    precio: "$6.770",
+    descuento: "40% off",
+    imagen: "images/cat-parlante.png"
+  },
+  {
+    id: 2,
+    titulo : "Iphone 14 Promax",
+    precio: "$230.000",
+    descuento: "20% off",
+    imagen: "images/iphone-14-promax.png"
+  },
+  {
+    id: 3,
+    titulo : "Control de XBOX",
+    precio: "$23.200",
+    descuento: "5% off",
+    imagen: "images/xbox-control.png"
+  },
+]
+
 class Producto {
   builder(id, nombre, description, image, category, price) {
     this.id = id;
@@ -46,7 +70,7 @@ const productoController = {
     const idProduct = req.params.id;
     const productData = req.body;
 
-    const products = this.getAllProducts();
+    const products = this.getAllProducts;
     const producto = products.find((producto) => producto.id === idProduct);
 
     if (producto) {
@@ -67,10 +91,8 @@ const productoController = {
   },
 
   getDetailpage: (req,res) => {
-    const products = this.getAllProducts;
-    const product = this.getProduct(req.params.id);
-    console.log(products);
-    console.log(product);
+    const products = productos;
+    const product = products.find(productA => productA.id == req.params.id);
 
 
     res.render("products/detailProduct", {product})

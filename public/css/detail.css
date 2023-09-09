@@ -31,6 +31,10 @@ main section .contenedorIzquierdo {
     border-right: 1px solid #aa00ff;
 }
 
+main section .contenedorIzquierdo a {
+    color: #666;
+}
+
 main section .contenedorDerecho {
     padding-left: 10px;
 }
@@ -41,7 +45,7 @@ main section .contenedorIzquierdo .imagenDelDetalle {
 }
 
 main section .contenedorIzquierdo button {
-    width: 50%;
+    width: 100%;
     margin: 10px;
     padding: 5px;
     background-color: #0a0a0a;
@@ -103,7 +107,7 @@ main section .contenedorIzquierdo, main section .contenedorDerecho p, main secti
     }
     
     main section .contenedorIzquierdo button {
-        width: 50%;
+        width: 100%;
         margin: 10px;
         padding: 5px;
         background-color: #0a0a0a;
@@ -122,6 +126,7 @@ main section .contenedorIzquierdo, main section .contenedorDerecho p, main secti
 @media (min-width:768px) {
     main section {
         flex-direction: row;
+        align-items: flex-start;
     }
 
     main section .contenedorIzquierdo, main section .contenedorDerecho {
