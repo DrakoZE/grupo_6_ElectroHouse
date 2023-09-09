@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Productos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
+
+    <link rel="stylesheet" href="/css/stylesA.css">
+    <link rel="stylesheet" href="css/stylesCarrito.css">
+
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/detail.css">
+    <%- include("../partials/head") %>
+</head>
+
+
+
+<body>
+
+    <%- include("../partials/header.ejs")%>
+
+    <main>
+
+        <section>
+
+            <div class="contenedorIzquierdo">
+                <img src="images/cat-parlante.png" alt="" class="imagenDelDetalle">
+                <button>Agregar al carrito</button>
+                <div class="miniContenedor">
+                    <button>editar</button>
+                    <button>borrar</button>
+                </div>
+            </div>
+
+            <div class="contenedorDerecho">
+                <h4>TITULO DEL PRODUCTO</h4>
+                <p>Precio</p>
+                <p>Oferta</p>
+                <p>
+                    Descripcion
+                </p>
+                <p>Envio gratis</p>
+                <p>OTRO</p>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+</html>
