@@ -17,16 +17,16 @@ const productoController = {
   getAllProducts: (req, res) => {
     return JSON.parse(fs.readFileSync(this.filePath, "utf-8"));
   },
-  findProducts(){
+  findProducts() {
     return this.getAllproducts()
   },
-  getProduct(id){
+  getProduct(id) {
     let products = this.findProducts;
     let searchedProduct = products.find((productoA) => productoA.id === id);
     return searchedProduct;
   },
 
-  createProduct(req, res){
+  createProduct(req, res) {
     const datosProducto = req.body;
 
     const producto = new Producto(
@@ -61,9 +61,21 @@ const productoController = {
     }
   },
 
-    getProductsPage: (req, res) => {
-      const productId = req.params.id;
-        res.render(`products/producto/${productId}`);
-      },
-    };
+  getProductsPage: (req, res) => {
+    const productId = req.params.id;
+    res.render(`products/producto/${productId}`);
+  },
+
+  getDetailpage: (req,res) => {
+    const products = this.getAllProducts;
+    const product = this.getProduct(req.params.id);
+    console.log(products);
+    console.log(product);
+
+
+    res.render("products/detailProduct", {product})
+  }
+
+};
+
 module.exports = productoController;
