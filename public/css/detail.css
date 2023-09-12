@@ -36,7 +36,7 @@ main section .contenedorIzquierdo a {
 }
 
 main section .contenedorDerecho {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 
@@ -136,5 +136,9 @@ main section .contenedorIzquierdo, main section .contenedorDerecho p, main secti
     main section .contenedorIzquierdo {
         border-right: 1px solid #aa00ff;
         border-bottom: none;
+    }
+
+    main section .contenedorDerecho {
+        padding-left: 20px;
     }
 }
