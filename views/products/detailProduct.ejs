@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.titulo %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
+
+    <link rel="stylesheet" href="/css/stylesA.css">
+    <link rel="stylesheet" href="/css/stylesCarrito.css">
+
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/detail.css">
+    <%- include("../partials/head") %>
+</head>
+
+
+
+<body>
+
+    <%- include("../partials/header.ejs")%>
+
+    <main>
+
+        <section>
+
+            <div class="contenedorIzquierdo">
+                <img src="/<%= product.imagen %>" alt="Imagen del producto" class="imagenDelDetalle">
+                <form action="" class="miniContenedor">
+                    <button type="submit"><a href="/carrito">Agregar al carrito</a></button>
+                </form>
+                <div class="miniContenedor">
+                    <form class="miniContenedor">
+                        <button type="submit"><a href="/edit-form">editar</a></button>
+                    </form>
+                    <form action="/products/?_method=PUT" class="miniContenedor">
+                        <button type="reset"><a href="/products/<%= product.id %>/?_method=DELETE">borrar</a></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="contenedorDerecho">
+                <h4><%= product.titulo %></h4>
+                <p><%= product.precio %></p>
+                <p<%= product.descuento %></p>
+                <p>
+                    Descripcion
+                </p>
+                <p>Envio gratis</p>
+                <p>OTRO</p>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include("../partials/footer") %>
+
+</body>
+</html>

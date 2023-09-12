@@ -1,5 +1,29 @@
 const fs = require("fs")
 
+let productos = [
+  {
+    id: 1,
+    titulo: "Parlante CAT",
+    precio: "$6.770",
+    descuento: "40% off",
+    imagen: "images/cat-parlante.png"
+  },
+  {
+    id: 2,
+    titulo: "Iphone 14 Promax",
+    precio: "$230.000",
+    descuento: "20% off",
+    imagen: "images/iphone-14-promax.png"
+  },
+  {
+    id: 3,
+    titulo: "Control de XBOX",
+    precio: "$23.200",
+    descuento: "5% off",
+    imagen: "images/xbox-control.png"
+  },
+]
+
 class Producto {
   builder(id, nombre, description, image, category, price) {
     this.id = id;
@@ -17,16 +41,16 @@ const productoController = {
   getAllProducts: (req, res) => {
     return JSON.parse(fs.readFileSync(this.filePath, "utf-8"));
   },
-  findProducts(){
+  findProducts() {
     return this.getAllproducts()
   },
-  getProduct(id){
+  getProduct(id) {
     let products = this.findProducts;
     let searchedProduct = products.find((productoA) => productoA.id === id);
     return searchedProduct;
   },
 
-  createProduct(req, res){
+  createProduct(req, res) {
     const datosProducto = req.body;
 
     const producto = new Producto(
@@ -46,7 +70,7 @@ const productoController = {
     const idProduct = req.params.id;
     const productData = req.body;
 
-    const products = this.getAllProducts();
+    const products = this.getAllProducts;
     const producto = products.find((producto) => producto.id === idProduct);
 
     if (producto) {
@@ -61,9 +85,22 @@ const productoController = {
     }
   },
 
-    getProductsPage: (req, res) => {
-      const productId = req.params.id;
-        res.render(`products/producto/${productId}`);
-      },
-    };
+  getProductsPage: (req, res) => {
+    const productId = req.params.id;
+    res.render(`products/producto/${productId}`);
+  },
+
+  getDetailpage: (req, res) => {
+    const products = productos;
+    const product = products.find(productA => productA.id == req.params.id);
+
+    res.render("products/detailProduct", { product })
+  },
+
+  getCarritoPage: (req, res) => {
+    res.render("products/carritoDeCompras");
+  },
+
+};
+
 module.exports = productoController;
