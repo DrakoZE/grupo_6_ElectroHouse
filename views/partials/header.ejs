@@ -1,35 +1,47 @@
 <header>
-
-    <div class="logo purplelogo"> 
-        <a href="/"><img src="/images/logo.jpg" alt="Logo de electroHouse" width="100px" height="100px"></a>
+    
+    <div class="min">
+        <a href="/"><i class="fa-solid fa-house purplelogo" style="color: #aa00ff"></i></a>
+        <a href="/products/crudPage"><i class="fa-solid fa-hand-holding-dollar purplelogo" style="color: #aa00ff"></i></a>
+        <a href="#"><i class="fa-solid fa-circle-question purplelogo" style="color: #aa00ff"></i></a>
+        <a href="/products/"><i class="fa-solid fa-shop purplelogo" style="color: #aa00ff"></i></a>
+        <form action="#" method="GET">
+            <input  placeholder="Buscar productos..."><button type="submit" class="fa fa-search"></button>
+        </form>
+        <a href="/users/register"><i class="fa-regular fa-user purplelogo" style="color: #aa00ff"></i></a>
+        <a href="/users/login"><i class="fas fa-sign-in-alt purplelogo" style="color: #aa00ff"></i></a>
+        <a href="/products/carrito"><i class="fas fa-shopping-basket purplelogo" style="color: #aa00ff"></i></a>
     </div>
 
-    <nav>
-
-        <form class="form-header" action="#" method="GET">
-            <input class="graybox" placeholder="Buscar productos..."><button type="submit" class="purplebox fa fa-search"></button>
-        </form>
-
-        <ul>
-            <li  class="purplebox"><a href="#">Off</a></li>
-            <li class="purplebox"><a href="#">Tiendas Oficiales</a></li>
-            <li class="purplebox"><a href="/products/crudPage">Vender</a></li>
-            <li class="purplebox"><a href="#">Ayuda</a></li>
-            <li  class="purplebox"><a href="/products/">Productos</a></li>
-        </ul>
-    
-    </nav>
-    
-
-    <section>
-
-        <div class="usericon"><a href="/users/register"><i class="fa-regular fa-user purplebox"></i></a></div>
-
-        <div class="subicon">
-            <a href="/users/login"><i class="fas fa-sign-in-alt purplebox"></i></a>
-            <a href="/products/carrito"><i class="fas fa-shopping-basket purplebox"></i></a>
+    <div class="max">
+        <div> 
+            <a class="logo purplelogo" href="/"><img src="/images/logo.jpg" alt="Logo de electroHouse" width="100px" height="100px"></a>
         </div>
 
-    </section>
+        <nav>
 
+            <form action="#" method="GET">
+                <input class="graybox" placeholder="Buscar productos..."><button type="submit" class="purplebox fa fa-search" style="color: #aa00ff"></button>
+            </form>
+
+            <ul>
+                <li><a class="purplebox" href="/products/crudPage">Vender</a></li>
+                <li><a class="purplebox" href="#">Ayuda</a></li>
+                <li><a class="purplebox" href="/products/">Productos</a></li>
+            </ul>
+        
+        </nav>
+        
+
+        <section>
+
+            <div class="usericon"><a href="/users/register"><i class="fa-regular fa-user purplebox"></i></a></div>
+
+            <div class="subicon">
+                <a href="/users/login"><i class="fas fa-sign-in-alt purplebox"></i></a>
+                <a href="/products/carrito"><i class="fas fa-shopping-basket purplebox"></i></a>
+            </div>
+
+        </section>
+    </div>
 </header>

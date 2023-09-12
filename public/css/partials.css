@@ -1,116 +1,44 @@
 header{
     justify-content: space-between;
     background-color: #050505;
+    border: solid 2px #090909;
+    flex-direction: column;
     flex-wrap: nowrap;
     color: white;
     display: flex;
-    border: solid 2px #090909;
 }
-header div.logo{
-    padding-right: 10px;
-    padding-left: 10px;
-}
-header nav{
-    border-right: solid 2px #090909;
-    border-left: solid 2px #090909;
+header div.min{
+    font-size: 0.5em;
     justify-content: space-between;
-    flex-direction: column;
-    display: flex;
-    width: 80vw;
-}
-header form{
-    justify-content: flex-end;
-    padding: 20px;
-    display: flex;
-}
-header ul{
-    border-top: solid 2px #090909;
-    align-items: flex-end;
-    align-content: center;
-    margin-bottom: 0px;
-    position: relative;
-    padding-left: 0px;
-    margin-left: 0px;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    display: flex;
-    bottom: 0px;
-    left: 0px;
-}
-header input{
-    color: #666;
-    font-size: 15px;
-    padding: 5px;
-}
-header button{
-    color: #aa00ff;
-    font-size: 15px;
-    padding: 5px;
-}
-header section{
     align-items: center;
     display: flex;
+    padding: 0 10px;
 }
-header section div.usericon i{
-    padding: 10px 13px;
-    position: relative;
-    
-    font-size: 40px;
-    margin: 0 15px;
-}
-header section div.subicon{
-    flex-direction: column;
-    margin: 0 15px;
+header div.min form{
     display: flex;
-}
-header section div.subicon i{
-    color: #aa00ff;
-    padding: 4px;
-    margin: 3px;
-}
-header section div i{
-    border-radius: 50%;
-    color: #aa00ff;
-}
-/*
-<div class="burger-menu">
 
-        <i class="fa fa-bars burger"></i>
-
-    </div>
-*/
-div.burger-menu{
-    text-align: center;
 }
-div.burger-menu i{
-    background-color: #5e00aa;
-    margin: 10px 0px 20px 0px;
-    border-radius: 5px;
-    font-size: 20px;
-    color: #FFF;
-    padding: 10px;
-    height: 40px;
-    width: 40px;
-}
-header ul li{
-    list-style-type: none;
-    font-size: 10px;
-    padding: 7px;
-    
-} 
-header ul li:hover{
-    box-shadow: 0 0 10px #aa00ff;
-} 
-header ul li a{
-    text-decoration: none;
-    color: white;
-}
-header.form.submit{
-    background-color: #FFF;
-    border: 1px solid #000;
+header div.min form input{
+    font-size: 0.5em;
+    border: 1px solid #0d0d0d;
+    background: #010101;
+    border-radius: 15px;
+    padding: 0 10px;
     color: #666;
-    width: 10%;
 }
+header div.min form button{
+    border: 1px solid #0d0d0d;
+    background: #010101;
+    border-radius: 15px;
+    color: #aa00ff;
+    font-size: 0.5em;
+    padding: 5px;
+}
+header div.max{
+    display: none;
+}
+
+
 
 
 
@@ -118,6 +46,7 @@ header.form.submit{
 
 footer {
     background: #eef8ff;
+    display: none;
 }
 footer {
   background: linear-gradient(to right,  #050505, #330055);
@@ -193,5 +122,89 @@ hr{
     100%{
         left: 100%;
 
+    }
+}
+@media (min-width: 460px){
+    
+}
+@media(min-width: 768px){
+    header div.min{
+        display: none;
+    }
+    header div.max{
+        justify-content: space-between;
+        display: flex;
+    }
+    header div div.logo{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    header nav{
+        border-right: solid 2px #090909;
+        border-left: solid 2px #090909;
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+        width: 80vw;
+    }
+    header nav form{
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+    }
+    header nav form input{
+        padding: 5px;
+    }
+    header ul{
+        border-top: solid 2px #090909;
+        align-items: flex-end;
+        align-content: center;
+        margin-bottom: 0px;
+        position: relative;
+        padding-left: 0px;
+        margin-left: 0px;
+        flex-wrap: wrap;
+        margin-top: 0px;
+        display: flex;
+        bottom: 0px;
+        left: 0px;
+    }
+    header ul li{
+        list-style-type: none;
+        font-size: 10px;
+        padding: 7px 0px;
+        
+    } 
+    header ul li a{
+        text-decoration: none;
+        color: white;
+        padding: 5px;
+    }
+    header ul li:hover{
+        box-shadow: 0 0 10px #aa00ff;
+    } 
+    header section{
+        align-items: center;
+        display: flex;
+    }
+    header section div.usericon i{
+        padding: 10px 13px;
+        position: relative;
+        font-size: 40px;
+        margin: 0 15px;
+    }
+    header section div.subicon{
+        flex-direction: column;
+        margin: 0 15px;
+        display: flex;
+    }
+    header section div.subicon i{
+        color: #aa00ff;
+        padding: 4px;
+        margin: 3px;
+    }
+    header section div i{
+        border-radius: 50%;
+        color: #aa00ff;
     }
 }
