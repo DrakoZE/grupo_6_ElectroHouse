@@ -22,15 +22,17 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 const homeRouter = require("./routers/home");
 const productoRouter = require("./routers/productos");
-const registerRouter = require("./routers/login");
-const loginRouter = require("./routers/register");
-const carritoRouter = require("./routers/carrito");
+const userRouter = require("./routers/users")
 
 app.use("/", homeRouter);
-app.use("/", productoRouter);
-app.use("/", registerRouter);
-app.use("/", loginRouter);
-app.use("/", carritoRouter);
+
+app.use("/products", productoRouter);
+
+app.use("/users", userRouter)
+
+
+
+
 
 app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
 
