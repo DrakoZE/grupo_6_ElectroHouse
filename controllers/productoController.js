@@ -101,6 +101,10 @@ const productoController = {
     res.render("products/carritoDeCompras");
   },
 
+  getFormPage: (req, res) => {
+    res.render("products/crudPage")
+  }
+
 };
 
 module.exports = productoController;
