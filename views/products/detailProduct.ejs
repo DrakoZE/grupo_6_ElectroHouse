@@ -9,7 +9,7 @@
     <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
 
     <link rel="stylesheet" href="/css/stylesA.css">
-    <link rel="stylesheet" href="css/stylesCarrito.css">
+    <link rel="stylesheet" href="/css/stylesCarrito.css">
 
     <link rel="stylesheet" href="/css/partials.css">
     <link rel="stylesheet" href="/css/colores.css">
@@ -36,8 +36,8 @@
                     <form class="miniContenedor">
                         <button type="submit"><a href="/edit-form">editar</a></button>
                     </form>
-                    <form action="/productos/?=_method=Delete" class="miniContenedor">
-                        <button type="reset"><a href="/product/<%= product.id %>">borrar</a></button>
+                    <form action="/products/?_method=PUT" class="miniContenedor">
+                        <button type="reset"><a href="/products/<%= product.id %>/?_method=DELETE">borrar</a></button>
                     </form>
                 </div>
             </div>

@@ -1,13 +1,9 @@
 [
-{
-"Name":"",
-
-"UserName":"",
-
-"Email":"",
-
-"Password": "",
-
-"Avatar": ""
-}
+    {
+        "Name": "",
+        "UserName": "",
+        "Email": "",
+        "Password": "",
+        "Avatar": ""
+    }
 ]
