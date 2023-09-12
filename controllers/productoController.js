@@ -54,7 +54,7 @@ const productoController = {
     const datosProducto = req.body;
 
     const producto = new Producto(
-      datosProducto.Id,
+      datosProducto.id,
       datosProducto.nombre,
       datosProducto.description,
       datosProducto.image,
