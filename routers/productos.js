@@ -12,5 +12,7 @@ router.get("/detail/:id", controller.getDetailpage);
 
 router.get("/carrito", controller.getCarritoPage)
 
+// router.delete("/:id", controller.deleteProduct)
+
 module.exports = router
 
