@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ElectroHouse</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+
+    <%- include("../partials/head") %>
+</head>
+
+
+<body>
+    <%- include("../partials/header") %>
+
+        <main>
+            <section class="last-visit">
+
+
+                <h3>Productos</h3>
+
+                <div class="main-article">
+
+                    <div class="products">
+
+                        <% for (let i=0; i < productos.length; i++) { %>
+
+                            <article class="purpleshadowbox">
+                                <a href="/products/detail/<%= productos[i].id %>">
+                                    <img src="/<%= productos[i].imagen %>" class="product_img">
+                                    <div class="main-article">
+                                        <i class="fas fa-truck"></i>
+                                        <p class="price">
+                                            <%= productos[i].precio %>
+                                        </p>
+                                        <p class="discount">
+                                            <%= productos[i].descuento %>
+                                        </p>
+                                        <h4 class="description">
+                                            <%= productos[i].titulo %>
+                                        </h4>
+                                    </div>
+                                </a>
+                            </article>
+
+                            <% } %>
+
+                    </div>
+                </div>
+
+
+
+            </section>
+        </main>
+
+        <%- include("../partials/footer") %>
+
+</body>
+
+</html>

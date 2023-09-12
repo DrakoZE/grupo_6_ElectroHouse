@@ -86,8 +86,8 @@ const productoController = {
   },
 
   getProductsPage: (req, res) => {
-    const productId = req.params.id;
-    res.render(`products/producto/${productId}`);
+    const products = productos;
+    res.render(`products/products`, {productos: products});
   },
 
   getDetailpage: (req, res) => {
