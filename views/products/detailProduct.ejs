@@ -30,14 +30,14 @@
             <div class="contenedorIzquierdo">
                 <img src="/<%= product.imagen %>" alt="Imagen del producto" class="imagenDelDetalle">
                 <form action="" class="miniContenedor">
-                    <button type="submit"><a href="/carrito">Agregar al carrito</a></button>
+                    <button type="submit"><a href="/products/carrito">Agregar al carrito</a></button>
                 </form>
-                <div class="miniContenedor">
-                    <form class="miniContenedor">
-                        <button type="submit"><a href="/edit-form">editar</a></button>
+                <div class="miniContenedor" >
+                    <form class="miniContenedor" action="">
+                        <button type="submit"><a href="/products/form-edit-product">editar</a></button>
                     </form>
-                    <form action="/products/?_method=PUT" class="miniContenedor">
-                        <button type="reset"><a href="/products/<%= product.id %>/?_method=DELETE">borrar</a></button>
+                    <form action="/products/<%= product.id %>/?_method=DELETE" class="miniContenedor">
+                        <button type="submit">borrar</button>
                     </form>
                 </div>
             </div>
@@ -45,12 +45,10 @@
             <div class="contenedorDerecho">
                 <h4><%= product.titulo %></h4>
                 <p><%= product.precio %></p>
-                <p<%= product.descuento %></p>
-                <p>
-                    Descripcion
-                </p>
+                <p><%= product.descuento %></p>
+                <p>Descripcion</p>
                 <p>Envio gratis</p>
-                <p>OTRO</p>
+                <p>Stock Disponible: 4 Unidades</p>
             </div>
         </section>
 
