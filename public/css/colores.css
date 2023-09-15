@@ -25,12 +25,12 @@
     border-bottom:3px solid #aa00ff;
 }
 .purplebox:hover{
-box-shadow: 0 0 15px #aa00ff;
+box-shadow: 0 0 7px #aa00ff;
 }
 .purpleshadowbox{
     background-color:  #000000ad;
     border: solid 1px #aa00ff;
-    box-shadow: 0 0 15px #aa00ff;
+    box-shadow: 0 0 5px #aa00ff;
 }
 /* Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado */
 

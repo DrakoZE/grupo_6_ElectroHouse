@@ -20,13 +20,13 @@ div.burger-menu i{
     width: 40px;
 }
 
-a {
+main a {
     text-decoration: none;
 }
 main h3{
     font-size: 24px;
 }
-p{
+main p{
     font-size: 12px;
 } 
   div.last-visit, div.offers{

@@ -8,21 +8,20 @@ header{
     display: flex;
 }
 header div.min{
-    font-size: 0.5em;
     justify-content: space-between;
     align-items: center;
-    display: flex;
+    font-size: 0.5em;
     padding: 0 10px;
+    display: flex;
 }
 header div.min form{
     display: flex;
-
 }
 header div.min form input{
-    font-size: 0.5em;
     border: 1px solid #0d0d0d;
     background: #010101;
     border-radius: 15px;
+    font-size: 0.5em;
     padding: 0 10px;
     color: #666;
 }
@@ -44,77 +43,63 @@ header div.max{
 
 
 
-footer {
-    background: #eef8ff;
-    display: none;
+footer{
+    border-top-left-radius: 75px;
+    border: solid 1px #666;
+    background: #000000e9;
+    flex-direction: column;
+    transition: all 1s;
+    padding: 15px 35px;
+    font-size: 0.5em;
+    display: flex;
+    color: #666;
 }
-footer {
-  background: linear-gradient(to right,  #050505, #330055);
-  color: #fff;
-  padding: 15px;
-  border-top-left-radius: 125px;
+footer section{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
 }
-.row {
-  display: flex;
-  flex-wrap: nowrap;
+footer section article{
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
 }
-
-.logo h3 {
-
-    font-size: 15px;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(238, 0, 186, 0.5);
-    margin: 45px;
+footer section article p{
+    color: #fff;
 }
-
-.col h2 {
-  width: fit-content;
-  position: relative;
-  color: #df67f7;
-  font-family: "Arial", Helvetica, sans-serif;
-  font-size: 20px;
+footer section article a{
+    transition: color 0.5s ease;
+    padding: 5px 0;
 }
-.col ul  {
-  list-style: none;
+footer nav{
+    border-bottom: #aa00ff solid 1px;
+    border-top: #aa00ff solid 1px;
+    justify-content: space-evenly;
+    padding: 15px 0;
+    font-size: 3em;
+    display: flex;
 }
-.col ul li{
-    list-style: none;
-    margin-bottom: 10px;
+footer nav i{
+    color: #666;
+    transition: all 1s;
 }
-.col ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-family: "Arial", Helvetica, sans-serif
+footer div{
+    justify-content: center;
+    padding: 15px 0;
+    display: flex;
 }
-hr{
-    width: 90%;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-    margin: 20px auto;
+footer:hover{
+    border: solid 1px #aa00ff;
+    box-shadow: 0 0 5px #aa00ff;
 }
-.copyright {
-    text-align: center;
+footer a:hover{
+    color: #fff;
 }
-.underline {
-    width: 100%;
-    height: 5px;
-    background: #767676;
-    border-radius: 3px;
-    position: absolute;
-    top: 25px;
-    left: 0;
-    overflow: hidden;
+footer nav i:hover{
+    text-shadow: 0 0 5px #aa00ff;
+    color: #aa00ff;
 }
-.underline span{
-    width: 15px;
-    height: 100%;
-    background: #fff;
-    border-radius: 3px;
-    position: absolute;
-    top: 0px;
-    left: 10px;
-    animation: moving 2s linear infinite;
-}
+/* animation: moving 2s linear infinite;
 @keyframes moving{
     0%{
         left: -20px;
@@ -123,9 +108,13 @@ hr{
         left: 100%;
 
     }
-}
+} */
 @media (min-width: 460px){
-    
+    footer section{
+        justify-content: space-evenly;
+        flex-direction: row;
+        display: flex;
+    }
 }
 @media(min-width: 768px){
     header div.min{
@@ -148,8 +137,8 @@ hr{
         width: 80vw;
     }
     header nav form{
-        display: flex;
         justify-content: flex-end;
+        display: flex;
         padding: 20px;
     }
     header nav form input{
@@ -171,8 +160,8 @@ hr{
     }
     header ul li{
         list-style-type: none;
-        font-size: 10px;
         padding: 7px 0px;
+        font-size: 10px;
         
     } 
     header ul li a{
@@ -206,5 +195,8 @@ hr{
     header section div i{
         border-radius: 50%;
         color: #aa00ff;
+    }
+    footer{
+        font-size: 0.6em;
     }
 }
