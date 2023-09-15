@@ -1,10 +1,10 @@
 header{
     justify-content: space-between;
-    background-color: #050505;
+    background-color: #040404;
     border: solid 2px #090909;
     flex-direction: column;
     flex-wrap: nowrap;
-    color: white;
+    color: #666;
     display: flex;
 }
 header div.min{
@@ -22,24 +22,21 @@ header div.min form input{
     background: #010101;
     border-radius: 15px;
     font-size: 0.5em;
-    padding: 0 10px;
     color: #666;
+    padding: 0 10px;
 }
 header div.min form button{
     border: 1px solid #0d0d0d;
     background: #010101;
     border-radius: 15px;
     color: #aa00ff;
+    margin-left: 5px;
     font-size: 0.5em;
     padding: 5px;
 }
 header div.max{
     display: none;
 }
-
-
-
-
 
 
 
@@ -110,6 +107,15 @@ footer nav i:hover{
     }
 } */
 @media (min-width: 460px){
+    header div.min article a{
+        padding: 0 7px;
+    }
+    header div.min article a i{
+        font-size: 1em;
+    }
+    header div.min form input{
+        font-size: 1em;
+    }
     footer section{
         justify-content: space-evenly;
         flex-direction: row;
@@ -142,7 +148,16 @@ footer nav i:hover{
         padding: 20px;
     }
     header nav form input{
-        padding: 5px;
+        border: 1px solid #0d0d0d;
+        background: #010101;
+        border-radius: 15px;
+        color: #666;
+        padding: 5px 15px;
+    }
+    header nav form button{
+        border-radius: 15px;
+        transition: all 1s;
+        margin-left: 5px;
     }
     header ul{
         border-top: solid 2px #090909;
@@ -162,21 +177,24 @@ footer nav i:hover{
         list-style-type: none;
         padding: 7px 0px;
         font-size: 10px;
-        
     } 
     header ul li a{
+        background: #010101;
+        border: 1px solid #0d0d0d;
         text-decoration: none;
-        color: white;
-        padding: 5px;
+        transition: all 0.5s;
+        color: #666;
+        padding: 7px;
     }
-    header ul li:hover{
-        box-shadow: 0 0 10px #aa00ff;
+    header ul li a:hover{
+        box-shadow: inset 0px 0px 5px 0px #aa00ff;
     } 
     header section{
         align-items: center;
         display: flex;
     }
     header section div.usericon i{
+        transition: all 0.5s;
         padding: 10px 13px;
         position: relative;
         font-size: 40px;
@@ -188,6 +206,7 @@ footer nav i:hover{
         display: flex;
     }
     header section div.subicon i{
+        transition: all 0.5s;
         color: #aa00ff;
         padding: 4px;
         margin: 3px;
