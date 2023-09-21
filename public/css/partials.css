@@ -92,9 +92,25 @@ footer:hover{
 footer a:hover{
     color: #fff;
 }
-footer nav i:hover{
-    text-shadow: 0 0 5px #aa00ff;
-    color: #aa00ff;
+footer nav i.fa-x-twitter:hover{
+    text-shadow: 0 0 7px #ffffff;
+    color: #ffffff;
+}
+footer nav i.fa-facebook:hover{
+    text-shadow: 0 0 7px #1877F2;
+    color: #1877F2;
+}
+footer nav i.fa-instagram:hover{
+    text-shadow: 0 0 7px #fde964;
+    color: #fde964;
+}
+footer nav i.fa-whatsapp:hover{
+    text-shadow: 0 0 7px #25D366;
+    color: #25D366;
+}
+footer nav i.fa-youtube:hover{
+    text-shadow: 0 0 7px #FF0000;
+    color: #FF0000;
 }
 /* animation: moving 2s linear infinite;
 @keyframes moving{
