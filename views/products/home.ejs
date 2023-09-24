@@ -15,84 +15,39 @@
     <%- include("../partials/header") %>
 
         <main>
-            <section class="last-visit">
 
+            <section class="history-var">
+                <div><i class="fa-regular fa-clock"></i>  Historial</div>
+                <% for( let i = 0; i < productos.length; i++ ) { %>
+                <article><a href="/products/detail/<%= productos[i].id %>" style="background: linear-gradient(0deg, <%= productos[i].color %>, #00000000); border-bottom: solid 2px <%= productos[i].color1 %>;">
+                    <img src="/<%= productos[i].imagen %>" class="product_img">
+                    <h5><%= productos[i].titulo %></h5>
+                    <h6><%= productos[i].precio %></h6>
+                </a></article>
+                <% } %>
+            </section>
 
-                <h3>Seccion</h3>
-
-
-
-
-                <div class="main-article">
-
-                    <div class="products">
-
-
-                        <% for (let i=0; i < productos.length; i++) { %>
-                    
-                                <article class="purpleshadowbox">
-                                    <a href="/products/detail/<%= productos[i].id %>">
-                                    <img src="/<%= productos[i].imagen %>" class="product_img">
-                                    <div class="main-article">
-                                        <i class="fas fa-truck"></i>
-                                        <p class="price">
-                                            <%= productos[i].precio %>
-                                        </p>
-                                        <p class="discount">
-                                            <%= productos[i].descuento %>
-                                        </p>
-                                        <h4 class="description">
-                                            <%= productos[i].titulo %>
-                                        </h4>
-                                    </div>
-                                </a>
-                                </article>
-                    
-                            <% } %>
-
+            <section class="shop-var">
+                <% for( let i = 0; i < productos.length; i++ ) { %>
+                <article style="background: linear-gradient(0deg, #000000, <%= productos[i].color %>80); border: 1px solid <%= productos[i].color1 %>;"><a href="/products/detail/<%= productos[i].id %>">
+                    <div class="art-title"><%= productos[i].titulo %><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="art-content">
+                    <h5 class="art-price" style="color: <%= productos[i].color1 %>;"><%= productos[i].precio %></h5>
+                    <img src="/<%= productos[i].imagen %>" class="product_img">
+                    <aside>
+                        <h5><%= productos[i].categoria %></h5>
+                        <h5><%= productos[i].descuento %></h6>
+                        <div style="color: <%= productos[i].color1 %>;">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-thumbtack"></i>
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                    </aside>
                     </div>
-                </div>
-
-
-                </div>
+                </a></article>
+                <% } %>
             </section>
 
-
-
-
-            <section class="offers">
-                <h3 class="purpleshadowbox">Off</h3>
-                <div class="products">
-                    <article class="purpleshadowbox">
-                        <img src="/images/cat-parlante.png" class="product_img">
-                        <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$6.770</p>
-                            <p class="discount">40% off</p>
-                            <h4 class="description">Parlante CAT</h4>
-                        </div>
-                    </article>
-                    <article class="purpleshadowbox">
-                        <img src="/images/iphone-14-promax.png" class="product_img">
-                        <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$230.000</p>
-                            <p class="discount">20% off</p>
-                            <h4 class="description">Iphone 14 Promax</h4>
-                        </div>
-                    </article>
-
-                    <article class="purpleshadowbox">
-                        <img src="/images/xbox-control.png" class="product_img">
-                        <div class="main-article">
-                            <i class="fas fa-truck"></i>
-                            <p class="price">$23.200</p>
-                            <p class="discount">5% off</p>
-                            <h4 class="description">Control de XBOX</h4>
-                        </div>
-                    </article>
-                </div>
-            </section>
         </main>
 
         <%- include("../partials/footer") %>

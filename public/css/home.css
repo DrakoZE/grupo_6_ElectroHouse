@@ -1,152 +1,105 @@
 *{
-    font-family: 'Press Start 2P';
+    font-family: 'Gemunu Libre', sans-serif;
     box-sizing: border-box;
+    text-decoration: none;
 }
 body{
     background-image: url(/images/fondo.jpg);
     background-size: 45%;
 }
-div.burger-menu{
-    text-align: center;
-}
-div.burger-menu i{
-    background-color: #5e00aa;
-    border-radius: 5px;
-    color: #FFF;
-    font-size: 20px;
-    height: 40px;
-    margin: 10px 0px 20px 0px;
-    padding: 10px;
-    width: 40px;
-}
-
-main a {
-    text-decoration: none;
-}
-main h3{
-    font-size: 24px;
-}
-main p{
-    font-size: 12px;
-} 
-  div.last-visit, div.offers{
+main section.history-var{
+    background: linear-gradient(180deg, #000000f2, #434343e8);
+    border: solid 1px #999999;
+    align-items: center;
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-}
-.price{
-    color: white;
-    font-size: 15px;
-    width: 30%;
-}
-.discount{
-    width: 70%;
-} 
-.discount, .description{
-    font-size: 15px;
-    font-weight: normal;
-}
-h3, .description{
-    color: white;
-}
-.description{
-    display: none;
-    margin-top: 20px;
-}
-main{
-    width: 90%;
-    margin: 0 auto;
-}
-main section article{
-    border-radius: 20px;
-    
-    margin: 10px 0px;
+    margin: 25px 0;
 }
 main section article img{
     width: 100%;
 }
-main section article i, .discount{
-    color: #aa00ff;
-}
-main section article i{
-    display: block;
-    font-size: 16px;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #3977b5;
-    background-color: #FFF;
-    border-radius: 50%;
-    position: absolute;
-    right: 20px;
-    top: -15px;
-    transition: 1s;
-}
-main section article i:hover{
-  transform: rotate(-90deg);
-}
-main section h3{
-    margin: 20px 0px;
-    border-radius: 10px;
-    color: #FFF;
-    font-size: 20px;
-    padding: 1%;
-    text-align: center;
-    
-}
-article div.main-article{
-    width: 100%;
+.history-var div{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #c7c7c7;
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    border-top: 1px solid #ebebeb;
-    position: relative;
-    padding: 15px;
-    transition: opacity 1s;
-    opacity: 0;
+    height: 4em;
+    width: 7em;
+    font-size: 0.5em;
 }
-.main-article:hover{
-  opacity: 1;
+.history-var article a{
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    display: flex;
+    margin: 0 1px;
+    height: 4em;
+    width: 4em;
+}
+.history-var h5{
+    font-size: 0.5em;
+    margin: 0em;
+    color: #fff;
+}
+.history-var h6{
+    font-size: 0.5em;
+    margin: 0em;
+    color: #888;
+}
+.shop-var{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.shop-var img{
+    width: 7em;
+    position: relative;
+    bottom: 15px;
+}
+.shop-var a{
+display: flex;
+flex-direction: column;
+}
+.shop-var article{
+    width: 15em;
+    border-radius: 7px;
+    margin: 7px;
+}
+.shop-var h5{
+    margin: 0px;
+}
+.art-title{
+    display: flex;
+    color: #999;
+    justify-content: space-between;
+    padding: 10px;
+    font-style: italic;
+}
+.art-content{
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+aside{
+    display: flex;
+    flex-direction: column;
+}
+aside i{
+    padding: 5px 2px 40px 2px;
+}
+.art-price{
+    position: relative;
+    right: 5px;
+    width: 0px;
+    margin: 10px 0;
 }
 @media (min-width: 361px){
-    main section article .description{
-        display: block;
-    }
-    main section div.products{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: stretch
-    }
-    main section div.products article{
-        display: flex;
-        align-content: stretch;
-        align-items: center;
-        flex-wrap: wrap;
-        width: 45%;
-    }
-    .price, .discount{
-        width: 50%;
-    }
-    .linea-arriba{
-        display: none;
-    }
+
 }
 @media(min-width: 769px){
-  
-    main section div.products article{
-        width: 30%;
-    }
-    .linea-arriba{
-      display: flex;
-    }
-    .burger-menu{
-      display: none;
-    }
-    .top-header{
-        display: flex;
-        justify-content: space-between;
-    }
-
-  
+    main section.history-var{
+        margin-top: 130px;
+    }  
 }

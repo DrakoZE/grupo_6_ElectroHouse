@@ -1,17 +1,20 @@
 header{
     justify-content: space-between;
-    background-color: #040404;
-    border: solid 2px #090909;
+    background-color: #030303;
     flex-direction: column;
     flex-wrap: nowrap;
-    color: #666;
     display: flex;
+    color: #666;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 header div.min{
     justify-content: space-between;
     align-items: center;
-    font-size: 0.5em;
-    padding: 0 10px;
+    font-size: 0.6em;
+    padding: 3px 10px;
     display: flex;
 }
 header div.min form{
@@ -21,9 +24,13 @@ header div.min form input{
     border: 1px solid #0d0d0d;
     background: #010101;
     border-radius: 15px;
-    font-size: 0.5em;
+    font-size: 1.5em;
     color: #666;
-    padding: 0 10px;
+    padding: 0px 0px 0px 10px;
+    width: 25vw;
+}
+header div.min article a{
+    padding: 0 5px;
 }
 header div.min form button{
     border: 1px solid #0d0d0d;
@@ -47,12 +54,12 @@ footer{
     flex-direction: column;
     transition: all 1s;
     padding: 15px 35px;
-    font-size: 0.5em;
     display: flex;
     color: #666;
 }
 footer section{
     flex-direction: column;
+    font-size: 0.9em;
     align-items: center;
     display: flex;
 }
@@ -73,12 +80,8 @@ footer nav{
     border-top: #aa00ff solid 1px;
     justify-content: space-evenly;
     padding: 15px 0;
-    font-size: 3em;
+    font-size: 1.5em;
     display: flex;
-}
-footer nav i{
-    color: #666;
-    transition: all 1s;
 }
 footer div{
     justify-content: center;
@@ -92,45 +95,35 @@ footer:hover{
 footer a:hover{
     color: #fff;
 }
-footer nav i.fa-x-twitter:hover{
-    text-shadow: 0 0 7px #ffffff;
+footer nav i.fa-x-twitter{
+    text-shadow: 0 0 3px #ffffff;
     color: #ffffff;
 }
-footer nav i.fa-facebook:hover{
-    text-shadow: 0 0 7px #1877F2;
+footer nav i.fa-facebook{
+    text-shadow: 0 0 3px #1877F2;
     color: #1877F2;
 }
-footer nav i.fa-instagram:hover{
-    text-shadow: 0 0 7px #fde964;
+footer nav i.fa-instagram{
+    text-shadow: 0 0 3px #fde964;
     color: #fde964;
 }
-footer nav i.fa-whatsapp:hover{
-    text-shadow: 0 0 7px #25D366;
+footer nav i.fa-whatsapp{
+    text-shadow: 0 0 3px #25D366;
     color: #25D366;
 }
-footer nav i.fa-youtube:hover{
-    text-shadow: 0 0 7px #FF0000;
+footer nav i.fa-youtube{
+    text-shadow: 0 0 3px #FF0000;
     color: #FF0000;
 }
-/* animation: moving 2s linear infinite;
-@keyframes moving{
-    0%{
-        left: -20px;
-    }
-    100%{
-        left: 100%;
-
-    }
-} */
 @media (min-width: 460px){
     header div.min article a{
-        padding: 0 7px;
+        padding: 0 15px;
     }
     header div.min article a i{
         font-size: 1em;
     }
     header div.min form input{
-        font-size: 1em;
+        font-size: 1.5em;
     }
     footer section{
         justify-content: space-evenly;
@@ -138,21 +131,21 @@ footer nav i.fa-youtube:hover{
         display: flex;
     }
 }
-@media(min-width: 768px){
+@media(min-width: 769px){
     header div.min{
         display: none;
     }
     header div.max{
+        border-bottom: solid 1px #333;
         justify-content: space-between;
         display: flex;
     }
-    header div div.logo{
-        padding-right: 10px;
-        padding-left: 10px;
+    header div.max div.logo{
+        background: #080808;
+        padding: 10px;
+        border-top-right-radius: 50px;
     }
     header nav{
-        border-right: solid 2px #090909;
-        border-left: solid 2px #090909;
         justify-content: space-between;
         flex-direction: column;
         display: flex;
@@ -167,16 +160,18 @@ footer nav i.fa-youtube:hover{
         border: 1px solid #0d0d0d;
         background: #010101;
         border-radius: 15px;
-        color: #666;
+        color: #888;
         padding: 5px 15px;
+        font-size: 1.3em;
     }
     header nav form button{
-        border-radius: 15px;
+        border-radius: 20px;
         transition: all 1s;
         margin-left: 5px;
+        font-size: 1.2em;
     }
     header ul{
-        border-top: solid 2px #090909;
+        background: linear-gradient(45deg, #080808, transparent);
         align-items: flex-end;
         align-content: center;
         margin-bottom: 0px;
@@ -191,21 +186,28 @@ footer nav i.fa-youtube:hover{
     }
     header ul li{
         list-style-type: none;
-        padding: 7px 0px;
-        font-size: 10px;
+        padding: 5px 0;
+    font-size: 1.2em;
     } 
     header ul li a{
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        border: 1px solid #222;
         background: #010101;
-        border: 1px solid #0d0d0d;
         text-decoration: none;
         transition: all 0.5s;
-        color: #666;
-        padding: 7px;
+        color: #888;
+        padding: 4px 15px;
+        margin: 0 -10px 0 0;
     }
     header ul li a:hover{
+        color: #fff;
         box-shadow: inset 0px 0px 5px 0px #aa00ff;
     } 
     header section{
+        border-bottom-left-radius: 45px;
+        border-top-left-radius: 45px;
+        background: #07000b;
         align-items: center;
         display: flex;
     }
@@ -232,6 +234,10 @@ footer nav i.fa-youtube:hover{
         color: #aa00ff;
     }
     footer{
-        font-size: 0.6em;
+        font-size: 1.5em;
     }
+    footer nav i{
+        font-size: 1em;
+    }
+    
 }
