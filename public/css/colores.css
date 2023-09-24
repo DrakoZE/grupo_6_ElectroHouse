@@ -7,7 +7,7 @@
 .grayshadowbox{
     background-color:  #000000ad;
     border: solid 1px #666;
-    box-shadow: #666
+    box-shadow: 0 0 5px #666
 }
 /* Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado Morado */
 .purplelogo{
@@ -24,7 +24,7 @@
 box-shadow: 0 0 7px #aa00ff;
 }
 .purpleshadowbox{
-    background-color:  #000000ad;
+    background-color: #000000ad;
     border: solid 1px #aa00ff;
     box-shadow: 0 0 5px #aa00ff;
 }
