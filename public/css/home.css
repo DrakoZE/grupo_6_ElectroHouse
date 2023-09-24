@@ -95,11 +95,17 @@ aside i{
     width: 0px;
     margin: 10px 0;
 }
+.waos{
+    margin: 20px 0 0 0;
+}
 @media (min-width: 361px){
 
 }
 @media(min-width: 769px){
     main section.history-var{
         margin-top: 130px;
-    }  
+    }
+    .waos{
+        margin: 120px 0 0 0;
+    }
 }

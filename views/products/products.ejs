@@ -15,42 +15,25 @@
     <%- include("../partials/header") %>
 
         <main>
-            <section class="last-visit">
-
-
-                <h3>Productos</h3>
-
-                <div class="main-article">
-
-                    <div class="products">
-
-                        <% for (let i=0; i < productos.length; i++) { %>
-
-                            <article class="purpleshadowbox">
-                                <a href="/products/detail/<%= productos[i].id %>">
-                                    <img src="/<%= productos[i].imagen %>" class="product_img">
-                                    <div class="main-article">
-                                        <i class="fas fa-truck"></i>
-                                        <p class="price">
-                                            <%= productos[i].precio %>
-                                        </p>
-                                        <p class="discount">
-                                            <%= productos[i].descuento %>
-                                        </p>
-                                        <h4 class="description">
-                                            <%= productos[i].titulo %>
-                                        </h4>
-                                    </div>
-                                </a>
-                            </article>
-
-                            <% } %>
-
+            <section class="shop-var waos">
+                <% for( let i = 0; i < productos.length; i++ ) { %>
+                <article style="background: linear-gradient(0deg, #000000, <%= productos[i].color %>80); border: 1px solid <%= productos[i].color1 %>;"><a href="/products/detail/<%= productos[i].id %>">
+                    <div class="art-title"><%= productos[i].titulo %><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="art-content">
+                    <h5 class="art-price" style="color: <%= productos[i].color1 %>;"><%= productos[i].precio %></h5>
+                    <img src="/<%= productos[i].imagen %>" class="product_img">
+                    <aside>
+                        <h5><%= productos[i].categoria %></h5>
+                        <h5><%= productos[i].descuento %></h6>
+                        <div style="color: <%= productos[i].color1 %>;">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-thumbtack"></i>
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                    </aside>
                     </div>
-                </div>
-
-
-
+                </a></article>
+                <% } %>
             </section>
         </main>
 
