@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= product.titulo %></title>
+    <title><%= products.title %></title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
@@ -28,7 +28,7 @@
         <section>
 
             <div class="contenedorIzquierdo">
-                <img src="/<%= product.imagen %>" alt="Imagen del producto" class="imagenDelDetalle">
+                <img src="/<%= products.image %>" alt="Imagen del producto" class="imagenDelDetalle">
                 <form action="" class="miniContenedor">
                     <button type="submit"><a href="/products/carrito">Agregar al carrito</a></button>
                 </form>
@@ -36,16 +36,16 @@
                     <form class="miniContenedor" action="">
                         <button type="submit"><a href="/products/form-edit-product">editar</a></button>
                     </form>
-                    <form action="/products/<%= product.id %>/?_method=DELETE" class="miniContenedor">
+                    <form action="/products/<%= products.id %>/?_method=DELETE" class="miniContenedor">
                         <button type="submit">borrar</button>
                     </form>
                 </div>
             </div>
 
             <div class="contenedorDerecho">
-                <h4><%= product.titulo %></h4>
-                <p><%= product.precio %></p>
-                <p><%= product.descuento %></p>
+                <h4><%= products.title %></h4>
+                <p><%= products.price %></p>
+                <p><%= products.off %></p>
                 <p>Descripcion</p>
                 <p>Envio gratis</p>
                 <p>Stock Disponible: 4 Unidades</p>

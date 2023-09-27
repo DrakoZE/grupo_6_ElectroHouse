@@ -16,16 +16,16 @@
 
         <main>
             <section class="shop-var waos">
-                <% for( let i = 0; i < productos.length; i++ ) { %>
-                <article style="background: linear-gradient(0deg, #000000, <%= productos[i].color %>80); border: 1px solid <%= productos[i].color1 %>;"><a href="/products/detail/<%= productos[i].id %>">
-                    <div class="art-title"><%= productos[i].titulo %><i class="fa-solid fa-cart-shopping"></i></div>
+                <% for( let i = 0; i < products.length; i++ ) { %>
+                <article style="background: linear-gradient(0deg, #000000, <%= products[i].color %>80); border: 1px solid <%= products[i].color1 %>;"><a href="/products/detail/<%= products[i].id %>">
+                    <div class="art-title"><%= products[i].title %><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="art-content">
-                    <h5 class="art-price" style="color: <%= productos[i].color1 %>;"><%= productos[i].precio %></h5>
-                    <img src="/<%= productos[i].imagen %>" class="product_img">
+                    <h5 class="art-price" style="color: <%= products[i].color1 %>;"><%= products[i].price %></h5>
+                    <img src="/<%= products[i].image %>" class="product_img">
                     <aside>
-                        <h5><%= productos[i].categoria %></h5>
-                        <h5><%= productos[i].descuento %></h6>
-                        <div style="color: <%= productos[i].color1 %>;">
+                        <h5><%= products[i].category %></h5>
+                        <h5><%= products[i].off %></h6>
+                        <div style="color: <%= products[i].color1 %>;">
                             <i class="fa-regular fa-heart"></i>
                             <i class="fa-solid fa-thumbtack"></i>
                             <i class="fa-solid fa-link"></i>
