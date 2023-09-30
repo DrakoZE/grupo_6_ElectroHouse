@@ -30,11 +30,11 @@
             <div class="contenedorIzquierdo">
                 <img src="/<%= products.image %>" alt="Imagen del producto" class="imagenDelDetalle">
                 <form action="" class="miniContenedor">
-                    <button type="submit"><a href="/products/carrito">Agregar al carrito</a></button>
+                    <button type="submit"><a href="/products/cart">Agregar al carrito</a></button>
                 </form>
                 <div class="miniContenedor" >
                     <form class="miniContenedor" action="">
-                        <button type="submit"><a href="/products/form-edit-product">editar</a></button>
+                        <button type="submit"><a href="/products/edit">editar</a></button>
                     </form>
                     <form action="/products/<%= products.id %>/?_method=DELETE" class="miniContenedor">
                         <button type="submit">borrar</button>

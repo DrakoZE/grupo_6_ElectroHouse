@@ -28,15 +28,15 @@ const productController = {
 
   findProduct: (id) => {
 
-    const productToFind = productController.getJSON();
+    const productToFind = productController.getJSON;
 
-    return productToFind.find((productA) => productA.id === id) || null;
+    return productToFind.find(product => product.id === id) || null;
 
   },
 
   getLastId: () => {
 
-    const lastId = productController.getJSON().length;
+    const lastId = productController.getJSON.length;
 
     return lastId + 1;
 
@@ -70,7 +70,7 @@ const productController = {
 
     }
 
-    const newProduct = productController.getJSON();
+    const newProduct = productController.getJSON;
 
     newProduct.push(product);
 
@@ -80,13 +80,13 @@ const productController = {
 
   },
 
-  editProducto: (req, res) => {
+  editProduct: (req, res) => {
 
     const itemId = req.params.id;
 
     const itemInfo = req.body;
 
-    const products = productController.getJSON();
+    const products = productController.getJSON;
 
     const index = products.find((itemA) => itemA.id === itemId);
 
@@ -113,30 +113,66 @@ const productController = {
     return res.send("oki doki")
   },
 
+  deleteProduct: (req, res) => {
+
+    const id = req.params.id;
+
+    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+
+    const productToDelete = products.find((product) => product.id === id);
+
+    products.splice(products.indexOf(productToDelete), 1);
+
+    fs.writeFileSync("./data/products/products.json", JSON.stringify(products), "utf-8");
+
+    res.send("Producto eliminado");
+  },
+
+  getHomePage: (req, res) => {
+
+    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+
+    res.render("products/home", { products: products });
+
+  },
+
   getProductsPage: (req, res) => {
 
     const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
 
-    res.render(`products/products`, { products: products});
+    res.render("products/products", { products: products});
+    
   },
 
   getDetailpage: (req, res) => {
     
-    const products = productController.allProducts.find((productA) => productA.id == req.params.id);
+    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
 
     res.render("products/detailProduct", { products: products });
   },
 
-  getCarritoPage: (req, res) => {
+  getCreatePage: (req, res) => {
 
-    res.render("products/carritoDeCompras");
+    res.render("products/create");
+    
+  },
+
+  getEditPage: (req, res) => {
+
+    res.render("products/update")
 
   },
 
-  getFormPage: (req, res) => {
+  getDeletePage: (req, res) => {
 
-    res.render("products/crudPage");
-    
+    res.render("products/delete")
+
+  },
+
+  getCartPage: (req, res) => {
+
+    res.render("products/cart");
+
   }
 
 };

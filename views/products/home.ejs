@@ -19,7 +19,7 @@
             <section class="history-var">
                 <div><i class="fa-regular fa-clock"></i>  Historial</div>
                 <% for( let i = 0; i < products.length; i++ ) { %>
-                <article><a href="/products/detail/<%= products[i].id %>" style="background: linear-gradient(0deg, <%= products[i].color %>, #00000000); border-bottom: solid 2px <%= products[i].color1 %>;">
+                <article><a href="/products/<%= products[i].id %>" style="background: linear-gradient(0deg, <%= products[i].color %>, #00000000); border-bottom: solid 2px <%= products[i].color1 %>;">
                     <img src="/<%= products[i].image %>" class="product_img">
                     <h5><%= products[i].title %></h5>
                     <h6><%= products[i].price %></h6>
@@ -29,7 +29,7 @@
 
             <section class="shop-var">
                 <% for( let i = 0; i < products.length; i++ ) { %>
-                <article style="background: linear-gradient(0deg, #000000, <%= products[i].color %>80); border: 1px solid <%= products[i].color1 %>;"><a href="/products/detail/<%= products[i].id %>">
+                <article style="background: linear-gradient(0deg, #000000, <%= products[i].color %>80); border: 1px solid <%= products[i].color1 %>;"><a href="/products/<%= products[i].id %>">
                     <div class="art-title"><%= products[i].title %><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="art-content">
                     <h5 class="art-price" style="color: <%= products[i].color1 %>;"><%= products[i].price %></h5>

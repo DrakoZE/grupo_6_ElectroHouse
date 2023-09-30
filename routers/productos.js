@@ -2,17 +2,31 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/productController");
 
+//Pagina principal
+router.get("/", controller.getHomePage)
 
-router.get("/producto", controller.getProductsPage);
+//Listado de productos
+router.get("/products", controller.getProductsPage);
 
+//Formulario de creación de productos
+router.get("/products/create", controller.getCreatePage);
 
-router.get("/", controller.getProductsPage);
+//Detalle de un producto particular
+router.get("/products/:id", controller.getDetailpage);
 
-router.get("/detail/:id", controller.getDetailpage);
+//Acción de creación (a donde se envía el formulario)
+router.post("/products", controller.createProduct);
 
-router.get("/carrito", controller.getCarritoPage)
+//Formulario de edición de productos
+router.get("products/:id/edit", controller.getEditPage);
 
-router.get("/crudPage", controller.getFormPage)
+//Acción de edición (a donde se envía el formulario):
+router.put("products/:id", controller.editProduct);
+
+//Acción de borrado
+router.delete("/products/:id", controller.deleteProduct);
+
+//Vista del Carrito de Compras
+router.get("/cart", controller.getCartPage);
 
 module.exports = router
-
