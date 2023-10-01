@@ -1,0 +1,80 @@
+*{
+    font-family: 'Gemunu Libre', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background-image: url(/images/fondo.jpg);
+    background-size: 45%;
+}
+main{
+    justify-content: center;
+    display: flex;
+}
+main form{
+    margin: 20px 10px 5px 10px;
+    border: solid 1px #333;
+    background: #0c0c0cd9;
+    flex-direction: column;
+    border-radius: 10px;
+    color: #757575;
+    display: flex;
+    padding: 25px;
+}
+main form section{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+main form input, main form select{
+    background: #000000c0;
+    border-radius: 10px;
+    color: #757575;
+    font-size: 0.7em;
+    padding: 5px 7px;
+    margin: 5px 0;
+    outline: none;
+    border: 0;
+}
+select option {
+    background-color: #111;
+}
+.color-var{
+    margin: 5px 0;
+    border-radius: 10px;
+    padding: 0 5px;
+    background: #000000c0;
+    font-size: 0.7em;
+    display: flex;
+    align-items: center;
+}
+.color-var input{
+    margin: 0;
+    background: none;
+}
+.create-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.create-buttons input:hover{
+    box-shadow: 0 0 3px #999;
+}
+@media(min-width: 361px){
+    
+    main form input, main form select{
+        font-size: 0.8em;
+    }
+    main form{
+        width: 350px;
+    }
+}
+@media(min-width: 769px){
+    main form input, main form select{
+        font-size: 1em;
+    }
+    main form{
+        margin: 125px 10px 10px 10px;
+        width: 525px;
+    }
+}

@@ -15,19 +15,25 @@
     <%- include("../partials/header") %>
     <main>
         <form action="/" method="POST">
-            <input type="text" name="title" placeholder="Nombre del producto">
-            <input type="text" name="description" placeholder="Descripción">
-            <input type="file" name="image">
-            <select name="category">
-                <option value="1">Categoría 1</option>
-                <option value="2">Categoría 2</option>
-                <option value="3">Categoría 3</option>
-              </select>
-            <input type="number" name="price" placeholder="Precio">
-            <input type="number" name="off" placeholder="Descuento">
-            <input type="color" name="color1">
-            <input type="color" name="color2">
-            <input type="submit" value="Crear producto">
+            <section>
+                <input type="text" name="title" placeholder="Nombre del producto">
+                <input type="text" name="description" placeholder="Descripción"> 
+                <input type="text" name="price" placeholder="Precio">
+                <input type="text" name="off" placeholder="Descuento">
+                <select name="category">
+                    <option value="1">Audio</option>
+                    <option value="2">Entretenimiento</option>
+                    <option value="3">SmartPhone</option>
+                    <option value="4">Hogar</option>
+                </select>
+                <div class="color-var"><input type="color" name="color">Color principal</div>
+                <div class="color-var"><input type="color" name="color1">Sub-Color </div>
+                <input type="file" name="image">
+            </section>
+            <section class="create-buttons">
+                <input type="reset">
+                <input type="submit" value="Crear producto">
+            </section>
           </form>
     </main>
     <%- include("../partials/footer") %>

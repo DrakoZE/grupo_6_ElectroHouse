@@ -18,10 +18,10 @@ router.get("/products/:id", controller.getDetailpage);
 router.post("/products", controller.createProduct);
 
 //Formulario de edición de productos
-router.get("products/:id/edit", controller.getEditPage);
+router.get("/products/:id/edit", controller.getEditPage);
 
 //Acción de edición (a donde se envía el formulario):
-router.put("products/:id", controller.editProduct);
+router.put("/products/:id", controller.editProduct);
 
 //Acción de borrado
 router.delete("/products/:id", controller.deleteProduct);

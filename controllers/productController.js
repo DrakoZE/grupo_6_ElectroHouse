@@ -159,13 +159,13 @@ const productController = {
 
   getEditPage: (req, res) => {
 
-    res.render("products/update")
+    res.render("products/update");
 
   },
 
   getDeletePage: (req, res) => {
 
-    res.render("products/delete")
+    res.render("products/delete");
 
   },
 
