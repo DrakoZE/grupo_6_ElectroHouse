@@ -1,20 +1,5 @@
 const fs = require("fs");
 
-class Producto {
-
-  builder(id, title, description, image, category, price, color, color1) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.image = image;
-    this.category = category;
-    this.price = price;
-    this.color = color;
-    this.color1 = color1;
-  }
-
-}
-
 const productController = {
 
   allProducts: (JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"))),
@@ -28,28 +13,40 @@ const productController = {
 
   findProduct: (id) => {
 
-    const productToFind = productController.getJSON;
+    const productToFind = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
 
     return productToFind.find(product => product.id === id) || null;
 
   },
 
-  getLastId: () => {
-
-    const lastId = productController.getJSON.length;
-
-    return lastId + 1;
-
-  },
-
   createProduct: (req, res) => {
 
+    //Funcion Constructora para nuevos productos
+    function Producto(id, title, description, image, category, price, off, color, color1) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.category = category;
+        this.price = price;
+        this.off = off;
+        this.color = color;
+        this.color1 = color1;
+      }
+
+    //obtenemos los datos del formulario de creacion
     const productInfo = req.body;
 
-    const productID = productController.getLastId
+    //obtenemos un ID (el metodo cambiara a futuro)
+    const productID = (JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"))).length + 1;
 
+    //concatenamos la ruta de la carpeta images con el nombre de la imagen para obtener la ruta
+    const dir = "images/";
+    const newFileName = req.file.filename;
+    productInfo.image = dir + newFileName;
+    
+    //Creamos el nuevo producto con los datos del formulario
     const product = new Producto(
-
       productID,
       productInfo.title,
       productInfo.description,
@@ -59,25 +56,21 @@ const productController = {
       productInfo.off,
       productInfo.color,
       productInfo.color1
-
     );
 
+    //verificamos si el producto ya existe, en tal caso negaremos la solicitud
     const existingProduct = productController.findProduct(product.id)
-
     if(existingProduct){
-
       return res.status(409).send("nao nao manito")
-
     }
 
-    const newProduct = productController.getJSON;
-
+    //redirijimos a Home
+    res.redirect("/")
+    
+    //agregamos el nuevo producto al JSON
+    const newProduct = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
     newProduct.push(product);
-
-    fs.writeFileSync("./data/products/products.json", JSON.stringify(newProduct), "utf-8");
-
-    return product;
-
+    return fs.writeFileSync("./data/products/products.json", JSON.stringify(newProduct), "utf-8");
   },
 
   editProduct: (req, res) => {

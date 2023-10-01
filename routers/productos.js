@@ -1,6 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/productController");
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../public/images"))
+    },
+    filename: (req, file, cb) => {
+        const newFileName = file.originalname;
+        cb(null, newFileName)
+    }
+});
+
+const upload = multer({ storage })
 
 //Pagina principal
 router.get("/", controller.getHomePage)
@@ -15,7 +29,7 @@ router.get("/products/create", controller.getCreatePage);
 router.get("/products/:id", controller.getDetailpage);
 
 //Acción de creación (a donde se envía el formulario)
-router.post("/products", controller.createProduct);
+router.post("/products", upload.single("image"), controller.createProduct);
 
 //Formulario de edición de productos
 router.get("/products/:id/edit", controller.getEditPage);

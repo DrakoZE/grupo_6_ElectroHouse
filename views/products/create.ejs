@@ -14,20 +14,20 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        <form action="/" method="POST">
+        <form action="/products" method="POST" enctype="multipart/form-data">
             <section>
                 <input type="text" name="title" placeholder="Nombre del producto">
                 <input type="text" name="description" placeholder="Descripción"> 
                 <input type="text" name="price" placeholder="Precio">
                 <input type="text" name="off" placeholder="Descuento">
                 <select name="category">
-                    <option value="1">Audio</option>
-                    <option value="2">Entretenimiento</option>
-                    <option value="3">SmartPhone</option>
-                    <option value="4">Hogar</option>
+                    <option value="Audio">Audio</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="SmartPhone">SmartPhone</option>
+                    <option value="Hogar">Hogar</option>
                 </select>
-                <div class="color-var"><input type="color" name="color">Color principal</div>
-                <div class="color-var"><input type="color" name="color1">Sub-Color </div>
+                <div class="color-var"><input type="color" name="color1">Color principal</div>
+                <div class="color-var"><input type="color" name="color">Sub-Color</div>
                 <input type="file" name="image">
             </section>
             <section class="create-buttons">
