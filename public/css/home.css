@@ -29,6 +29,7 @@ main section article img{
     font-size: 0.5em;
 }
 .history-var article a{
+    background: linear-gradient(0deg, #000, #00000000);
     flex-direction: column;
     align-items: center;
     padding: 0 10px;
@@ -36,6 +37,9 @@ main section article img{
     margin: 0 1px;
     height: 4em;
     width: 4em;
+}
+.history-var article a:hover{
+    background: linear-gradient(0deg, #1b0029, #00000000);
 }
 .history-var h5{
     font-size: 0.5em;

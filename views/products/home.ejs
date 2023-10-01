@@ -19,7 +19,7 @@
             <section class="history-var">
                 <div><i class="fa-regular fa-clock"></i>  Historial</div>
                 <% for( let i = 0; i < products.length; i++ ) { %>
-                <article><a href="/products/<%= products[i].id %>" style="background: linear-gradient(0deg, <%= products[i].color %>, #00000000); border-bottom: solid 2px <%= products[i].color1 %>;">
+                <article><a href="/products/<%= products[i].id %>">
                     <img src="/<%= products[i].image %>" class="product_img">
                     <h5><%= products[i].title %></h5>
                     <h6><%= products[i].price %></h6>
