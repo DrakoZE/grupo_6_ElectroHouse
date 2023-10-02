@@ -3,12 +3,13 @@ header{
     background-color: #030303;
     flex-direction: column;
     flex-wrap: nowrap;
+    position: fixed;
     display: flex;
     color: #666;
-    position: fixed;
-    top: 0px;
-    left: 0px;
+    z-index: 10;
     right: 0px;
+    left: 0px;
+    top: 0px;
 }
 header div.min{
     justify-content: space-between;

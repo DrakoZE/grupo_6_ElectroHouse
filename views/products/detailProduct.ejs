@@ -8,9 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
 
-    <link rel="stylesheet" href="/css/stylesA.css">
-    <link rel="stylesheet" href="/css/stylesCarrito.css">
-
     <link rel="stylesheet" href="/css/partials.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/detail.css">
@@ -26,30 +23,22 @@
     <main>
 
         <section>
-
-            <div class="contenedorIzquierdo">
-                <img src="/<%= products.image %>" alt="Imagen del producto" class="imagenDelDetalle">
-                <form action="" class="miniContenedor">
-                    <button type="submit"><a href="/products/cart">Agregar al carrito</a></button>
-                </form>
-                <div class="miniContenedor" >
-                    <form class="miniContenedor" action="">
-                        <button type="submit"><a href="/products/edit">editar</a></button>
-                    </form>
-                    <form action="/products/<%= products.id %>/?_method=DELETE" class="miniContenedor">
-                        <button type="submit">borrar</button>
-                    </form>
+            <div class="left-side">
+                <nav>
+                    <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
+                    <a href="/products/<%= products.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="/products/<%= products.id %>"><i class="fa-solid fa-trash-can"></i></a>
+                </nav>
+                <img src="/<%= products.image %>">
+            </div>
+            <article>
+                <p style="font-style: italic; color: #fff; font-size: 1.3em;"><%= products.title %></p>
+                <div style="display: flex; align-items: center;">
+                    <p style="color: #666;"><%= products.price %> </p>
+                    <p style="font-size: 0.9em; color: #32e169; text-shadow: 0 0 1px #32e169;"><%= products.off %></p>
                 </div>
-            </div>
-
-            <div class="contenedorDerecho">
-                <h4><%= products.title %></h4>
-                <p><%= products.price %></p>
-                <p><%= products.off %></p>
-                <p>Descripcion</p>
-                <p>Envio gratis</p>
-                <p>Stock Disponible: 4 Unidades</p>
-            </div>
+                <p style="font-size: 0.9em;"><%= products.description %></p>
+            </article>
         </section>
 
     </main>
