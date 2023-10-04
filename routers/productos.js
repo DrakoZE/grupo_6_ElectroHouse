@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage })
+const upload = multer({ storage });
 
 //Pagina principal
-router.get("/", controller.getHomePage)
+router.get("/", controller.getHomePage);
 
 //Listado de productos
 router.get("/products", controller.getProductsPage);
@@ -35,10 +35,10 @@ router.post("/products", upload.single("image"), controller.createProduct);
 router.get("/products/:id/edit", controller.getEditPage);
 
 //Acción de edición (a donde se envía el formulario):
-router.put("/products/:id", controller.editProduct);
+router.put("/products/:id", upload.single("image"), controller.editProduct);
 
 //Acción de borrado
-router.delete("/products/:id", controller.deleteProduct);
+router.get("/products/:id/delete", controller.deleteProduct);
 
 //Vista del Carrito de Compras
 router.get("/cart", controller.getCartPage);

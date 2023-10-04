@@ -70,55 +70,43 @@ const productController = {
     //agregamos el nuevo producto al JSON
     const newProduct = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
     newProduct.push(product);
-    return fs.writeFileSync("./data/products/products.json", JSON.stringify(newProduct), "utf-8");
+    return fs.writeFileSync("./data/products/products.json", JSON.stringify(newProduct, null, 2), "utf-8");
   },
 
   editProduct: (req, res) => {
 
-    const itemId = req.params.id;
+    let products = productController.allProducts;
 
-    const itemInfo = req.body;
+    req.body.id = req.params.id;
+    req.body.image = req.file ? "images/" + req.file.filename : req.body.oldImg;
 
-    const products = productController.getJSON;
+    let productUpdate = products.map(product => {
 
-    const index = products.find((itemA) => itemA.id === itemId);
+      if (product.id == req.body.id){
 
-    if(index == -1){
+        res.redirect("/products")
 
-      return res.status(404).send("producto no encontrado");
+        return product = req.body;
 
-    }
+      }
 
-    const item = products[index];
+      return product;
 
-      item.id = itemInfo.id;
-      item.title = itemInfo.title;
-      item.description = itemInfo.description;
-      item.image = itemInfo.image;
-      item.category = itemInfo.category;
-      item.price = itemInfo.price;
-      item.off = itemInfo.off;
-      item.color = itemInfo.color;
-      item.color1 = itemInfo.color1;
+    })
 
-      fs.writeFileSync("./data/products/products.json", JSON.stringify(products), "utf-8");
-
-    return res.send("oki doki")
+    fs.writeFileSync("./data/products/products.json", JSON.stringify(productUpdate, null, 2), "utf-8");
+    
   },
 
   deleteProduct: (req, res) => {
 
-    const id = req.params.id;
+    let products = productController.allProducts;
+    let productDelete = req.params.id;
+    let product = products.filter(waos => waos.id != productDelete);
 
-    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+    res.redirect("/products")
 
-    const productToDelete = products.find((product) => product.id === id);
-
-    products.splice(products.indexOf(productToDelete), 1);
-
-    fs.writeFileSync("./data/products/products.json", JSON.stringify(products), "utf-8");
-
-    res.send("Producto eliminado");
+    fs.writeFileSync("./data/products/products.json", JSON.stringify(product, null, 2), "utf-8");
   },
 
   getHomePage: (req, res) => {
@@ -141,7 +129,7 @@ const productController = {
     
     const products = productController.allProducts.find((detail) => detail.id == req.params.id);
 
-    res.render("products/detailProduct", { products: products });
+    res.render("products/detailProduct", { products });
   },
 
   getCreatePage: (req, res) => {
@@ -152,7 +140,9 @@ const productController = {
 
   getEditPage: (req, res) => {
 
-    res.render("products/update");
+    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
+
+    res.render("products/update", { products });
 
   },
 

@@ -27,9 +27,9 @@
                 <nav>
                     <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
                     <a href="/products/<%= products.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
-                    <a href="/products/<%= products.id %>"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="/products/<%= products.id %>/delete"><i class="fa-solid fa-trash-can"></i></a>
                 </nav>
-                <img src="/<%= products.image %>">
+                <img src="/<%= products.image %>" style="background: linear-gradient(45deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
             </div>
             <article>
                 <p style="font-style: italic; color: #fff; font-size: 1.3em;"><%= products.title %></p>

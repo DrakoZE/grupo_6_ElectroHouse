@@ -20,11 +20,20 @@ main form{
     color: #757575;
     display: flex;
     padding: 25px;
+    position: relative;
 }
 main form section{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+}
+main form section img{
+    position: absolute;
+    bottom: 50%;
+    right: 7%;
+    width: 90px;
+    height: auto;
+    border-radius: 10px;
 }
 main form input, main form select{
     background: #000000c0;
@@ -62,11 +71,16 @@ select option {
 }
 @media(min-width: 361px){
     
+    main form{
+        width: 350px;
+    }
     main form input, main form select{
         font-size: 0.8em;
     }
-    main form{
-        width: 350px;
+    main form section img{
+        right: 9%;
+        width: 120px;
+        height: auto;
     }
 }
 @media(min-width: 769px){
@@ -76,5 +90,11 @@ select option {
     main form{
         margin: 125px 10px 10px 10px;
         width: 525px;
+    }
+    main form section img{
+        bottom: 40%;
+        right: 16%;
+        width: 170px;
+        height: auto;
     }
 }

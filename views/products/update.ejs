@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ElectroHouse</title>
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/create&Edit.css">
+
+    <%- include("../partials/head") %>
+</head>
+
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <form action="/products/<%= products.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+            <section>
+                <img src="/<%= products.image %>" style="background: linear-gradient(223deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
+                <input type="text" name="title" value="<%= products.title %>" placeholder="Titulo">
+                <input type="text" name="description" value="<%= products.description %>" placeholder="descripción"> 
+                <input type="text" name="price" value="<%= products.price %>" placeholder="Precio">
+                <input type="text" name="off" value="<%= products.off %>" placeholder="descuento">
+                <select name="category">
+                    <option value="Audio" <%= products.category === 'Audio' ? 'selected' : '' %>>Audio</option>
+                    <option value="Entretenimiento" <%= products.category === 'Entretenimiento' ? 'selected' : '' %>>Entretenimiento</option>
+                    <option value="SmartPhone" <%= products.category === 'SmartPhone' ? 'selected' : '' %>>SmartPhone</option>
+                    <option value="Hogar" <%= products.category === 'Hogar' ? 'selected' : '' %>>Hogar</option>
+                </select>
+                <div class="color-var"><input type="color" value="<%= products.color1 %>" name="color1">Color principal</div>
+                <div class="color-var"><input type="color" value="<%= products.color %>" name="color">Sub-Color</div>
+                <input type="file" name="image">
+                <input type="hidden" name="oldImg" value="<%= products.image %>">
+            </section>
+            <section class="create-buttons">
+                <input type="reset">
+                <input type="submit" value="Editar producto">
+            </section>
+          </form>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
