@@ -2,161 +2,114 @@ const fs = require("fs");
 
 const productController = {
 
+  // Obtenemos los datos del JSON.
   allProducts: (JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"))),
 
-  getJSON: () => {
-
-    const allProducts = (JSON.parse(fs.readFileSync("../data/products/products.json", "utf-8")));
-
-    return allProducts;
+  // Renderizamos home.
+  getHomePage: (req, res) => {
+    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+    res.render("products/home", { products });
   },
 
-  findProduct: (id) => {
-
-    const productToFind = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
-
-    return productToFind.find(product => product.id === id) || null;
-
+  // Renderizamos la vista con los productos.
+  getProductsPage: (req, res) => {
+    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+    res.render("products/products", { products });
   },
 
+  // Renderizamos la vista con detalles de un producto.
+  getDetailpage: (req, res) => {
+    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
+    res.render("products/detailProduct", { products });
+  },
+
+  // Renderizamos el carro de compras.
+  getCartPage: (req, res) => {
+    res.render("products/cart");
+  },
+
+  // Renderizamos el formulario de creacion de productos.
+  getCreatePage: (req, res) => {
+    res.render("products/create");
+  },
+
+  // Crea un nuevo elemento en la lista de productos.
   createProduct: (req, res) => {
 
-    //Funcion Constructora para nuevos productos
-    function Producto(id, title, description, image, category, price, off, color, color1) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.image = image;
-        this.category = category;
-        this.price = price;
-        this.off = off;
-        this.color = color;
-        this.color1 = color1;
-      }
+    // Obtenemos todos los productos existentes.
+    let product = productController.allProducts;
 
-    //obtenemos los datos del formulario de creacion
-    const productInfo = req.body;
+    // Obtenemos el ultimo producto de la lista.
+    let lastProduct = product.pop();
 
-    //obtenemos un ID (el metodo cambiara a futuro)
-    const productID = (JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"))).length + 1;
+    // Volvemos a agregar el ultimo producto a la lista.
+    product.push(lastProduct);
 
-    //concatenamos la ruta de la carpeta images con el nombre de la imagen para obtener la ruta
-    const dir = "images/";
-    const newFileName = req.file.filename;
-    productInfo.image = dir + newFileName;
-    
-    //Creamos el nuevo producto con los datos del formulario
-    const product = new Producto(
-      productID,
-      productInfo.title,
-      productInfo.description,
-      productInfo.image,
-      productInfo.category,
-      productInfo.price,
-      productInfo.off,
-      productInfo.color,
-      productInfo.color1
-    );
-
-    //verificamos si el producto ya existe, en tal caso negaremos la solicitud
-    const existingProduct = productController.findProduct(product.id)
-    if(existingProduct){
-      return res.status(409).send("nao nao manito")
+    // Creamos un nuevo producto con los datos obtenidos del formulario.
+    let newProduct = {
+      id: lastProduct.id + 1,
+      title: req.body.title,
+      description: req.body.description,
+      image: "images/" + req.file.filename,
+      category: req.body.category,
+      price: req.body.price,
+      off: req.body.off,
+      color: req.body.color,
+      color1: req.body.color1,
     }
 
-    //redirijimos a Home
+    // Agregamos el nuevo producto a la lista de productos.
+    product.push(newProduct)
+
+    // Redirijimos a Home.
     res.redirect("/")
     
-    //agregamos el nuevo producto al JSON
-    const newProduct = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
-    newProduct.push(product);
-    return fs.writeFileSync("./data/products/products.json", JSON.stringify(newProduct, null, 2), "utf-8");
+    // Guardamos la lista de productos en el archivo JSON.
+    return fs.writeFileSync("./data/products/products.json", JSON.stringify(product, null, 2), "utf-8");
   },
 
+  // Renderizamos el formulario de edicion de productos.
+  getEditPage: (req, res) => {
+    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
+    res.render("products/update", { products });
+  },
+
+  // Actualiza un producto en la lista de productos.
   editProduct: (req, res) => {
 
+    // Obtenemos todos los productos existentes.
     let products = productController.allProducts;
 
+    // Asigna el ID y la imagen del producto a actualizar.
     req.body.id = req.params.id;
     req.body.image = req.file ? "images/" + req.file.filename : req.body.oldImg;
 
+    // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
     let productUpdate = products.map(product => {
-
       if (product.id == req.body.id){
-
         res.redirect("/products")
-
         return product = req.body;
-
       }
-
       return product;
-
     })
 
+    //guarda la lista actualizada de productos en el archivo JSON.
     fs.writeFileSync("./data/products/products.json", JSON.stringify(productUpdate, null, 2), "utf-8");
-    
   },
 
+  // Elimina un producto de la lista de productos.
   deleteProduct: (req, res) => {
 
+    // Filtra los productos para obtener todos los productos excepto el que se desea eliminar.
     let products = productController.allProducts;
     let productDelete = req.params.id;
     let product = products.filter(waos => waos.id != productDelete);
 
+    // Redirecciona a la página de productos.
     res.redirect("/products")
 
+    // Guarda la lista actualizada de productos en el archivo JSON.
     fs.writeFileSync("./data/products/products.json", JSON.stringify(product, null, 2), "utf-8");
   },
-
-  getHomePage: (req, res) => {
-
-    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
-
-    res.render("products/home", { products: products });
-
-  },
-
-  getProductsPage: (req, res) => {
-
-    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
-
-    res.render("products/products", { products: products});
-    
-  },
-
-  getDetailpage: (req, res) => {
-    
-    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
-
-    res.render("products/detailProduct", { products });
-  },
-
-  getCreatePage: (req, res) => {
-
-    res.render("products/create");
-    
-  },
-
-  getEditPage: (req, res) => {
-
-    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
-
-    res.render("products/update", { products });
-
-  },
-
-  getDeletePage: (req, res) => {
-
-    res.render("products/delete");
-
-  },
-
-  getCartPage: (req, res) => {
-
-    res.render("products/cart");
-
-  }
-
 };
 module.exports = productController;
