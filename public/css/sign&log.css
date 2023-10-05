@@ -22,16 +22,19 @@ main form{
   font-size: 1.2em;
   color: white;
   display: flex;
-  display: flex;
   width: 90%;
 }
 main input{
   padding: 5px 8px 5px 10px;
   border: solid 1px #222;
   background: #000000b0;
-  margin: 5px 0 20px 0;
   border-radius: 10px;
   color: white;
+  outline: none;
+  margin: 10px 0;
+}
+.last-imput{
+  margin: 0 0 50px 0;
 }
 main .cancel{
   text-shadow: 0 0 5px #aa00ff;
@@ -76,7 +79,7 @@ main a{
 @media(min-width: 769px){
   main form{
     margin: 130px 0 0 0;
-    z-index: -1;
+    z-index: 1;
     width: 50%;
   }
   main input{
