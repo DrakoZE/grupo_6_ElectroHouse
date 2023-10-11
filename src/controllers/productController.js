@@ -1,19 +1,20 @@
 const fs = require("fs");
+const path = require("path");
 
 const productController = {
 
   // Obtenemos los datos del JSON.
-  allProducts: (JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"))),
+  allProducts: (JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/products/products.json"), "utf-8"))),
 
   // Renderizamos home.
   getHomePage: (req, res) => {
-    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+    const products = JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/products/products.json"), "utf-8"));
     res.render("products/home", { products });
   },
 
   // Renderizamos la vista con los productos.
   getProductsPage: (req, res) => {
-    const products = JSON.parse(fs.readFileSync("./data/products/products.json", "utf-8"));
+    const products = JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/products/products.json"), "utf-8"));
     res.render("products/products", { products });
   },
 
@@ -65,7 +66,7 @@ const productController = {
     res.redirect("/")
     
     // Guardamos la lista de productos en el archivo JSON.
-    return fs.writeFileSync("./data/products/products.json", JSON.stringify(product, null, 2), "utf-8");
+    return fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
   },
 
   // Renderizamos el formulario de edicion de productos.
@@ -94,7 +95,7 @@ const productController = {
     })
 
     //guarda la lista actualizada de productos en el archivo JSON.
-    fs.writeFileSync("./data/products/products.json", JSON.stringify(productUpdate, null, 2), "utf-8");
+    fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(productUpdate, null, 2), "utf-8");
   },
 
   // Elimina un producto de la lista de productos.
@@ -109,7 +110,7 @@ const productController = {
     res.redirect("/products")
 
     // Guarda la lista actualizada de productos en el archivo JSON.
-    fs.writeFileSync("./data/products/products.json", JSON.stringify(product, null, 2), "utf-8");
+    fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
   },
 };
 module.exports = productController;

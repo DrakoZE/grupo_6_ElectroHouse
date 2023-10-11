@@ -12,13 +12,14 @@ app.use(express.json());
 
 //confijuracion de ejs
 app.set("view engine", "ejs");
+app.set("views", "./src/views");
 
 
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-const productoRouter = require("./routers/productos");
-const userRouter = require("./routers/users")
+const productoRouter = require("./src/routers/productos");
+const userRouter = require("./src/routers/users")
 
 
 app.use("/", productoRouter);
