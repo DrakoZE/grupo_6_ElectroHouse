@@ -1,13 +1,13 @@
 const fs = require("fs");
-
+const path = require("path")
 const userController = {
 
     // Obtenemos los datos del JSON.
-    allUsers: (JSON.parse(fs.readFileSync("./data/users/user.json", "utf-8"))),
+    allUsers: (JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/Users/user.json"), "utf-8"))),
 
     //lista de usuarios.
     index: (req, res) => {
-        let user = (JSON.parse(fs.readFileSync("./data/users/user.json", "utf-8")))
+        let user = (JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/Users/user.json"), "utf-8")));
         res.render("users/users", { user });
     },
 
@@ -50,7 +50,7 @@ const userController = {
         res.redirect("/")
         
         // Guardamos la lista de usuarios en el archivo JSON.
-        return fs.writeFileSync("./data/users/user.json", JSON.stringify(user, null, 2), "utf-8");
+        return fs.writeFileSync(path.join(__dirname, "../Data/Users/user.json"), JSON.stringify(user, null, 2), "utf-8");
     },
 
     //formulario de LogIn.

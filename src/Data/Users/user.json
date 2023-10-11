@@ -1,9 +1,10 @@
 [
-    {
-        "Name": "",
-        "UserName": "",
-        "Email": "",
-        "Password": "",
-        "Avatar": ""
-    }
+  {
+    "id": 1,
+    "name": "waos waosing",
+    "userName": "waos55",
+    "email": "waos@qq.com",
+    "password": "waos445",
+    "avatar": "images/Jhon-Xina.jpg"
+  }
 ]
