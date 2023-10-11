@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/sign&log.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <%- include("../partials/head") %>
+</head>
+
+
+<body>
+
+    <%- include("../partials/header") %>
+
+<main>
+
+    <form action="/users/create" method="post" enctype="multipart/form-data">
+        <h2>Datos</h2>
+
+        <label for="name">Nombre completo</label>
+        <input type="text" name="name" id="nameId" title="Le pedimos que ingrese su nombre" required>
+
+        <label for="userName">Nombre de usuario</label>
+        <input type="text" name="userName" id="userId" required>
+
+        <label for="email">Correo electronico</label>
+        <input type="email" name="email" id="emailId" required title="Ingresa un correo electronico valido">
+
+        <label for="password">Clave</label>
+        <input type="password" name="password" id="passwordId" required>
+
+        <label for="avatar" class="waos">Elija una foto de usuario</label>
+        <input class="last-imput" type="file" name="avatar" required>
+
+        <button type="submit" class="enviar">Enviar</button>
+        <button class="cancel" type="reset">X</button>
+        <a href="/users/login">¿Ya tienes cuenta?</a>
+    </form>
+    
+</main>
+
+</body>
+</html>

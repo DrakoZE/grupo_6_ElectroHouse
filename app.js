@@ -12,18 +12,18 @@ app.use(express.json());
 
 //confijuracion de ejs
 app.set("view engine", "ejs");
+app.set("views", "./src/views");
 
 
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-const productoRouter = require("./routers/productos");
-const userRouter = require("./routers/users")
+const productoRouter = require("./src/routers/productos");
+const userRouter = require("./src/routers/users")
 
 
 app.use("/", productoRouter);
 
-app.use("/users", userRouter)
+app.use("/", userRouter);
 
-
-app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
+app.listen(PORT, () => console.log("El servidor esta corriendo en: http://localhost:3001 "));

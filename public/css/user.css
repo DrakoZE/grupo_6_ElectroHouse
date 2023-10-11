@@ -1,0 +1,63 @@
+*{
+    font-family: 'Gemunu Libre', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(/images/fondo.jpg);
+    background-size: 45%;
+}
+main section{
+    margin: 30px 0 0 0;
+}
+main section article{
+    background: linear-gradient(90deg, #00000099, #2400336b);
+    border: solid 1px #181818;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: inset -40px 0px 1px 0px #000000cf;
+}
+main section article a{
+    display: flex;
+    text-decoration: none;
+    color: #ddd;
+    justify-content: space-between;
+}
+main section article a div{
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    margin: 5px;
+    background: #666;
+    border-radius: 50%;
+}
+main section article a div img{
+    background: #111;
+    width: auto;
+    height: 30px;
+    border-radius: 50%;
+}
+main section article h5{
+    margin: auto 20px;
+}
+.user-id{
+    color: #a0f;
+    text-shadow: 0px 0px 5px #aa00ff;
+}
+@media(min-width: 769px){
+    main section{
+        margin: 150px 0 0 0;
+    }
+    main section article{
+        border-radius: 40px;
+        box-shadow: inset -60px 0px 1px 0px #000000cf;
+    }
+    main section article a div{
+        margin: 10px;
+    }
+    main section article a div img{
+        height: 70px;
+    }
+    .user-id{
+        margin: auto 30px;
+    }
+}
