@@ -23,7 +23,6 @@ const userRouter = require("./routers/users")
 
 app.use("/", productoRouter);
 
-app.use("/users", userRouter)
+app.use("/", userRouter);
 
-
-app.listen(PORT, () => console.log("El servidor esta corriendo en el puerto: " + PORT));
+app.listen(PORT, () => console.log("El servidor esta corriendo en: http://localhost:3001 "));

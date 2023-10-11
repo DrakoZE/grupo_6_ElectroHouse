@@ -1,14 +1,38 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/userController");
+const multer = require("multer");
+const path = require("path");
 
-router.get("/register", controller.getRegisterPage);
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../public/images"))
+    },
+    filename: (req, file, cb) => {
+        const newFileName = file.originalname;
+        cb(null, newFileName)
+    }
+});
 
-router.post("/register", controller.registerUser);
+const upload = multer({ storage });
 
-router.get("/login", controller.getLoginPage);
+// Listado de usuarios
+router.get("/users", controller.index);
 
-router.post("/login", controller.loginUser)
+// Formulario de registro
+router.get("/users/register", controller.add);
 
-module.exports = router
+// Accion de registro
+router.post("/users/create", upload.single("avatar"), controller.create);
+
+// Detalles de un Usuario 
+router.get("/users/:id", controller.show);
+
+// Formulario de LogIn
+router.get("/users/login", controller.log);
+
+// Accion de LogIn
+//router.post("/users", controller.logIn);
+
+module.exports = router;
 

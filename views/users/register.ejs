@@ -15,28 +15,28 @@
 
 <main>
 
-        <form action="/users/register" method="post">
-            <h2>Datos</h2>
+    <form action="/users/create" method="post" enctype="multipart/form-data">
+        <h2>Datos</h2>
 
-            <label for="nombre">Nombre completo</label>
-            <input type="text" name="Nombre" id="nombre" title="Le pedimos que ingrese su nombre" required>
-    
-            <label for="usuario">Nombre de usuario</label>
-            <input type="text" name="Usuario" id="usuario" required minlength="5" >
-    
-            <label for="fecha">Correo electronico</label>
-            <input type="email" name="correo" id="mail" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" title="Ingresa un correo electronico valido">
+        <label for="name">Nombre completo</label>
+        <input type="text" name="name" id="nameId" title="Le pedimos que ingrese su nombre" required>
 
-            <label for="clave">Contraseña</label>
-            <input type="password" name="contraseña" id="clave" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Por favor ingrese una contraseña que contenga al menos un numero, un digito, y tenga como minimo 8 caracteres de longitud">
+        <label for="userName">Nombre de usuario</label>
+        <input type="text" name="userName" id="userId" required>
 
-            <label for="Avatar" class="waos">Elija una foto de usuario</label>
-            <input type="file" name="foto" value="Pic" accept=".jpg" required>
+        <label for="email">Correo electronico</label>
+        <input type="email" name="email" id="emailId" required title="Ingresa un correo electronico valido">
 
-            <button type="submit" class="enviar">Enviar</button>
-            <button class="cancel" type="reset">X</button>
-            <a href="/users/login">¿Ya tienes cuenta?</a>
-        </form>
+        <label for="password">Clave</label>
+        <input type="password" name="password" id="passwordId" required>
+
+        <label for="avatar" class="waos">Elija una foto de usuario</label>
+        <input class="last-imput" type="file" name="avatar" required>
+
+        <button type="submit" class="enviar">Enviar</button>
+        <button class="cancel" type="reset">X</button>
+        <a href="/users/login">¿Ya tienes cuenta?</a>
+    </form>
     
 </main>
 
