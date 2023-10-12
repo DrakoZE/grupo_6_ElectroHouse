@@ -37,36 +37,43 @@ const productController = {
   // Crea un nuevo elemento en la lista de productos.
   createProduct: (req, res) => {
 
-    // Obtenemos todos los productos existentes.
-    let product = productController.allProducts;
+    // Validamos que el archivo de imagen se haya cargado.
+    if (req.file) {
 
-    // Obtenemos el ultimo producto de la lista.
-    let lastProduct = product.pop();
+      // Obtenemos todos los productos existentes.
+      let product = productController.allProducts;
 
-    // Volvemos a agregar el ultimo producto a la lista.
-    product.push(lastProduct);
+      // Obtenemos el ultimo producto de la lista.
+      let lastProduct = product.pop();
 
-    // Creamos un nuevo producto con los datos obtenidos del formulario.
-    let newProduct = {
-      id: lastProduct.id + 1,
-      title: req.body.title,
-      description: req.body.description,
-      image: "images/" + req.file.filename,
-      category: req.body.category,
-      price: req.body.price,
-      off: req.body.off,
-      color: req.body.color,
-      color1: req.body.color1,
+      // Volvemos a agregar el ultimo producto a la lista.
+      product.push(lastProduct);
+
+      // Creamos un nuevo producto con los datos obtenidos del formulario.
+      let newProduct = {
+        id: lastProduct.id + 1,
+        title: req.body.title,
+        description: req.body.description,
+        image: "images/product-img/" + req.file.filename,
+        category: req.body.category,
+        price: req.body.price,
+        off: req.body.off,
+        color: req.body.color,
+        color1: req.body.color1,
+      }
+
+      // Agregamos el nuevo producto a la lista de productos.
+      product.push(newProduct)
+
+      // Redirijimos a Home.
+      res.redirect("/")
+      
+      // Guardamos la lista de productos en el archivo JSON.
+      return fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
+
+    }else{
+      res.render("products/create");
     }
-
-    // Agregamos el nuevo producto a la lista de productos.
-    product.push(newProduct)
-
-    // Redirijimos a Home.
-    res.redirect("/")
-    
-    // Guardamos la lista de productos en el archivo JSON.
-    return fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
   },
 
   // Renderizamos el formulario de edicion de productos.
@@ -83,7 +90,7 @@ const productController = {
 
     // Asigna el ID y la imagen del producto a actualizar.
     req.body.id = req.params.id;
-    req.body.image = req.file ? "images/" + req.file.filename : req.body.oldImg;
+    req.body.image = req.file ? "images/product-img/" + req.file.filename : req.body.oldImg;
 
     // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
     let productUpdate = products.map(product => {

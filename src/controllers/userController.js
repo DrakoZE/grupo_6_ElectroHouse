@@ -24,33 +24,40 @@ const userController = {
     // Crea un nuevo elemento en la lista de usuarios.
     create: (req, res) => {
 
-        // Obtenemos todos los usuarios existentes.
-        let user = userController.allUsers;
+        // Validamos que el archivo de imagen se haya cargado.
+        if (req.file) {
 
-        // Obtenemos el ultimo usuario de la lista.
-        let lastUser = user.pop();
+            // Obtenemos todos los usuarios existentes.
+            let user = userController.allUsers;
 
-        // Volvemos a agregar el ultimo usuario a la lista.
-        user.push(lastUser);
+            // Obtenemos el ultimo usuario de la lista.
+            let lastUser = user.pop();
 
-        // Creamos un nuevo usuario con los datos obtenidos del formulario.
-        let newUser = {
-            id: lastUser.id + 1,
-            name: req.body.name,
-            avatar: "images/" + req.file.filename,
-            userName: req.body.userName,
-            email: req.body.email,
-            password: req.body.password
+            // Volvemos a agregar el ultimo usuario a la lista.
+            user.push(lastUser);
+
+            // Creamos un nuevo usuario con los datos obtenidos del formulario.
+            let newUser = {
+                id: lastUser.id + 1,
+                name: req.body.name,
+                avatar: "images/" + req.file.filename,
+                userName: req.body.userName,
+                email: req.body.email,
+                password: req.body.password
+            }
+
+            // Agregamos el nuevo usuario a la lista de usuarios.
+            user.push(newUser)
+
+            // Redirijimos a Home.
+            res.redirect("/")
+            
+            // Guardamos la lista de usuarios en el archivo JSON.
+            return fs.writeFileSync(path.join(__dirname, "../Data/Users/user.json"), JSON.stringify(user, null, 2), "utf-8");
+
+        }else{
+            res.render("users/register");
         }
-
-        // Agregamos el nuevo usuario a la lista de usuarios.
-        user.push(newUser)
-
-        // Redirijimos a Home.
-        res.redirect("/")
-        
-        // Guardamos la lista de usuarios en el archivo JSON.
-        return fs.writeFileSync(path.join(__dirname, "../Data/Users/user.json"), JSON.stringify(user, null, 2), "utf-8");
     },
 
     //formulario de LogIn.

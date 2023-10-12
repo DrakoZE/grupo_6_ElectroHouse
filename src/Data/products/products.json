@@ -8,13 +8,13 @@
     "color1": "#1fe9cb",
     "color": "#1a7063",
     "id": "1",
-    "image": "images/cat-parlante.png"
+    "image": "images/product-img/cat-parlante.png"
   },
   {
     "id": 2,
     "title": "Iphone 14",
     "description": "Smartphone Apple: Elegante, potente y fácil de usar. ¡Lo último en tecnología!",
-    "image": "images/iphone-14-promax.png",
+    "image": "images/product-img/iphone-14-promax.png",
     "category": "Smartphone",
     "price": "$230.000",
     "off": "20% off",
@@ -29,9 +29,9 @@
     "category": "Entretenimiento",
     "color1": "#27ff0a",
     "color": "#226724",
-    "oldImg": "images/xbox-control.png",
+    "oldImg": "images/product-img/xbox-control.png",
     "id": "3",
-    "image": "images/xbox-control.png"
+    "image": "images/product-img/xbox-control.png"
   },
   {
     "id": 4,
@@ -42,8 +42,7 @@
     "category": "Audio",
     "color1": "#f51d05",
     "color": "#892715",
-    "oldImg": "images/HeadSet-Kotion.png",
-    "image": "images/HeadSet-Kotion.png"
+    "image": "images/product-img/HeadSet-Kotion.png"
   },
   {
     "title": "Steam Deck",
@@ -53,15 +52,14 @@
     "category": "Entretenimiento",
     "color1": "#d7dee5",
     "color": "#414549",
-    "oldImg": "images/Steam-Deck.png",
-    "id": "5",
-    "image": "images/Steam-Deck.png"
+    "id": 5,
+    "image": "images/product-img/Steam-Deck.png"
   },
   {
     "id": 6,
     "title": "Amazon Echo",
     "description": "Tu asistente inteligente en casa. Controla tu música, obtén respuestas a tus preguntas, organiza tu agenda y mucho más, todo con solo tu voz.",
-    "image": "images/Alexa-Echo.png",
+    "image": "images/product-img/Alexa-Echo.png",
     "category": "Hogar",
     "price": "36.000$",
     "off": "5% off",
