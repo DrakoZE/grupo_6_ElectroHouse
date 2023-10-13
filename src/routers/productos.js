@@ -3,6 +3,18 @@ const router = express.Router();
 const controller = require("../controllers/productController");
 const multer = require("multer");
 const path = require("path");
+const { body } = require('express-validator');
+
+const ProductValidation = [
+    body("title").notEmpty().withMessage("Titulo faltante"),
+    body("description").notEmpty().withMessage("Detalles Pendientes"),
+    body("price").notEmpty().withMessage("Precio Necesario"),
+    body("price").isInt({min: 1 }).withMessage("Gratis? Imposible!"),
+    body("price").isInt({ allow_leading_zeroes: false }).withMessage("Sin ceros a la izquierda!"),
+    body("off").notEmpty().withMessage("Descuento obligatorio"),
+    body("off").isInt({min: 1 }).withMessage("Descuento obligatorio"),
+    body("off").isInt({ allow_leading_zeroes: false }).withMessage("Sin ceros a la izquierda!"),
+];
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -29,13 +41,13 @@ router.get("/products/create", controller.getCreatePage);
 router.get("/products/:id", controller.getDetailpage);
 
 //Acción de creación (a donde se envía el formulario)
-router.post("/products", upload.single("image"), controller.createProduct);
+router.post("/products", upload.single("image"), ProductValidation, controller.createProduct);
 
 //Formulario de edición de productos
 router.get("/products/:id/edit", controller.getEditPage);
 
 //Acción de edición (a donde se envía el formulario):
-router.put("/products/:id", upload.single("image"), controller.editProduct);
+router.put("/products/:id", upload.single("image"), ProductValidation, controller.editProduct);
 
 //Acción de borrado
 router.get("/products/:id/delete", controller.deleteProduct);

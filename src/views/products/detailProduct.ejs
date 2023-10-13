@@ -29,13 +29,13 @@
                     <a href="/products/<%= products.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
                     <a href="/products/<%= products.id %>/delete"><i class="fa-solid fa-trash-can"></i></a>
                 </nav>
-                <img src="/<%= products.image %>" style="background: linear-gradient(45deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
+                <img src="/images/product-img/<%= products.image %>" style="background: linear-gradient(45deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
             </div>
             <article>
                 <p style="font-style: italic; color: #fff; font-size: 1.3em;"><%= products.title %></p>
                 <div style="display: flex; align-items: center;">
-                    <p style="color: #666;"><%= products.price %> </p>
-                    <p style="font-size: 0.9em; color: #32e169; text-shadow: 0 0 1px #32e169;"><%= products.off %></p>
+                    <p style="color: #666;"><%= products.price %>$</p>
+                    <p style="font-size: 0.9em; color: #32e169; text-shadow: 0 0 1px #32e169;"><%= products.off %>% off</p>
                 </div>
                 <p style="font-size: 0.9em;"><%= products.description %></p>
             </article>

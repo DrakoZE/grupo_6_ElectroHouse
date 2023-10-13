@@ -2,67 +2,67 @@
   {
     "title": "Parlante CAT",
     "description": "¡Parlante inalámbrico con sonido potente y diseño compacto! ¡Llévalo a todas partes y disfruta de tu música favorita!",
-    "price": "$6.770",
-    "off": "40% off",
+    "price": "6770",
+    "off": "40",
     "category": "Audio",
     "color1": "#1fe9cb",
     "color": "#1a7063",
-    "id": "1",
-    "image": "images/product-img/cat-parlante.png"
+    "id": 1,
+    "image": "cat-parlante.png"
   },
   {
     "id": 2,
     "title": "Iphone 14",
     "description": "Smartphone Apple: Elegante, potente y fácil de usar. ¡Lo último en tecnología!",
-    "image": "images/product-img/iphone-14-promax.png",
+    "image": "iphone-14-promax.png",
     "category": "Smartphone",
-    "price": "$230.000",
-    "off": "20% off",
+    "price": "230000",
+    "off": "20",
     "color": "#512224",
     "color1": "#ff2e37"
   },
   {
     "title": "Control XBOX",
     "description": "Ergonómico, preciso y sin cables. ¡Domina el juego!",
-    "price": "$23.200",
-    "off": "5% off",
+    "price": "23200",
+    "off": "5",
     "category": "Entretenimiento",
     "color1": "#27ff0a",
     "color": "#226724",
-    "oldImg": "images/product-img/xbox-control.png",
-    "id": "3",
-    "image": "images/product-img/xbox-control.png"
+    "oldImg": "xbox-control.png",
+    "id": 3,
+    "image": "xbox-control.png"
   },
   {
     "id": 4,
     "title": "Headset Kotion",
     "description": "Sumérgete en un sonido envolvente. ¡Audio de calidad para una experiencia inigualable!",
-    "price": "8000$",
-    "off": "10%",
+    "price": "8000",
+    "off": "10",
     "category": "Audio",
     "color1": "#f51d05",
     "color": "#892715",
-    "image": "images/product-img/HeadSet-Kotion.png"
+    "image": "HeadSet-Kotion.png"
   },
   {
     "title": "Steam Deck",
     "description": "Juegos en tus manos, donde quieras. Pantalla táctil de alta resolución, una amplia capacidad de almacenamiento, Steam Deck te ofrece una experiencia de juego inigualable. ¡Sumérgete en mundos virtuales y disfruta de tus juegos favoritos con comodidad!",
-    "price": "688.000$",
-    "off": "16% off",
+    "price": "688000",
+    "off": "16",
     "category": "Entretenimiento",
     "color1": "#d7dee5",
     "color": "#414549",
     "id": 5,
-    "image": "images/product-img/Steam-Deck.png"
+    "image": "Steam-Deck.png"
   },
   {
     "id": 6,
     "title": "Amazon Echo",
     "description": "Tu asistente inteligente en casa. Controla tu música, obtén respuestas a tus preguntas, organiza tu agenda y mucho más, todo con solo tu voz.",
-    "image": "images/product-img/Alexa-Echo.png",
+    "image": "Alexa-Echo.png",
     "category": "Hogar",
-    "price": "36.000$",
-    "off": "5% off",
+    "price": "36000",
+    "off": "5",
     "color": "#7d5a0c",
     "color1": "#f69d04"
   }

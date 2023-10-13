@@ -20,9 +20,9 @@
                 <div><i class="fa-regular fa-clock"></i>  Historial</div>
                 <% for( let i = 0; i < Math.min(4, products.length); i++ ) { %>
                 <article><a href="/products/<%= products[i].id %>">
-                    <img src="/<%= products[i].image %>" class="product_img">
+                    <img src="/images/product-img/<%= products[i].image %>" class="product_img">
                     <h5><%= products[i].title %></h5>
-                    <h6><%= products[i].price %></h6>
+                    <h6><%= products[i].price %>$</h6>
                 </a></article>
                 <% } %>
             </section>
@@ -32,11 +32,11 @@
                 <article style="background: linear-gradient(0deg, #000000, <%= products[i].color %>80); border: 1px solid <%= products[i].color1 %>;"><a href="/products/<%= products[i].id %>">
                     <div class="art-title"><%= products[i].title %><i class="fa-solid fa-cart-shopping"></i></div>
                     <div class="art-content">
-                    <h5 class="art-price" style="color: <%= products[i].color1 %>;"><%= products[i].price %></h5>
-                    <img src="/<%= products[i].image %>" class="product_img">
+                    <h5 class="art-price" style="color: <%= products[i].color1 %>;"><%= products[i].price %>$</h5>
+                    <img src="/images/product-img/<%= products[i].image %>" class="product_img">
                     <aside>
                         <h5><%= products[i].category %></h5>
-                        <h5><%= products[i].off %></h6>
+                        <h5><%= products[i].off %>% off</h6>
                         <div style="color: <%= products[i].color1 %>;">
                             <i class="fa-regular fa-heart"></i>
                             <i class="fa-solid fa-thumbtack"></i>

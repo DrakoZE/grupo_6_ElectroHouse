@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
+let { validationResult } = require("express-validator")
+
 const productController = {
 
   // Obtenemos los datos del JSON.
@@ -37,8 +39,10 @@ const productController = {
   // Crea un nuevo elemento en la lista de productos.
   createProduct: (req, res) => {
 
-    // Validamos que el archivo de imagen se haya cargado.
-    if (req.file) {
+    let errors= validationResult(req);
+
+    // Validamos que los datos se hayan cargado correctamente.
+    if (req.file && errors.isEmpty()) {
 
       // Obtenemos todos los productos existentes.
       let product = productController.allProducts;
@@ -54,7 +58,7 @@ const productController = {
         id: lastProduct.id + 1,
         title: req.body.title,
         description: req.body.description,
-        image: "images/product-img/" + req.file.filename,
+        image: req.file.filename,
         category: req.body.category,
         price: req.body.price,
         off: req.body.off,
@@ -72,7 +76,9 @@ const productController = {
       return fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
 
     }else{
-      res.render("products/create");
+
+      console.log(errors)
+      res.render("products/create", { errors: errors.mapped(), old: req.body });
     }
   },
 
@@ -85,12 +91,17 @@ const productController = {
   // Actualiza un producto en la lista de productos.
   editProduct: (req, res) => {
 
+    let errors= validationResult(req);
+
+    // Validamos que los datos se hayan cargado correctamente.
+    if (req.file && errors.isEmpty()) {
+
     // Obtenemos todos los productos existentes.
     let products = productController.allProducts;
 
     // Asigna el ID y la imagen del producto a actualizar.
     req.body.id = req.params.id;
-    req.body.image = req.file ? "images/product-img/" + req.file.filename : req.body.oldImg;
+    req.body.image = req.file ? req.file.filename : req.body.oldImg;
 
     // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
     let productUpdate = products.map(product => {
@@ -103,7 +114,16 @@ const productController = {
 
     //guarda la lista actualizada de productos en el archivo JSON.
     fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(productUpdate, null, 2), "utf-8");
-  },
+    
+  }else{
+
+    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
+
+    console.log(errors.message)
+
+    res.render("products/update", { products, errors: errors.mapped(), old: req.body });
+  }
+},
 
   // Elimina un producto de la lista de productos.
   deleteProduct: (req, res) => {

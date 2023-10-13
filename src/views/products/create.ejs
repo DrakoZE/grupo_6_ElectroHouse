@@ -16,19 +16,36 @@
     <main>
         <form action="/products" method="POST" enctype="multipart/form-data">
             <section>
-                <input type="text" name="title" placeholder="Nombre del producto">
-                <input type="text" name="description" placeholder="Descripción"> 
-                <input type="text" name="price" placeholder="Precio">
-                <input type="text" name="off" placeholder="Descuento">
+                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>">
+                <% if (locals.errors && errors.title) { %>
+                    <p class="err-msg"> <%=errors.title.msg%> </p>
+               <% } %>
+
+                <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
+                <% if (locals.errors && errors.description) { %>
+                    <p class="err-msg"> <%=errors.description.msg%> </p>
+               <% } %>
+
+                <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : ""%>">
+                <% if (locals.errors && errors.price) { %>
+                    <p class="err-msg"> <%=errors.price.msg%> </p>
+               <% } %>
+                <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : ""%>">
+                <% if (locals.errors && errors.off) { %>
+                    <p class="err-msg"> <%=errors.off.msg%> </p>
+               <% } %>
+               
                 <select name="category">
-                    <option value="Audio">Audio</option>
-                    <option value="Entretenimiento">Entretenimiento</option>
-                    <option value="SmartPhone">SmartPhone</option>
-                    <option value="Hogar">Hogar</option>
+                    <option value="Audio" <%= locals.old && old.category === "Audio" ? "selected" : "" %>>Audio</option>
+                    <option value="Entretenimiento" <%= locals.old && old.category === "Entretenimiento" ? "selected" : "" %>>Entretenimiento</option>
+                    <option value="SmartPhone" <%= locals.old && old.category === "SmartPhone" ? "selected" : "" %>>SmartPhone</option>
+                    <option value="Hogar" <%= locals.old && old.category === "Hogar" ? "selected" : "" %>>Hogar</option>
                 </select>
-                <div class="color-var"><input type="color" name="color1">Color principal</div>
-                <div class="color-var"><input type="color" name="color">Sub-Color</div>
-                <input type="file" name="image">
+                <div class="color-var"><input type="color" name="color1" value="<%=locals.old && old.color1 ? old.color1 : ""%>">Color principal</div>
+
+                <div class="color-var"><input type="color" name="color" value="<%=locals.old && old.color ? old.color : ""%>">Sub-Color</div>
+
+                <input type="file" name="image" required>
             </section>
             <section class="create-buttons">
                 <input type="reset">

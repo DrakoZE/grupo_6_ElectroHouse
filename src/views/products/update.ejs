@@ -16,21 +16,59 @@
     <main>
         <form action="/products/<%= products.id %>?_method=PUT" method="post" enctype="multipart/form-data">
             <section>
-                <img src="/<%= products.image %>" style="background: linear-gradient(223deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
-                <input type="text" name="title" value="<%= products.title %>" placeholder="Titulo">
-                <input type="text" name="description" value="<%= products.description %>" placeholder="descripción"> 
-                <input type="text" name="price" value="<%= products.price %>" placeholder="Precio">
-                <input type="text" name="off" value="<%= products.off %>" placeholder="descuento">
+                <img src="/images/product-img/<%= products.image %>" style="background: linear-gradient(223deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
+                <input type="text" name="title" value="<%=locals.old && old.title ? old.title : products.title %>" placeholder="Titulo">
+                <% if (locals.errors && errors.title) { %>
+                    <p class="err-msg"> <%=errors.title.msg%> </p>
+               <% } %>
+
+                <input type="text" name="description" value="<%=locals.old && old.description ? old.description : products.description %>" placeholder="descripción">
+                <% if (locals.errors && errors.description) { %>
+                    <p class="err-msg"> <%=errors.description.msg%> </p>
+               <% } %>
+
+                <input type="number" name="price" value="<%=locals.old && old.price ? old.price : products.price %>" placeholder="Precio">
+                <% if (locals.errors && errors.price) { %>
+                    <p class="err-msg"> <%=errors.price.msg%> </p>
+               <% } %>
+
+                <input type="number" name="off" value="<%=locals.old && old.off ? old.off : products.off %>" placeholder="descuento">
+                <% if (locals.errors && errors.off) { %>
+                    <p class="err-msg"> <%=errors.off.msg%> </p>
+               <% } %>
+
                 <select name="category">
-                    <option value="Audio" <%= products.category === 'Audio' ? 'selected' : '' %>>Audio</option>
-                    <option value="Entretenimiento" <%= products.category === 'Entretenimiento' ? 'selected' : '' %>>Entretenimiento</option>
-                    <option value="SmartPhone" <%= products.category === 'SmartPhone' ? 'selected' : '' %>>SmartPhone</option>
-                    <option value="Hogar" <%= products.category === 'Hogar' ? 'selected' : '' %>>Hogar</option>
+
+                    <option value="Audio" <% if (locals.old && old.category === "Audio"){ %>
+                        selected 
+                     <% } else if (products.category === "Audio"){ %>
+                        selected 
+                    <% } %>>Audio</option>
+
+                    <option value="Entretenimiento" <% if (locals.old && old.category === "Entretenimiento"){ %>
+                        selected 
+                     <% } else if (products.category === "Entretenimiento"){ %>
+                        selected 
+                    <% } %>>Entretenimiento</option>
+
+                    <option value="SmartPhone"<% if (locals.old && old.category === "SmartPhone"){ %>
+                        selected 
+                     <% } else if (products.category === "SmartPhone"){ %>
+                        selected 
+                    <% } %>>SmartPhone</option>
+
+                    <option value="Hogar" <% if (locals.old && old.category === "Hogar"){ %>
+                        selected 
+                     <% } else if (products.category === "Hogar"){ %>
+                        selected 
+                    <% } %>>Hogar</option>
+
                 </select>
-                <div class="color-var"><input type="color" value="<%= products.color1 %>" name="color1">Color principal</div>
-                <div class="color-var"><input type="color" value="<%= products.color %>" name="color">Sub-Color</div>
+
+                <div class="color-var"><input type="color" value="<%=locals.old && old.color1 ? old.color1 : products.color1 %>" name="color1">Color principal</div>
+                <div class="color-var"><input type="color" value="<%=locals.old && old.color ? old.color : products.color %>" name="color">Sub-Color</div>
                 <input type="file" name="image">
-                <input type="hidden" name="oldImg" value="<%= products.image %>">
+                <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : products.image %>">
             </section>
             <section class="create-buttons">
                 <input type="reset">

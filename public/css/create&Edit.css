@@ -41,9 +41,15 @@ main form input, main form select{
     color: #757575;
     font-size: 0.7em;
     padding: 5px 7px;
-    margin: 5px 0;
+    margin: 5px 0 0 0;
     outline: none;
     border: 0;
+}
+main form section p{
+    text-shadow: 0 0 10px #ff0707;
+    margin: 3px 10px 10px 10px;
+    color: #ff0707;
+    font-size: 0.75em;
 }
 select option {
     background-color: #111;
