@@ -1,5 +1,9 @@
 const fs = require("fs");
-const path = require("path")
+const path = require("path");
+const bcrypt = require("bcryptjs");
+
+let { validationResult } = require("express-validator")
+
 const userController = {
 
     // Obtenemos los datos del JSON.
@@ -24,8 +28,10 @@ const userController = {
     // Crea un nuevo elemento en la lista de usuarios.
     create: (req, res) => {
 
-        // Validamos que el archivo de imagen se haya cargado.
-        if (req.file) {
+        let errors= validationResult(req);
+
+        // Validamos que los datos se hayan cargado correctamente.
+        if (errors.isEmpty()) {
 
             // Obtenemos todos los usuarios existentes.
             let user = userController.allUsers;
@@ -38,12 +44,13 @@ const userController = {
 
             // Creamos un nuevo usuario con los datos obtenidos del formulario.
             let newUser = {
-                id: lastUser.id + 1,
-                name: req.body.name,
-                avatar: "images/" + req.file.filename,
+                id: lastUser.id++,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 userName: req.body.userName,
                 email: req.body.email,
-                password: req.body.password
+                password: bcrypt.hashSync(req.body.password, 10, 12),
+                avatar: "images/user-avatar/" + req.file.filename
             }
 
             // Agregamos el nuevo usuario a la lista de usuarios.
@@ -56,7 +63,9 @@ const userController = {
             return fs.writeFileSync(path.join(__dirname, "../Data/Users/user.json"), JSON.stringify(user, null, 2), "utf-8");
 
         }else{
-            res.render("users/register");
+
+            console.log(errors)
+            res.render("users/register", { errors: errors.mapped(), old: req.body });
         }
     },
 

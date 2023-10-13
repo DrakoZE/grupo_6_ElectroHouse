@@ -24,6 +24,9 @@ main form{
   display: flex;
   width: 90%;
 }
+main form h2{
+  margin: 10px;
+}
 main input{
   padding: 5px 8px 5px 10px;
   border: solid 1px #222;
@@ -31,10 +34,16 @@ main input{
   border-radius: 10px;
   color: white;
   outline: none;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
+}
+main form p{
+  text-shadow: 0 0 10px #ff0707;
+  margin: 3px 10px 10px 10px;
+  color: #ff0707;
+  font-size: 0.75em;
 }
 .last-imput{
-  margin: 0 0 50px 0;
+  margin: 10px 0 50px 0;
 }
 main .cancel{
   text-shadow: 0 0 5px #aa00ff;
@@ -84,5 +93,8 @@ main a{
   }
   main input{
     margin: 5px 0 10px 0;
+  }
+  .last-imput{
+    margin: 10px 0;
   }
 }

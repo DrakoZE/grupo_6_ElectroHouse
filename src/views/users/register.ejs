@@ -15,23 +15,37 @@
 
 <main>
 
+
+
     <form action="/users/create" method="post" enctype="multipart/form-data">
         <h2>Datos</h2>
 
-        <label for="name">Nombre completo</label>
-        <input type="text" name="name" id="nameId" title="Le pedimos que ingrese su nombre" required>
+        <input type="text" name="firstName" id="nameId" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : ""%>">
+       <% if (locals.errors && errors.firstName) { %>
+            <p class="err-msg"> <%=errors.firstName.msg%> </p>
+       <% } %>
 
-        <label for="userName">Nombre de usuario</label>
-        <input type="text" name="userName" id="userId" required>
+        <input type="text" name="lastName" id="nameId" placeholder="Apellido" value="<%=locals.old && old.lastName ? old.lastName : ""%>">
+        <% if (locals.errors && errors.lastName) { %>
+            <p class="err-msg"> <%=errors.lastName.msg%> </p>
+       <% } %>
 
-        <label for="email">Correo electronico</label>
-        <input type="email" name="email" id="emailId" required title="Ingresa un correo electronico valido">
+        <input type="text" name="userName" id="userId" placeholder="Nombre de Usuario" value="<%=locals.old && old.userName ? old.userName : ""%>">
+        <% if (locals.errors && errors.userName) { %>
+            <p class="err-msg"> <%=errors.userName.msg%> </p>
+       <% } %>
 
-        <label for="password">Clave</label>
-        <input type="password" name="password" id="passwordId" required>
+        <input type="email" name="email" id="emailId" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
+        <% if (locals.errors && errors.email) { %>
+            <p class="err-msg"> <%=errors.email.msg%> </p>
+       <% } %>
 
-        <label for="avatar" class="waos">Elija una foto de usuario</label>
-        <input class="last-imput" type="file" name="avatar" required>
+        <input type="password" name="password" id="passwordId" placeholder="clave">
+        <% if (locals.errors && errors.password) { %>
+            <p class="err-msg"> <%=errors.password.msg%> </p>
+       <% } %>
+
+        <input class="last-imput" type="file" name="avatar" value="<%=locals.old && old.avatar ? old.avatar : ""%>">
 
         <button type="submit" class="enviar">Enviar</button>
         <button class="cancel" type="reset">X</button>
