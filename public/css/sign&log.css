@@ -85,7 +85,7 @@ main a{
   bottom: 15px;
   left: 30px;
 }
-@media(min-width: 769px){
+@media(min-width: 768px){
   main form{
     margin: 130px 0 0 0;
     z-index: 1;

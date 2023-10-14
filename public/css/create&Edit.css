@@ -89,7 +89,7 @@ select option {
         height: auto;
     }
 }
-@media(min-width: 769px){
+@media(min-width: 768px){
     main form input, main form select{
         font-size: 1em;
     }

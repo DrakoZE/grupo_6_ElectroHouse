@@ -14,7 +14,7 @@ const ProductValidation = [
     body("off").notEmpty().withMessage("Descuento obligatorio"),
     body("off").isInt({min: 1 }).withMessage("Descuento obligatorio"),
     body("off").isInt({ allow_leading_zeroes: false }).withMessage("Sin ceros a la izquierda!"),
-    body("image").custom((value, { req })=>{
+    body("avatar").custom((value, { req })=>{
 
         let file = req.file;
         let validFormat = [".jpg", ".png", ".gif"];
@@ -23,9 +23,12 @@ const ProductValidation = [
             throw new Error("Debes subir una imagen");
         } else {
             let fileFormat = path.extname(file.originalname);
+             
             if (!validFormat.includes(fileFormat)){
                 throw new Error("Formato de archivo no compatible ")
             }
+
+            return true
         }
     })
 ];

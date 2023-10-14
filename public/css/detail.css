@@ -80,7 +80,7 @@ main section article p{
         margin: 30px 15% 5px 15%;
     }
 }
-@media(min-width: 769px){
+@media(min-width: 768px){
     main section{
         font-size: 1.3em;
         margin: 130px 15% 5px 15%;

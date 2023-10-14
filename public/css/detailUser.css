@@ -54,7 +54,7 @@ main section aside h5{
         width: 400px;
     }
 }
-@media(min-width: 769px){
+@media(min-width: 768px){
     main{
         display: flex;
         justify-content: center;
