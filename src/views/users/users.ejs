@@ -17,9 +17,7 @@
             <section>
                 <% for( let i = 0; i < user.length; i++ ) { %>
                 <article><a href="/users/<%= user[i].id %>">
-                        <div>
-                          <img src="/<%= user[i].avatar %>">                         
-                        </div>
+                          <img src="/images/user-avatar/<%= user[i].avatar %>">                         
                         <h5><%= user[i].userName %></h5>
                         <h5 class="user-id">#<%= user[i].id %></h5>
                 </a></article>

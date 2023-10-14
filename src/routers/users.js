@@ -4,6 +4,7 @@ const controller = require("../controllers/userController");
 const multer = require("multer");
 const path = require("path");
 const { body } = require('express-validator');
+const { error } = require("console");
 
 const registerValidation = [
     body("firstName").notEmpty().withMessage("El nombre es obligatorio"),
@@ -11,6 +12,23 @@ const registerValidation = [
     body("userName").notEmpty().withMessage("El nombre de usuario es obligatorio"),
     body("email").isEmail().withMessage("El correo electrónico es obligatorio"),
     body("password").isLength({min: 8}).withMessage("La contraseña debe tener al menos 8 caracteres"),
+    body("avatar").custom((value, { req })=>{
+
+        let file = req.file;
+        let validFormat = [".jpg", ".png", ".gif"];
+
+        if (!file){
+            throw new Error("Debes subir una imagen");
+        } else {
+            let fileFormat = path.extname(file.originalname);
+             
+            if (!validFormat.includes(fileFormat)){
+                throw new Error("Formato de archivo no compatible ")
+            }
+
+            return true
+        }
+    })
 ];
 
 const storage = multer.diskStorage({

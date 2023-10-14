@@ -67,7 +67,12 @@
 
                 <div class="color-var"><input type="color" value="<%=locals.old && old.color1 ? old.color1 : products.color1 %>" name="color1">Color principal</div>
                 <div class="color-var"><input type="color" value="<%=locals.old && old.color ? old.color : products.color %>" name="color">Sub-Color</div>
+                
                 <input type="file" name="image">
+                <% if (locals.errors && errors.image) { %>
+                    <p class="err-msg"> <%=errors.image.msg%> </p>
+               <% } %>
+
                 <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : products.image %>">
             </section>
             <section class="create-buttons">

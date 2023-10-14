@@ -46,6 +46,9 @@
        <% } %>
 
         <input class="last-imput" type="file" name="avatar" value="<%=locals.old && old.avatar ? old.avatar : ""%>">
+        <% if (locals.errors && errors.avatar) { %>
+            <p class="err-msg"> <%=errors.avatar.msg%> </p>
+       <% } %>
 
         <button type="submit" class="enviar">Enviar</button>
         <button class="cancel" type="reset">X</button>

@@ -28,7 +28,7 @@ const userController = {
     // Crea un nuevo elemento en la lista de usuarios.
     create: (req, res) => {
 
-        let errors= validationResult(req);
+        let errors = validationResult(req);
 
         // Validamos que los datos se hayan cargado correctamente.
         if (errors.isEmpty()) {
@@ -44,13 +44,13 @@ const userController = {
 
             // Creamos un nuevo usuario con los datos obtenidos del formulario.
             let newUser = {
-                id: lastUser.id++,
+                id: lastUser.id + 1,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 userName: req.body.userName,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10, 12),
-                avatar: "images/user-avatar/" + req.file.filename
+                avatar: req.file.filename
             }
 
             // Agregamos el nuevo usuario a la lista de usuarios.
@@ -64,7 +64,7 @@ const userController = {
 
         }else{
 
-            console.log(errors)
+            
             res.render("users/register", { errors: errors.mapped(), old: req.body });
         }
     },

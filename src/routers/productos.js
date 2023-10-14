@@ -14,6 +14,20 @@ const ProductValidation = [
     body("off").notEmpty().withMessage("Descuento obligatorio"),
     body("off").isInt({min: 1 }).withMessage("Descuento obligatorio"),
     body("off").isInt({ allow_leading_zeroes: false }).withMessage("Sin ceros a la izquierda!"),
+    body("image").custom((value, { req })=>{
+
+        let file = req.file;
+        let validFormat = [".jpg", ".png", ".gif"];
+
+        if (!file){
+            throw new Error("Debes subir una imagen");
+        } else {
+            let fileFormat = path.extname(file.originalname);
+            if (!validFormat.includes(fileFormat)){
+                throw new Error("Formato de archivo no compatible ")
+            }
+        }
+    })
 ];
 
 const storage = multer.diskStorage({
@@ -21,6 +35,7 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname, "../../public/images/product-img"))
     },
     filename: (req, file, cb) => {
+        console.log(file)
         const newFileName = file.originalname;
         cb(null, newFileName)
     }
