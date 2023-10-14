@@ -14,18 +14,32 @@
     <%- include("../partials/header") %>
 
         <main>
-            <section>
+            <article>
+
+                <i class="fa-solid fa-xmark"></i>
                 <div>
-                    <img src="/images/user-avatar/<%= user.avatar %>">
-                    <h5>ID:   #<%= user.id %></h5>
+                    <aside class=>
+                        <a><i class="fa-regular fa-thumbs-up"></i></a>
+                        <a><i class="fa-regular fa-message"></i></a>
+                        <a><i class="fa-solid fa-triangle-exclamation"></i></a>
+                    </aside>
+                    <figure>
+                        <img src="/images/user-avatar/<%= user.avatar %>">
+                        <h5>ID:   # <%= user.id %></h5>
+                    </figure>
+                    <aside class="session">
+                        <a><i class="fa-solid fa-gears"></i></a>
+                        <a><i class="fa-solid fa-user-pen"></i></a>
+                        <a><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </aside>
                 </div>
-                <aside>
-                    <h5>Nombre de usuario: <%= user.userName %></h5>
-                    <h5>Nombre: <%= user.firstName %></h5>
-                    <h5>Apellido: <%= user.lastName %></h5>
-                    <h5>Email:   <%= user.email %></h5>
-                </aside>
-            </section>
+                <section>
+                    <h5><span>Usuario:</span> <%= user.userName %></h5>
+                    <h5><span>Nombre:</span> <%= user.firstName %></h5>
+                    <h5><span>Apellido:</span> <%= user.lastName %></h5>
+                    <h5><span>Email:</span>   <%= user.email %></h5>
+                </section>
+            </article>
         </main>
 
         <%- include("../partials/footer") %>
