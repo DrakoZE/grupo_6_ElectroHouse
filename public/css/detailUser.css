@@ -40,9 +40,12 @@ main article div aside i{
     border-radius: 10px;
     border: solid 1px #171717;
 }
+main article div aside a{
+    color: #666;
+}
 a .fa-thumbs-up:hover{
-    color: #0f0;
-    text-shadow: 0 0 3px #0f0;
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
 }
 a .fa-message:hover{
     color: #fff;
@@ -53,16 +56,16 @@ a .fa-triangle-exclamation:hover{
     text-shadow: 0 0 3px #f00;
 }
 a .fa-gears:hover{
-    color: #f8fd26;
-    text-shadow: 0 0 3px #f8fd26;
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
 }
 a .fa-user-pen:hover{
     color: #1bf;
     text-shadow: 0 0 3px #1bf;
 }
 a .fa-right-from-bracket:hover{
-    color: #fb8f03;
-    text-shadow: 0 0 3px #fb8f03;
+    color: #fff;
+    text-shadow: 0 0 3px #fff;
 }
 main article figure{
     display: flex;

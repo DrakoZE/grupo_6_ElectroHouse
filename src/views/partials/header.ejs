@@ -30,11 +30,25 @@
             </ul>
         </nav>
         <section>
-            <div class="usericon"><a href="/users/register"><i class="fa-regular fa-user purplebox"></i></a></div>
-            <div class="subicon">
-                <a href="/users/login"><i class="fas fa-sign-in-alt purplebox"></i></a>
-                <a href="/cart"><i class="fas fa-shopping-basket purplebox"></i></a>
-            </div>
+            
+            <% if (locals.isLog) { %>
+                <div class="usericon">
+                    <a href="/users/profile"><img src="/images/user-avatar/<%= locals.logUser.avatar %>" class="purplebox"></a>
+                </div>
+                <div class="subicon">
+                    <a href="#"><i class="fa-solid fa-gear purplebox" style="padding: 4px;"></i></a>
+                    <a href="/products/cart"><i class="fas fa-shopping-basket purplebox" style="padding: 4px 3px;"></i></a>
+                </div>
+            <% } else { %>
+                <div class="usericon">
+                    <a href="/users/register"><i class="fa-regular fa-user purplebox"></i></a>
+                </div>
+                <div class="subicon">
+                    <a href="/users/login"><i class="fas fa-sign-in-alt purplebox"></i></a>
+                    <a href="#"><i class="fa-solid fa-bars purplebox" style="padding: 4px 5px;"></i></a>
+                </div>
+            <% } %>
+
         </section>
     </div>
 </header>

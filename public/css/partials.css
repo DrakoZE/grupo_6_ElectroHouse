@@ -219,6 +219,14 @@ footer nav i.fa-youtube{
         font-size: 40px;
         margin: 0 15px;
     }
+    header section div.usericon img{
+        transition: all 0.5s;
+        position: relative;
+        width: 65px;
+        height: auto;
+        margin: 0 15px;
+        border-radius: 50%;
+    }
     header section div.subicon{
         flex-direction: column;
         margin: 0 15px;

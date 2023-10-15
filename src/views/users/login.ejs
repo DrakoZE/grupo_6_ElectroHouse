@@ -19,13 +19,21 @@
         <form class=" purpleshadowbox" action="/users/login" method="post">
             <h2>Ingresar</h2>
 
-            <input type="email" name="email" placeholder="Correo Electrónico">
+            <input type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
+            <% if (locals.errors && errors.email) { %>
+                <p class="err-msg"> <%=errors.email.msg%> </p>
+           <% } %>
 
             <input class="last-imput" type="password" name="password" placeholder="Clave">
+            <% if (locals.errors && errors.password) { %>
+                <p class="err-msg"> <%=errors.password.msg%> </p>
+           <% } %>
             
             <button type="submit" class="enviar"> Enviar datos</button>
             <button class="cancel" type="reset">X</button>
-            <a href="/">Olvide mi contraseña</a>
+            <label class="remind-me">
+                <input type="checkbox" name="remind"> Recordarme
+            </label>
         </form>
     </main>
 

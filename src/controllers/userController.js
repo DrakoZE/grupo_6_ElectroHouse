@@ -7,11 +7,11 @@ let { validationResult } = require("express-validator")
 const userController = {
 
     // Obtenemos los datos del JSON.
-    allUsers: (JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/Users/user.json"), "utf-8"))),
+    allUsers: (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8"))),
 
     //lista de usuarios.
     index: (req, res) => {
-        let user = (JSON.parse(fs.readFileSync(path.join(__dirname, "../Data/Users/user.json"), "utf-8")));
+        let user = (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8")));
         res.render("users/users", { user });
     },
 
@@ -60,11 +60,9 @@ const userController = {
             res.redirect("/")
             
             // Guardamos la lista de usuarios en el archivo JSON.
-            return fs.writeFileSync(path.join(__dirname, "../Data/Users/user.json"), JSON.stringify(user, null, 2), "utf-8");
+            return fs.writeFileSync(path.join(__dirname, "../data/users/users.json"), JSON.stringify(user, null, 2), "utf-8");
 
-        }else{
-
-            
+        }else{  
             res.render("users/register", { errors: errors.mapped(), old: req.body });
         }
     },
@@ -74,10 +72,69 @@ const userController = {
         res.render("users/login")
     },
 
-    //loginUser: (req, res) => {
-        //...
-        //res.redirect("/")
-    //},
+    // Método de login de usuarios
+    loginUser: (req, res) => {
+
+        // Valida los datos del formulario de login
+        const errors = validationResult(req);
+
+        // Si no hay errores, procede con el login
+        if (errors.isEmpty()) {
+
+            // Lee el archivo user.json, que contiene la lista de usuarios
+            const users = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8"));
+
+            // Encuentra al usuario con el correo electrónico y la contraseña coincidente
+            const userToLog = users.find((user) => user.email === req.body.email && bcrypt.compareSync(req.body.password, user.password));
+
+            // Si no se encuentra un usuario, devuelve un error
+            if (!userToLog) {
+                return res.render("users/login", { errors: [{ msg: "Datos incorrectos"}], old: req.body});
+            }
+
+            // Elimina la contraseña del usuario antes de guardarlo en la sesión
+            delete userToLog.password;
+
+            // Guarda al usuario en la sesión
+            req.session.logUser = userToLog;
+
+            // Si el usuario marcó la casilla "recordarme", establece una cookie remember
+            if (req.body.remind) {
+                res.cookie("remember", req.body.email, { maxAge: (60000) * 60 });
+            }
+
+            // Redirige al usuario a su perfil
+            return res.redirect("/users/profile");
+
+        } else {
+
+            // Si hay errores en el formulario, vuelve a renderizar la página de login con los errores
+            res.render("users/login", { errors: errors.mapped(), old: req.body });
+        }
+    },
+
+    // Método para mostrar el perfil del usuario
+    profile: (req, res) => {
+
+        // Obtiene el usuario de la sesión
+        const user = req.session.logUser;
+
+        // Renderiza la página de perfil con los datos del usuario
+        res.render("users/profile", { user });
+    },
+
+    // Método para cerrar la sesión del usuario
+    logout: (req, res) => {
+
+        // Borra la cookie remember
+        res.clearCookie("remember");
+
+        // Destruye la sesión del usuario
+        req.session.destroy();
+
+        // Redirige al usuario a la página principal
+        return res.redirect("/");
+    }
 }
 
 module.exports = userController;
