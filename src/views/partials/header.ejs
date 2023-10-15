@@ -2,17 +2,31 @@
     <div class="min">
         <article>
             <a href="/"><i class="fa-solid fa-house purplelogo" style="color: #aa00ff"></i></a>
-            <a href="/products/create"><i class="fa-solid fa-hand-holding-dollar purplelogo" style="color: #aa00ff"></i></a>
-            <a href="#"><i class="fa-solid fa-circle-question purplelogo" style="color: #aa00ff"></i></a>
-            <a href="/products"><i class="fa-solid fa-shop purplelogo" style="color: #aa00ff"></i></a>
+
+            <% if (locals.isLog) { %>
+                <a href="/products/create"><i class="fa-solid fa-hand-holding-dollar purplelogo" style="color: #aa00ff"></i></a>
+                <a href="/users"><i class="fa-solid fa-users purplelogo" style="color: #aa00ff"></i></a>
+                <a href="/products"><i class="fa-solid fa-cubes purplelogo" style="color: #aa00ff"></i></a>
+            <% } else { %>
+                <a href="/products"><i class="fa-solid fa-cubes purplelogo" style="color: #aa00ff"></i></a>
+            <% } %>
+            
         </article>
         <form action="#" method="GET">
             <input  placeholder="Buscar..."><button type="submit" class="fa fa-search"></button>
         </form>
         <article>
-            <a href="/users/register"><i class="fa-regular fa-user purplelogo" style="color: #aa00ff"></i></a>
-            <a href="/users/login"><i class="fas fa-sign-in-alt purplelogo" style="color: #aa00ff"></i></a>
-            <a href="/products/cart"><i class="fas fa-shopping-basket purplelogo" style="color: #aa00ff"></i></a>
+
+            <% if (locals.isLog) { %>
+                <a href="/users/profile"><i class="fa-solid fa-user-check purplelogo" style="color: #aa00ff"></i></a>
+                <a href="#"><i class="fa-solid fa-gear purplelogo" style="color: #aa00ff"></i></a>
+                <a href="/products/cart"><i class="fas fa-shopping-basket purplelogo" style="color: #aa00ff"></i></a>
+            <% } else { %>
+                <a href="/users/register"><i class="fa-regular fa-user purplelogo" style="color: #aa00ff"></i></a>
+                <a href="/users/login"><i class="fas fa-sign-in-alt purplelogo" style="color: #aa00ff"></i></a>
+                <a href="#"><i class="fa-solid fa-bars purplelogo" style="color: #aa00ff"></i></a>
+            <% } %>
+            
         </article>
     </div>
     <div class="max">
@@ -24,9 +38,14 @@
                 <input placeholder="Buscar productos..."><button type="submit" class="purplebox fa fa-search" style="color: #aa00ff"></button>
             </form>
             <ul>
-                <li style="z-index: 3;"><a href="/products/create">Vender</a></li>
-                <li style="z-index: 2;"><a href="/users">Usuarios</a></li>
-                <li style="z-index: 1;"><a href="/products">Productos</a></li>
+                <% if (locals.isLog) { %>
+                    <li style="z-index: 3;"><a href="/products/create">Vender</a></li>
+                    <li style="z-index: 2;"><a href="/users">Usuarios</a></li>
+                    <li style="z-index: 1;"><a href="/products">Productos</a></li>
+                <% } else { %>
+                    <li style="z-index: 1;"><a href="/products">Productos</a></li> 
+                <% } %>
+                
             </ul>
         </nav>
         <section>
