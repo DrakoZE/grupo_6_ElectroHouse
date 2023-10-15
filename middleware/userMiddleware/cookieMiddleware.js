@@ -26,8 +26,6 @@ function cookieMiddleware(req, res, next) {
     // Establece la variable local logUser a la propiedad logUser de la sesión
     res.locals.logUser = req.session.logUser;
 
-    console.log(res.locals)
-
     // Siguiente middleware en la cadena
     next();
   }

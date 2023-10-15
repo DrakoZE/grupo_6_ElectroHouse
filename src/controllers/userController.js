@@ -89,7 +89,7 @@ const userController = {
 
             // Si no se encuentra un usuario, devuelve un error
             if (!userToLog) {
-                return res.render("users/login", { errors: [{ msg: "Datos incorrectos"}], old: req.body});
+                return res.render("users/login", { errors: { email: { msg: "Datos incorrectos" }}});
             }
 
             // Elimina la contraseña del usuario antes de guardarlo en la sesión
