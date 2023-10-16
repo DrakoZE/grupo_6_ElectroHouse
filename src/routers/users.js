@@ -4,7 +4,6 @@ const router = express.Router();
 
 const controller = require("../controllers/userController");
 
-
 const upload = require("../../middleware/multerMiddleware")
 const logValidation = require("../../middleware/userMiddleware/logInMiddleware")
 const registerValidation = require("../../middleware/userMiddleware/registerMiddleware")
@@ -28,7 +27,7 @@ router.get("/", controller.index);
 router.get("/register", guestMiddleware, controller.add);
 
 // Accion de registro.
-router.post("/create", upload("user").single("avatar"), registerValidation, controller.create);
+router.post("/create", upload("user-avatar").single("avatar"), registerValidation, controller.create);
 
 // Perfil de usuario.
 router.get("/profile", authMiddleware, controller.profile)
