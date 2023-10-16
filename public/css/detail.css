@@ -54,6 +54,10 @@ main section div nav a i.fa-trash-can:hover{
     color: #ff0000;
     text-shadow: 0 0 5px #ff0000;
 }
+main section div nav a i.fa-share:hover{
+    color: #fff;
+    text-shadow: 0 0 5px #fff;
+}
 main section img{
     width: 80%;
     height: auto;

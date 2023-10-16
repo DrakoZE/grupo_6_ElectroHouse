@@ -25,9 +25,17 @@
         <section>
             <div class="left-side">
                 <nav>
-                    <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
-                    <a href="/products/<%= products.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
-                    <a href="/products/<%= products.id %>/delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <% if (locals.isLog) { %>
+                        <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
+                        <a href="/products/<%= products.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="/products/<%= products.id %>/delete"><i class="fa-solid fa-trash-can"></i></a>
+                        <a><i class="fa-solid fa-share"></i></a>
+                    <% } else { %>
+                        <a href="/users/login"><i class="fa-solid fa-cart-plus"></i></a>
+                        <a><i class="fa-regular fa-heart"></i></a>
+                        <a><i class="fa-solid fa-thumbtack"></i></a>
+                        <a><i class="fa-solid fa-share"></i></a>
+                    <% } %>
                 </nav>
                 <img src="/images/product-img/<%= products.image %>" style="background: linear-gradient(45deg, <%= products.color %>80, #000000c7); border: solid 1px <%= products.color1 %> ;">
             </div>
