@@ -2,10 +2,6 @@
     font-family: 'Gemunu Libre', sans-serif;
     box-sizing: border-box;
 }
-body{
-    background-image: url(/images/fondo.jpg);
-    background-size: 45%;
-}
 main article{
     margin: 30px 10px;
     background: linear-gradient(0deg, #10101000, #07000afa);

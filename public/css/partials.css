@@ -116,6 +116,11 @@ footer nav i.fa-youtube{
     text-shadow: 0 0 3px #FF0000;
     color: #FF0000;
 }
+body{
+    background-image: url(/images/fondo.jpeg);
+    background-size: cover;
+    background-position: center;
+}
 @media (min-width: 460px){
     header div.min article a{
         padding: 0 15px;

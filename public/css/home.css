@@ -4,42 +4,67 @@
     text-decoration: none;
 }
 body{
-    background-image: url(/images/fondo.jpg);
-    background-size: 45%;
+    margin: 0px;
 }
-main section.history-var{
-    background: linear-gradient(180deg, #000000f2, #434343e8);
-    border: solid 1px #999999;
+.history-var{
+    background: linear-gradient(90deg, #000000b8, #1c002b78);
+    border: solid 1px #150021a3;
     align-items: center;
     border-radius: 10px;
     display: flex;
-    margin: 25px 0;
+    margin: 25px 5px 5px 5px;
 }
 main section article img{
     width: 100%;
 }
-.history-var div{
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.first-div{
     color: #c7c7c7;
+    height: auto;
     display: flex;
-    height: 4em;
-    width: 7em;
+    width: 77px;
+    border-radius: 9px 0 0 9px;
     font-size: 0.5em;
+    padding: 7px;
+    background: linear-gradient(270deg, #00000094, #0e00188f);
+}
+.second-div{
+    display: flex;
+    width: 30px;
+    font-size: 0.5em;
+    padding: 17px 30px;
+    background: linear-gradient(270deg, #29003f57, #7626cb4f);
+    border-radius: 9px 15px 15px 9px;
+    position: relative;
+}
+.second-div p{
+    display: flex;
+    left: 7px;
+    top: 2px;
+    background: #060008ed;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 2em;
+    position: absolute;
+}
+.second-div i{
+    padding: 0 2px;
 }
 .history-var article a{
-    background: linear-gradient(0deg, #000, #00000000);
+    background: linear-gradient(0deg, #000000b5, #ffffff12);
     flex-direction: column;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 5px;
     display: flex;
     margin: 0 1px;
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    width: 3.5em;
 }
 .history-var article a:hover{
     background: linear-gradient(0deg, #1b0029, #00000000);
+}
+.history-var article img{
+    height: 30px;
+    width: auto;
 }
 .history-var h5{
     font-size: 0.5em;
@@ -53,63 +78,95 @@ main section article img{
 }
 .shop-var{
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-}
-.shop-var img{
-    width: 7em;
-    position: relative;
-    bottom: 15px;
+    justify-content: space-between;
+    margin: 5px;
 }
 .shop-var a{
-display: flex;
-flex-direction: column;
+    margin: 5px;
 }
 .shop-var article{
-    width: 15em;
-    border-radius: 7px;
-    margin: 7px;
-}
-.shop-var h5{
-    margin: 0px;
-}
-.art-title{
     display: flex;
-    color: #999;
+    font-size: 0.7em;
+    width: 45vw;
+    border-radius: 15px;
+    color: #666;
     justify-content: space-between;
-    padding: 10px;
-    font-style: italic;
 }
-.art-content{
-    color: #fff;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
+.shop-var article h5{
+    margin: 5px;
 }
-aside{
+.shop-var figure{
     display: flex;
     flex-direction: column;
+    margin: 5px;
 }
-aside i{
-    padding: 5px 2px 40px 2px;
+.shop-var figure img{
+    width: 6em;
 }
-.art-price{
-    position: relative;
-    right: 5px;
-    width: 0px;
-    margin: 10px 0;
+.shop-var aside{
+    margin: 5px 5px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.shop-var aside i{
+    padding: 3px;
 }
 .waos{
-    margin: 20px 0 0 0;
+    margin: 25px 0 0 0;
 }
-@media (min-width: 361px){
+@media (min-width: 475px){
+    .shop-var article{
+        width: 30vw;
+    }
+}
+@media (min-width: 635px){
+    .shop-var article{
+        width: 23vw;
+    }
 
 }
 @media(min-width: 768px){
-    main section.history-var{
+    .history-var{
         margin-top: 130px;
+    }
+    .shop-var article{
+        font-size: 1em;
+        width: 30vw;
+    }
+    .shop-var figure img{
+        width: 8em;
     }
     .waos{
         margin: 120px 0 0 0;
+    }
+    .first-div{
+        width: 120px;
+    }
+    .second-div{
+        padding: 30px 50px;
+    }
+    .second-div p{
+        font-size: 4em;
+    }
+    .history-var article a{
+        padding: 0 10px;
+        height: 73px;
+        width: auto;
+    }
+    .history-var article img{
+        height: 50px;
+        width: auto;
+    }
+}
+
+@media(min-width: 1024px){
+    .shop-var article{
+        font-size: 1em;
+        width: 23vw;
+    }
+    .shop-var aside{
+        margin: 5px 10px 5px 0px;
     }
 }

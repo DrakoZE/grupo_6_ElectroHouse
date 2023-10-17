@@ -3,10 +3,6 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-body{
-    background-image: url(/images/fondo.jpg);
-    background-size: 45%;
-}
 main{
     justify-content: center;
     display: flex;
