@@ -14,48 +14,108 @@
 <body>
     <%- include("../partials/header") %>
     <main>
+
+        <h2>Crear Producto</h2>
+
         <form action="/products" method="POST" enctype="multipart/form-data">
+
             <section>
+
+                <!--DB functions & CRUD incoming, this is temporary-->
+                <% colors = ["rojo", "verde", "azul", "amarillo"] %>
+
                 <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>">
                 <% if (locals.errors && errors.title) { %>
-                    <p class="err-msg"> <%=errors.title.msg%> </p>
-               <% } %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
 
                 <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
                 <% if (locals.errors && errors.description) { %>
-                    <p class="err-msg"> <%=errors.description.msg%> </p>
-               <% } %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
 
                 <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : ""%>">
                 <% if (locals.errors && errors.price) { %>
-                    <p class="err-msg"> <%=errors.price.msg%> </p>
-               <% } %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
                 <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : ""%>">
                 <% if (locals.errors && errors.off) { %>
-                    <p class="err-msg"> <%=errors.off.msg%> </p>
-               <% } %>
-               
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
+
+               <input type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : ""%>">
+                <% if (locals.errors && errors.stock) { %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
+
+            </section>
+            
+            <section>
+
+                <input type="text" name="trademark" placeholder="Marca del producto" value="<%=locals.old && old.trademark ? old.trademark : ""%>">
+                <% if (locals.errors && errors.trademark) { %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.trademark.msg%> </p>
+                <% } else { %>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
+
                 <select name="category">
                     <option value="Audio" <%= locals.old && old.category === "Audio" ? "selected" : "" %>>Audio</option>
                     <option value="Entretenimiento" <%= locals.old && old.category === "Entretenimiento" ? "selected" : "" %>>Entretenimiento</option>
                     <option value="SmartPhone" <%= locals.old && old.category === "SmartPhone" ? "selected" : "" %>>SmartPhone</option>
                     <option value="Hogar" <%= locals.old && old.category === "Hogar" ? "selected" : "" %>>Hogar</option>
                 </select>
-                <div class="color-var"><input type="color" name="color1" value="<%=locals.old && old.color1 ? old.color1 : ""%>">Color principal</div>
 
-                <div class="color-var"><input type="color" name="color" value="<%=locals.old && old.color ? old.color : ""%>">Sub-Color</div>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
 
-                <input type="file" name="image">
+            </section>
+
+            <section>
+                <% if (colors) { %>
+
+                    <% for( let index = 0; index < colors.length; index++ ) { %>
+                        <input type="checkbox" name="color" value="<%=colors[index]%>">
+                        <%=colors[index]%>
+                    <% } %>
+
+                <% } %>
+            </section>
+
+            <section>
+
+                <div>
+                    <p>introducir imagen <i class="fa-regular fa-image"></i></p>
+                    <input type="file" name="image">
+                </div>
                 <% if (locals.errors && errors.image) { %>
-                    <p class="err-msg"> <%=errors.image.msg%> </p>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                <% } %>
 
             </section>
-            <section class="create-buttons">
-                <input type="reset">
+
+            <section>
+
+                <div>
+                    <p>Restablecer</p>
+                    <button type="reset"></button>
+                </div>
+                
                 <input type="submit" value="Crear producto">
+                
             </section>
-          </form>
+
+        </form>
+
     </main>
     <%- include("../partials/footer") %>
 </body>

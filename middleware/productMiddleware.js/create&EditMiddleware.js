@@ -43,6 +43,26 @@ module.exports = [
     .isInt({ allow_leading_zeroes: false })
     .withMessage('Sin ceros a la izquierda!'),
 
+  // Valida que el stock no esté vacío.
+  body('stock')
+    .notEmpty()
+    .withMessage('Stock obligatorio'),
+
+  // Valida que el stock sea un número entero mayor o igual a 1.
+  body('stock')
+    .isInt({ min: 1 })
+    .withMessage('Stock obligatorio'),
+
+  // Valida que el stock no tenga ceros a la izquierda.
+  body('stock')
+    .isInt({ allow_leading_zeroes: false })
+    .withMessage('Sin ceros a la izquierda!'),
+
+  // Valida que la marca no esté vacía.
+  body('trademark')
+    .notEmpty()
+    .withMessage('Marca faltante'),
+
   // Verifica que la imagen sea un archivo válido con una de las siguientes extensiones: .jpg, .jpeg, .png, .gif .
   body('image')
     .custom((value, { req }) => {
