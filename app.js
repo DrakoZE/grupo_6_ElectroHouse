@@ -4,6 +4,8 @@ const path = require("path");
 const app = express();
 const PORT = 3001;
 
+const db = require("./database/models")
+
 // Requerir method overside para hacer formulario de edición de producto
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
@@ -44,6 +46,8 @@ const userRouter = require("./src/routers/users");
 app.use("/", homeRouter);
 app.use("/products", productRouter);
 app.use("/users", userRouter);
+
+db.sequelize.sync();
 
 // Iniciar el servidor
 app.listen(PORT, () => console.log("El servidor está corriendo en: http://localhost:3001"));

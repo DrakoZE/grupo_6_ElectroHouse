@@ -21,9 +21,6 @@
             
             <section>
 
-                <!--DB functions & CRUD incoming, this is temporary-->
-                <% colors = ["rojo", "verde", "azul", "amarillo"] %>
-
                 <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : products.title %>">
                 <% if (locals.errors && errors.title) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
@@ -72,29 +69,19 @@
 
                 <select name="category">
                     
-                    <option value="Audio" <% if (locals.old && old.category === "Audio"){ %>
-                        selected 
-                     <% } else if (products.category === "Audio"){ %>
-                        selected 
-                    <% } %>>Audio</option>
-                    
-                    <option value="Entretenimiento" <% if (locals.old && old.category === "Entretenimiento"){ %>
-                        selected 
-                     <% } else if (products.category === "Entretenimiento"){ %>
-                        selected 
-                    <% } %>>Entretenimiento</option>
+                    <% if (category) { %>
+                     
+                        <% for( let i = 0; i < category.length; i++ ) { %>
+                        
+                            <option value="<%= category[i].category %>" <% if (locals.old && old.category === category[i].category ){ %>
+                                selected 
+                             <% } else if (products.category === category[i].category ){ %>
+                                selected 
+                            <% } %>><%= category[i].category %></option>
 
-                    <option value="SmartPhone"<% if (locals.old && old.category === "SmartPhone"){ %>
-                        selected 
-                     <% } else if (products.category === "SmartPhone"){ %>
-                        selected 
-                    <% } %>>SmartPhone</option>
+                        <% } %>
 
-                    <option value="Hogar" <% if (locals.old && old.category === "Hogar"){ %>
-                        selected 
-                     <% } else if (products.category === "Hogar"){ %>
-                        selected 
-                    <% } %>>Hogar</option>
+                    <% } %>
 
                 </select>
 
@@ -103,11 +90,21 @@
             </section>
 
             <section>
-                <% if (colors) { %>
+                <% if (color) { %>
 
-                    <% for( let index = 0; index < colors.length; index++ ) { %>
-                        <input type="checkbox" name="color" value="<%=colors[index]%>">
-                        <%=colors[index]%>
+                    <% for( let i = 0; i < color.length; i++ ) { %>
+
+                        <style>
+                            main form section input[type="checkbox"]:nth-of-type(<%= i + 1 %>)::before {
+                              background-color: <%= color[i].code %>;
+                              box-shadow: 0 0 5px <%= color[i].code %>;
+                            }
+                        </style>
+
+                        <input type="checkbox" name="color" value="<%= color[i] %>">
+
+                        <%= colors[i] %>
+                        
                     <% } %>
 
                 <% } %>

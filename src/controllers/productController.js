@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-
+const db = require("../../database/models")
 let { validationResult } = require("express-validator")
 
 const productController = {
@@ -27,7 +27,14 @@ const productController = {
 
   // Renderizamos el formulario de creacion de productos.
   add: (req, res) => {
-    res.render("products/create");
+
+    db.Color.findAll()
+      .then(function(color){
+        db.Category.findAll()
+          .then(function(category){
+            return res.render("products/create", { color, category });
+          })
+      })
   },
 
   // Crea un nuevo elemento en la lista de productos.
