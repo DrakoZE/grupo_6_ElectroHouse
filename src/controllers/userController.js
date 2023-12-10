@@ -1,24 +1,38 @@
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcryptjs");
-
-let { validationResult } = require("express-validator")
+const db = require("../../database/models")
+let { validationResult } = require("express-validator");
 
 const userController = {
-
-    // Obtenemos los datos del JSON.
-    allUsers: (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8"))),
-
     //lista de usuarios.
     index: (req, res) => {
-        let user = (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8")));
-        res.render("users/users", { user });
+        let usuarios = db.User.findAll();
+        let fotoPerfil = db.Avatar.findAll();
+        Promise.all([usuarios,fotoPerfil])
+            .then(([usuario, foto]) => {
+                res.render("users/users", {user: usuario, avatar: foto})
+            })
+        // db.User.findAll()
+        //     .then(usuario => {
+        //         res.render("users/users", {user: usuario})
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
     },
 
     // Informacion de un usuario.
     show: (req, res) => {
-        const user = userController.allUsers.find((user) => user.id == req.params.id);
-        res.render("users/detailUser", { user });
+        let usuarios = db.User.findByPk(req.params.id);
+        let fotoPerfil = db.Avatar.findByPk(req.params.id);
+        Promise.all([usuarios,fotoPerfil])
+            .then(([usuario, foto]) => {
+                res.render("users/profile", {user: usuario, avatar: foto})
+            })
+            .catch(err => {
+                console.log(err);
+            })
     },
 
     // Formulario de registro.
@@ -26,43 +40,35 @@ const userController = {
         res.render("users/register");
     },
     // Crea un nuevo elemento en la lista de usuarios.
-    create: (req, res) => {
+    create: function (req, res) {
 
         let errors = validationResult(req);
 
-        // Validamos que los datos se hayan cargado correctamente.
-        if (errors.isEmpty()) {
-
-            // Obtenemos todos los usuarios existentes.
-            let user = userController.allUsers;
-
-            // Obtenemos el ultimo usuario de la lista.
-            let lastUser = user.pop();
-
-            // Volvemos a agregar el ultimo usuario a la lista.
-            user.push(lastUser);
-
-            // Creamos un nuevo usuario con los datos obtenidos del formulario.
-            let newUser = {
-                id: lastUser.id + 1,
+        if(errors.isEmpty()) {
+            console.log(req.file);
+            let nuevaFoto = db.Avatar.create({
+                avatar: req.file,
+                name: req.file.originalname
+            })
+            let avatarId = nuevaFoto
+            console.log(avatarId);
+            let nuevoUsuario = db.User.create({
                 firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                userName: req.body.userName,
+                surname: req.body.lastName,
+                username: req.body.userName,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10, 12),
-                avatar: req.file.filename
-            }
-
-            // Agregamos el nuevo usuario a la lista de usuarios.
-            user.push(newUser)
-
-            // Redirijimos a Home.
-            res.redirect("/")
-            
-            // Guardamos la lista de usuarios en el archivo JSON.
-            return fs.writeFileSync(path.join(__dirname, "../data/users/users.json"), JSON.stringify(user, null, 2), "utf-8");
-
-        }else{  
+                avatarid: req.body.avatar,
+                permissionId: req.body.categoria
+            })
+            Promise.all([nuevaFoto, nuevoUsuario])
+                .then(([foto, usuario]) => {
+                    res.redirect("/users")
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
             res.render("users/register", { errors: errors.mapped(), old: req.body });
         }
     },
@@ -74,7 +80,7 @@ const userController = {
 
     // Método de login de usuarios
     loginUser: (req, res) => {
-
+        
         // Valida los datos del formulario de login
         const errors = validationResult(req);
 
@@ -115,7 +121,7 @@ const userController = {
 
     // Método para mostrar el perfil del usuario
     profile: (req, res) => {
-
+        
         // Obtiene el usuario de la sesión
         const user = req.session.logUser;
 
@@ -125,7 +131,7 @@ const userController = {
 
     // Método para cerrar la sesión del usuario
     logout: (req, res) => {
-
+        
         // Borra la cookie remember
         res.clearCookie("remember");
 
