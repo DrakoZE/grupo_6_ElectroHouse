@@ -6,27 +6,27 @@ module.exports = [
   // Valida que el nombre no esté vacío
   body('firstName')
     .notEmpty()
-    .withMessage('El nombre es obligatorio'),
+    .withMessage('Nombre faltante'),
 
   // Valida que el apellido no esté vacío
   body('lastName')
     .notEmpty()
-    .withMessage('El apellido es obligatorio'),
+    .withMessage('Apellido faltante'),
 
   // Valida que el nombre de usuario no esté vacío
   body('userName')
     .notEmpty()
-    .withMessage('El nombre de usuario es obligatorio'),
+    .withMessage('Usuario faltante'),
 
   // Verifica que el correo electrónico sea válido
   body('email')
     .isEmail()
-    .withMessage('El correo electrónico es obligatorio'),
+    .withMessage('Correo invalido'),
 
   // Valida que la contraseña tenga al menos 8 caracteres
   body('password')
     .isLength({ min: 8 })
-    .withMessage('La contraseña debe tener al menos 8 caracteres'),
+    .withMessage('Clave muy corta'),
 
   // Verifica que la imagen sea un archivo válido con una de las siguientes extensiones: .jpg, .jpeg, .png, .gif
   body('avatar')
@@ -37,13 +37,13 @@ module.exports = [
 
       if (!file) {
 
-        throw new Error('Debes subir una imagen');
+        throw new Error('Imagen faltante');
       } else {
 
         const fileFormat = path.extname(file.originalname);
 
         if (!validFormats.includes(fileFormat)) {
-          throw new Error('Formato de archivo no compatible');
+          throw new Error('Formato no compatible');
         }
 
         return true;

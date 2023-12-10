@@ -4,12 +4,10 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         category: {
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.STRING
         }
     },
     {
@@ -21,7 +19,7 @@ module.exports = (sequelize,DataTypes) => {
         
         Category.hasMany(models.Product, {
             as: "products",
-            foreignKey: "category_id"
+            foreignKey: "categoryId"
         });
 
     }

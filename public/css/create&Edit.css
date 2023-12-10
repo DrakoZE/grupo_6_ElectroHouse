@@ -58,9 +58,10 @@ main form section select option{
     background-color: #000000f0;
 }
 main form section:nth-child(3){
-    grid-template-columns: 8% 1fr 8% 1fr;
+    grid-template-columns: 20px 1fr 20px 1fr;
     accent-color: #aa00ff;
     align-items: start;
+    font-size: 0.9em;
     color: #666;
     display: grid;
     padding: 10px;
@@ -134,5 +135,8 @@ main form section:last-child div button{
 @media(min-width: 768px){
     main{
         margin: 130px 10px 5px 10px;
+    }
+    main form section:nth-child(3){
+        grid-template-columns: 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
     }
 }

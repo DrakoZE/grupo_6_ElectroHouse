@@ -4,12 +4,10 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         seller: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
+            type: DataTypes.BOOLEAN
         }
     },
     {
@@ -19,7 +17,7 @@ module.exports = (sequelize,DataTypes) => {
     Seller.associate = function(models){
         Seller.hasOne(models.User, {
             as: "users",
-            foreignKey: "seller_id",
+            foreignKey: "sellerId",
         });
 
     }

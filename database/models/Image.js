@@ -4,20 +4,16 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         productId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.INTEGER
         },
         image: {
-            type: DataTypes.BLOB,
-            allowNull: false
+            type: DataTypes.BLOB
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         }
     },
     {
@@ -28,7 +24,7 @@ module.exports = (sequelize,DataTypes) => {
 
         Image.belongsTo(models.Product, {
             as: "products",
-            foreignKey: "product_id"
+            foreignKey: "productId"
         });
 
     }

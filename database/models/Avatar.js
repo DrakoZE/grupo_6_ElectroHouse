@@ -4,16 +4,13 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         avatar: {
-            type: DataTypes.BLOB,
-            allowNull: false
+            type: DataTypes.BLOB
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         }
     },
     {
@@ -25,7 +22,7 @@ module.exports = (sequelize,DataTypes) => {
         
         Avatar.hasOne(models.User, {
             as: "user",
-            foreignKey:  "avatar_id"
+            foreignKey: "avatarId"
         });
 
     }

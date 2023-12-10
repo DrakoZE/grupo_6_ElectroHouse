@@ -16,24 +16,41 @@
     <%- include("../partials/header.ejs")%>
 
     <main>
-        <form class=" purpleshadowbox" action="/users/login" method="post">
-            <h2>Ingresar</h2>
+
+        <h2>Ingresar</h2>
+
+        <form action="/users/login" method="post">
 
             <input type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
             <% if (locals.errors && errors.email) { %>
                 <p class="err-msg"> <%=errors.email.msg%> </p>
-           <% } %>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
             <input class="last-imput" type="password" name="password" placeholder="Clave">
             <% if (locals.errors && errors.password) { %>
                 <p class="err-msg"> <%=errors.password.msg%> </p>
-           <% } %>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
+
+            <div style="border: solid 1px #00000000; background: #00000000;">
+                <input type="checkbox" name="remind">
+            </div>
+
+            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
             
-            <button type="submit" class="enviar"> Enviar datos</button>
-            <button class="cancel" type="reset">X</button>
-            <label class="remind-me">
-                <input type="checkbox" name="remind"> Recordarme
-            </label>
+           <div>
+                <p>Restablecer</p>
+                <button type="reset"></button>
+            </div>
+        
+            <div>
+                <p>Enviar</p>
+                <button type="submit"></button>
+            </div>
+            
         </form>
     </main>
 

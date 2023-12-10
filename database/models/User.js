@@ -4,41 +4,28 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         firstName: {
-            type: DataTypes.STRING(25),
-            allowNull: false
+            type: DataTypes.STRING(25)
         },
         surname: {
-            type: DataTypes.STRING(25),
-            allowNull: false
+            type: DataTypes.STRING(25)
         },
         avatarId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.INTEGER
         },
         username: {
-            type: DataTypes.STRING(15),
-            unique: true,
-            allowNull: false
+            type: DataTypes.STRING(15)
         },
         email: {
-            type: DataTypes.STRING(50),
-            unique: true,
-            allowNull: false,
-            validate: {
-                isEmail: true
-            }
+            type: DataTypes.STRING(50)
         },
         password: {
-            type: DataTypes.STRING(200),
-            allowNull: false
+            type: DataTypes.STRING(200)
         },
         permissionId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         }
     },
     {
@@ -50,12 +37,12 @@ module.exports = (sequelize,DataTypes) => {
 
         User.belongsTo(models.Avatar, {
             as: "avatars",
-            foreignKey: "avatar_id"
+            foreignKey: "avatarId"
         });
 
         User.belongsTo(models.Seller, {
             as: "sellers",
-            foreignKey: "seller_id",
+            foreignKey: "sellerId",
         });
 
         User.belongsToMany(models.Product, {
@@ -66,7 +53,7 @@ module.exports = (sequelize,DataTypes) => {
 
         User.hasMany(models.Product, {
             as: "products",
-            foreignKey: "user_id"
+            foreignKey: "userId"
         });
     }
 

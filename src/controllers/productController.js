@@ -30,11 +30,16 @@ const productController = {
 
     db.Color.findAll()
       .then(function(color){
+
         db.Category.findAll()
           .then(function(category){
+
             return res.render("products/create", { color, category });
+
           })
+
       })
+
   },
 
   // Crea un nuevo elemento en la lista de productos.
@@ -78,8 +83,8 @@ const productController = {
 
     }else{
 
-      console.log(errors)
       res.render("products/create", { errors: errors.mapped(), old: req.body });
+
     }
   },
 

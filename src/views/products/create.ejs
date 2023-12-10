@@ -13,6 +13,8 @@
 
 <body>
     <%- include("../partials/header") %>
+
+    
     <main>
 
         <h2>Crear Producto</h2>
@@ -59,9 +61,9 @@
             
             <section>
 
-                <input type="text" name="trademark" placeholder="Marca del producto" value="<%=locals.old && old.trademark ? old.trademark : ""%>">
-                <% if (locals.errors && errors.trademark) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.trademark.msg%> </p>
+                <input type="text" name="tradeMark" placeholder="Marca del producto" value="<%=locals.old && old.tradeMark ? old.tradeMark : ""%>">
+                <% if (locals.errors && errors.tradeMark) { %>
+                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
                 <% } else { %>
                     <p><i class="fa-solid fa-circle fa-2xs"></i></p>
                 <% } %>
@@ -71,7 +73,9 @@
                     <% if (category) { %>
 
                         <% for( let i = 0; i < category.length; i++ ) { %>
-                            <option value="<%= category[i].category %>" <%= locals.old && old.category === category[i].category ? "selected" : "" %> ><%= category[i].category %></option>
+
+                            <option value="<%= category[i].id %>" <%= locals.old && old.category === category[i].id ? "selected" : "" %> ><%= category[i].category %></option>
+                            
                         <% } %>
 
                     <% } %>
@@ -84,8 +88,18 @@
 
             <section>
 
-                <% if (color) { %>
+                <% 
+                    function waosInt(num) {
+                        const result = [];
+                        for (const index of num ) {
+                            result.push(parseInt(index));
+                        }
+                        return result;
+                    }
+                %>
 
+                <% if (color) { %>
+                    
                     <% for( let i = 0; i < color.length; i++ ) { %>
 
                         <style>
@@ -93,15 +107,20 @@
                               background-color: <%=color[i].code%>;
                               box-shadow: 0 0 5px <%=color[i].code%>;
                             }
-                          </style>
+                        </style>
 
-                        <input type="checkbox" name="color" value="<%=color[i].color%>">
+                        <% if (locals.old) { %>
+                            <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosInt(old.color).includes( i + 1 ) ? "checked" : "" %>>
+                        <% } else { %>
+                            <input type="checkbox" name="color" value="<%= color[i].id %>" <%= locals.old && old.color ? "checked" : "" %>>
+                        <% } %>
 
                         <%=color[i].color%>
                         
                     <% } %>
 
                 <% } %>
+
             </section>
 
             <section>
@@ -113,6 +132,8 @@
                 <% if (locals.errors && errors.image) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                <% } %>
+
+               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : "" %>">
 
             </section>
 

@@ -4,16 +4,13 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         color: {
-            type: DataTypes.STRING(25),
-            allowNull: true
+            type: DataTypes.STRING(25)
         },
         code: {
-            type: DataTypes.STRING(10),
-            allowNull: true
+            type: DataTypes.STRING(10)
         }
     },
     {

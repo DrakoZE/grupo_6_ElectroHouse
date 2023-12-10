@@ -4,48 +4,37 @@ module.exports = (sequelize,DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
             autoIncrement: true
         },
         title: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         description: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         price: {
-            type: DataTypes.DECIMAL(10,2),
-            allowNull: false
+            type: DataTypes.DECIMAL(10,2)
         },
         off: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.INTEGER
         },
         stock: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         tradeMark:{
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.STRING
         },
         verificated: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true
+            type: DataTypes.BOOLEAN
         },
         popularity: {
-            type: DataTypes.DECIMAL(2,1),
-            allowNull: false
+            type: DataTypes.DECIMAL(2,1)
         },
         categoryId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.INTEGER
         },
         sellerId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.INTEGER
         }        
     },
     {
@@ -57,12 +46,12 @@ module.exports = (sequelize,DataTypes) => {
 
         Product.belongsTo(models.Category, {
             as: "categories",
-            foreignKey: "category_id"
+            foreignKey: "categoryId"
         });
 
         Product.belongsTo(models.User, {
             as: "users",
-            foreignKey: "user_id"
+            foreignKey: "userId"
         });
 
         Product.belongsToMany(models.User, {
@@ -80,7 +69,7 @@ module.exports = (sequelize,DataTypes) => {
 
         Product.hasMany(models.Image, {
             as: "images",
-            foreignKey: "product_id"
+            foreignKey: "productId"
         });
 
     }

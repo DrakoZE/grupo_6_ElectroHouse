@@ -13,49 +13,81 @@
 
     <%- include("../partials/header") %>
 
-<main>
+    <main>
 
+        <h2>Registrarse</h2>
 
+        <form action="/users/create" method="post" enctype="multipart/form-data">
 
-    <form action="/users/create" method="post" enctype="multipart/form-data">
-        <h2>Datos</h2>
+            <input type="text" name="firstName" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : ""%>">
+            <% if (locals.errors && errors.firstName) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.firstName.msg%> </p>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
-        <input type="text" name="firstName" id="nameId" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : ""%>">
-       <% if (locals.errors && errors.firstName) { %>
-            <p class="err-msg"> <%=errors.firstName.msg%> </p>
-       <% } %>
+            <input type="text" name="lastName" placeholder="Apellido" value="<%=locals.old && old.lastName ? old.lastName : ""%>">
+            <% if (locals.errors && errors.lastName) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.lastName.msg%> </p>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
-        <input type="text" name="lastName" id="nameId" placeholder="Apellido" value="<%=locals.old && old.lastName ? old.lastName : ""%>">
-        <% if (locals.errors && errors.lastName) { %>
-            <p class="err-msg"> <%=errors.lastName.msg%> </p>
-       <% } %>
+            <input type="text" name="username" placeholder="Nombre de Usuario" value="<%=locals.old && old.userName ? old.userName : ""%>">
+            <% if (locals.errors && errors.userName) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.userName.msg%> </p>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
-        <input type="text" name="userName" id="userId" placeholder="Nombre de Usuario" value="<%=locals.old && old.userName ? old.userName : ""%>">
-        <% if (locals.errors && errors.userName) { %>
-            <p class="err-msg"> <%=errors.userName.msg%> </p>
-       <% } %>
+            <input type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
+            <% if (locals.errors && errors.email) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.email.msg%> </p>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
-        <input type="email" name="email" id="emailId" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
-        <% if (locals.errors && errors.email) { %>
-            <p class="err-msg"> <%=errors.email.msg%> </p>
-       <% } %>
+            <input type="password" name="password" placeholder="clave">
+            <% if (locals.errors && errors.password) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.password.msg%> </p>
+            <% } else { %>
+                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
 
-        <input type="password" name="password" id="passwordId" placeholder="clave">
-        <% if (locals.errors && errors.password) { %>
-            <p class="err-msg"> <%=errors.password.msg%> </p>
-       <% } %>
+            <select name="seller">
 
-        <input class="last-imput" type="file" name="avatar" value="<%=locals.old && old.avatar ? old.avatar : ""%>">
-        <% if (locals.errors && errors.avatar) { %>
-            <p class="err-msg"> <%=errors.avatar.msg%> </p>
-       <% } %>
+                <option value="true" <%= locals.old && old.seller == "true" ? "selected" : "" %> >Vendedor</option>
+                <option value="false" <%= locals.old && old.seller == "false" ? "selected" : "" %> >Comprador</option>
 
-        <button type="submit" class="enviar">Enviar</button>
-        <button class="cancel" type="reset">X</button>
-        <a href="/users/login">¿Ya tienes cuenta?</a>
-    </form>
-    
-</main>
+            </select>
+
+            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+
+            <div>
+                <p>introducir imagen <i class="fa-regular fa-image"></i></p>
+                <input type="file" name="avatar">
+            </div>
+            <% if (locals.errors && errors.avatar) { %>
+                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.avatar.msg%> </p>
+           <% } else { %>
+            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <% } %>
+
+           <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : "" %>">
+
+           <div>
+                <p>Restablecer</p>
+                <button type="reset"></button>
+            </div>
+            
+            <div>
+                <p>Enviar</p>
+                <button type="submit"></button>
+            </div>
+
+        </form>
+        
+    </main>
 
 </body>
 </html>

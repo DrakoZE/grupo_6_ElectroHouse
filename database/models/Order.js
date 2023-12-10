@@ -2,13 +2,11 @@ module.exports = (sequelize,DataTypes) => {
     
     const Order = sequelize.define("Order", {
         amount: {
-            type: DataTypes.DECIMAL(10,2),
-            allowNull: false
+            type: DataTypes.DECIMAL(10,2)
         },
         status: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: "active",
+            defaultValue: "active"
           },
     },
     {
