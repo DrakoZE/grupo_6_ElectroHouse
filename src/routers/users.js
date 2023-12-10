@@ -30,7 +30,10 @@ router.get("/register", guestMiddleware, controller.add);
 router.post("/create", upload("user-avatar").single("avatar"), registerValidation, controller.create);
 
 // Perfil de usuario.
-router.get("/profile", authMiddleware, controller.profile)
+router.get("/profile", authMiddleware, controller.profile);
+
+// Formulario de edición de Perfil.
+router.get("/edit", upload("user-avatar").single("avatar"), registerValidation, controller.update)
 
 // Detalles de un Usuario.
 router.get("/:id", controller.show);

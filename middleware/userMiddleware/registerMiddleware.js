@@ -9,12 +9,12 @@ module.exports = [
     .withMessage('Nombre faltante'),
 
   // Valida que el apellido no esté vacío
-  body('lastName')
+  body('surname')
     .notEmpty()
     .withMessage('Apellido faltante'),
 
   // Valida que el nombre de usuario no esté vacío
-  body('userName')
+  body('username')
     .notEmpty()
     .withMessage('Usuario faltante'),
 

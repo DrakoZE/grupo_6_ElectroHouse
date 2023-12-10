@@ -75,7 +75,7 @@
                         
                             <option value="<%= category[i].id %>" <% if (locals.old && old.category === category[i].id ){ %>
                                 selected 
-                             <% } else if (product.categoryId === category[i].id ){ %>
+                             <% } else if (product.categories.id === category[i].id ){ %>
                                 selected 
                             <% } %>><%= category[i].category %></option>
 
@@ -114,7 +114,7 @@
 
                         <% if (locals.old) { %>
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosInt(old.color).includes(i + 1) ? "checked" : "" %>>
-                        <% } else if(product.colorId === color[i].id){ %>
+                        <% } else if(product.colors.id.includes(i + 1)){ %>
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= locals.old && old.color ? "checked" : "" %>>
                         <% } %>   
                             
@@ -136,7 +136,7 @@
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                <% } %>
 
-               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : products.image %>">
+               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : products.images.image %>">
 
             </section>
 

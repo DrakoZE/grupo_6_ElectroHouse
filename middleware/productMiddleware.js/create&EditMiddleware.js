@@ -59,7 +59,7 @@ module.exports = [
     .withMessage('Sin ceros a la izquierda!'),
 
   // Valida que la marca no esté vacía.
-  body('trademark')
+  body('tradeMark')
     .notEmpty()
     .withMessage('Marca faltante'),
 
