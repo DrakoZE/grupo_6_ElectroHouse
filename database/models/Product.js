@@ -50,7 +50,7 @@ module.exports = (sequelize,DataTypes) => {
         });
 
         Product.belongsTo(models.User, {
-            as: "users",
+            as: "user",
             foreignKey: "userId"
         });
 

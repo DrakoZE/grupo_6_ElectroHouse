@@ -20,11 +20,11 @@
                 <div>
                     <aside>
                         <a><i class="fa-solid fa-gears"></i></a>
-                        <a href="/users/edit"><i class="fa-solid fa-user-pen"></i></a>
+                        <a href="/users/edit/<%= user.id %>"><i class="fa-solid fa-user-pen"></i></a>
                         <a href="/users/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </aside>
                     <figure>
-                        <img src="/images/user-avatar/<%= avatar.name %>">
+                        <img src="/images/user-avatar/<%= user.avatars.name %>">
                         <h5>ID:   # <%= user.id %></h5>
                     </figure>
                 </div>
