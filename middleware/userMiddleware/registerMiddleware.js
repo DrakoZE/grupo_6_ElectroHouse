@@ -9,7 +9,7 @@ module.exports = [
     .withMessage('Nombre faltante'),
 
   // Valida que el apellido no esté vacío
-  body('lastName')
+  body('surname')
     .notEmpty()
     .withMessage('Apellido faltante'),
 

@@ -55,12 +55,14 @@ module.exports = (sequelize,DataTypes) => {
         });
 
         Product.belongsToMany(models.User, {
+            as: "users",
             through: models.Order,
             foreignKey: "product_id",
             otherKey: "user_id"
         });
 
           Product.belongsToMany(models.Color, {
+            as: "colors",
             through: "gamma",
             foreignKey: "product_id",
             otherKey: "color_id",

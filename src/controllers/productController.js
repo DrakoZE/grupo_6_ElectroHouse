@@ -16,8 +16,24 @@ const productController = {
 
   // Renderizamos la vista con detalles de un producto.
   show: (req, res) => {
-    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
-    res.render("products/detailProduct", { products });
+
+    db.Color.findAll()
+      .then(function(color){
+
+        db.Category.findAll()
+          .then(function(category){
+
+            db.Product.findByPk(req.params.id)
+              .then(function(product){
+
+                res.render("products/detailProduct", { color, category, product });
+
+              })
+
+          })
+
+      })
+    
   },
 
   // Renderizamos el carro de compras.
@@ -47,51 +63,69 @@ const productController = {
 
     let errors= validationResult(req);
 
+    console.log(req.body.title, req.body.description, req.body.price, req.body.off, req.body.stock, req.body.tradeMark)
     // Validamos que los datos se hayan cargado correctamente.
     if (errors.isEmpty()) {
 
-      // Obtenemos todos los productos existentes.
-      let product = productController.allProducts;
-
-      // Obtenemos el ultimo producto de la lista.
-      let lastProduct = product.pop();
-
-      // Volvemos a agregar el ultimo producto a la lista.
-      product.push(lastProduct);
-
-      // Creamos un nuevo producto con los datos obtenidos del formulario.
-      let newProduct = {
-        id: lastProduct.id + 1,
+      db.Product.create({
         title: req.body.title,
         description: req.body.description,
-        image: req.file.filename,
-        category: req.body.category,
         price: req.body.price,
         off: req.body.off,
-        color: req.body.color,
-        color1: req.body.color1,
-      }
+        stock: req.body.stock,
+        tradeMark: req.body.tradeMark,
+        verificated: false,
+        popularity: 0,
+        categoryId: req.body.category,
+        sellerId: req.body.seller,
+      })
 
-      // Agregamos el nuevo producto a la lista de productos.
-      product.push(newProduct)
+      db.Image.create({
 
-      // Redirijimos a Home.
-      res.redirect("/")
+        image: req.file,
+        name: req.file.filename
+      })
       
-      // Guardamos la lista de productos en el archivo JSON.
-      return fs.writeFileSync(path.join(__dirname, "../data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
+      res.redirect("/products")
 
     }else{
 
-      res.render("products/create", { errors: errors.mapped(), old: req.body });
+      db.Color.findAll()
+      .then(function(color){
+
+        db.Category.findAll()
+          .then(function(category){
+
+            console.log(errors)
+            return res.render("products/create", { color, category, errors: errors.mapped(), old: req.body });
+
+          })
+
+      })
 
     }
   },
 
   // Renderizamos el formulario de edicion de productos.
   edit: (req, res) => {
-    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
-    res.render("products/update", { products });
+    
+    db.Color.findAll()
+      .then(function(color){
+
+        db.Category.findAll()
+          .then(function(category){
+
+            db.Product.findByPk(req.params.id)
+              .then(function(product){
+
+                res.render("products/update", { color, category, product });
+
+              })
+
+          })
+
+      })
+    
   },
 
   // Actualiza un producto en la lista de productos.
