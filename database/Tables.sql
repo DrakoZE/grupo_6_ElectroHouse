@@ -26,7 +26,6 @@ DROP TABLE IF EXISTS `avatars`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `avatars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `avatar` blob DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -252,7 +251,7 @@ CREATE TABLE `users` (
   `username` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
-  `permissionId` int(11) DEFAULT NULL,
+  `permissionId` BOOLEAN DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `sellerId` int(11) DEFAULT NULL,

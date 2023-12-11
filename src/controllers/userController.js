@@ -13,13 +13,6 @@ const userController = {
             .then(([usuario, foto]) => {
                 res.render("users/users", {user: usuario, avatar: foto})
             })
-        // db.User.findAll()
-        //     .then(usuario => {
-        //         res.render("users/users", {user: usuario})
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
     },
 
     // Informacion de un usuario.
@@ -40,27 +33,27 @@ const userController = {
         res.render("users/register");
     },
     // Crea un nuevo elemento en la lista de usuarios.
-    create: function (req, res) {
+    create: async function (req, res) {
 
         let errors = validationResult(req);
 
         if(errors.isEmpty()) {
-            console.log(req.file);
-            let nuevaFoto = db.Avatar.create({
-                avatar: req.file,
+            let nuevaFoto = await db.Avatar.create({
                 name: req.file.originalname
             })
-            let avatarId = nuevaFoto
-            console.log(avatarId);
-            let nuevoUsuario = db.User.create({
+            console.log(nuevaFoto.id);
+            let nuevoUsuario =  await db.User.create({
                 firstName: req.body.firstName,
                 surname: req.body.lastName,
-                username: req.body.userName,
+                username: req.body.username,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10, 12),
-                avatarid: req.body.avatar,
+                avatarId: nuevaFoto.id,
                 permissionId: req.body.categoria
             })
+            console.log(nuevaFoto);
+            console.log(nuevoUsuario);
+            
             Promise.all([nuevaFoto, nuevoUsuario])
                 .then(([foto, usuario]) => {
                     res.redirect("/users")
@@ -71,6 +64,33 @@ const userController = {
         } else {
             res.render("users/register", { errors: errors.mapped(), old: req.body });
         }
+    },
+
+    edit: (req,res) => {
+        res.render("users/users/edit/:id")
+    },
+
+    update: async function (req,res) {
+        let fotoEditada = await db.Avatar.update({
+            name: req.file.originalname
+        },{
+            where: {id: req.params.id}
+        });
+        let usuarioEditado = await db.User.update({
+            firstName: req.body.firstName,
+            surname: req.body.lastName,
+            username: req.body.username,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10, 12),
+            avatarId: fotoEditada.id,
+            permissionId: req.body.categoria
+        },{
+            where: {id: req.params.id}
+        })
+        Promise.all([fotoEditada,usuarioEditado])
+            .then(([foto, usuario]) => {
+                res.redirect("/users/" + req.params.id)
+            })
     },
 
     //formulario de LogIn.

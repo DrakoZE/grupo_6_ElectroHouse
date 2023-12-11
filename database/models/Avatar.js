@@ -6,9 +6,6 @@ module.exports = (sequelize,DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        avatar: {
-            type: DataTypes.BLOB
-        },
         name: {
             type: DataTypes.STRING
         }

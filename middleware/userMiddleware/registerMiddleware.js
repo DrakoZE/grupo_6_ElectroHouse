@@ -14,7 +14,7 @@ module.exports = [
     .withMessage('Apellido faltante'),
 
   // Valida que el nombre de usuario no esté vacío
-  body('userName')
+  body('username')
     .notEmpty()
     .withMessage('Usuario faltante'),
 
@@ -33,7 +33,7 @@ module.exports = [
     .custom((value, { req }) => {
 
       const file = req.file;
-      const validFormats = ['.jpg', 'jpeg', '.png', '.gif'];
+      const validFormats = ['.jpg', '.jpeg', '.png', '.gif'];
 
       if (!file) {
 
