@@ -103,10 +103,12 @@
 
                 <% if (color) { %>
 
+                    <input type="hidden" name="color" value="Default">
+
                     <% for( let i = 0; i < color.length; i++ ) { %>
 
                         <style>
-                            main form section input[type="checkbox"]:nth-of-type(<%= i + 1 %>)::before {
+                            main form section input[type="checkbox"]:nth-of-type(<%= i + 2 %>)::before {
                               background-color: <%= color[i].code %>;
                               box-shadow: 0 0 5px <%= color[i].code %>;
                             }
@@ -136,7 +138,7 @@
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                <% } %>
 
-               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : products.images.image %>">
+               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : product.image %>">
 
             </section>
 

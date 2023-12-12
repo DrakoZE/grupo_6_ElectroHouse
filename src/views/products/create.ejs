@@ -100,10 +100,12 @@
 
                 <% if (color) { %>
                     
+                    <input type="hidden" name="color" value="Default">
+
                     <% for( let i = 0; i < color.length; i++ ) { %>
 
                         <style>
-                            main form section input[type="checkbox"]:nth-of-type(<%= i + 1 %>)::before {
+                            main form section input[type="checkbox"]:nth-of-type(<%= i + 2 %>)::before {
                               background-color: <%=color[i].code%>;
                               box-shadow: 0 0 5px <%=color[i].code%>;
                             }

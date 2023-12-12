@@ -40,31 +40,17 @@
                 <p><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <input type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : user.email%>">
-            <% if (locals.errors && errors.email) { %>
-                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.email.msg%> </p>
-            <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
-            <% } %>
-
-            <input type="password" name="password" placeholder="clave">
-            <% if (locals.errors && errors.password) { %>
-                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.password.msg%> </p>
-            <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
-            <% } %>
-
             <select name="seller">
 
-                <option value="true" <% if (locals.old && old.seller == "true"){ %>
+                <option value="Vendedor" <% if (locals.old && old.seller == "Vendedor"){ %>
                     selected
-                <% } else if (user.sellerId.seller == "true") { %>
+                <% } else if (user.seller == "Vendedor") { %>
                     selected
                 <% } %>>Vendedor</option>
 
-                <option value="false" <% if (locals.old && old.seller == "false"){ %>
+                <option value="Comprador" <% if (locals.old && old.seller == "Comprador"){ %>
                     selected
-                <% } else if (user.sellerId.seller == "false") { %>
+                <% } else if (user.seller == "Comprador") { %>
                     selected
                 <% } %>>Comprador</option>
 
