@@ -18,32 +18,6 @@ USE `electrohouse`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `avatars`
---
-
-DROP TABLE IF EXISTS `avatars`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `avatars` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `avatar` blob DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `avatars`
---
-
-LOCK TABLES `avatars` WRITE;
-/*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `categories`
 --
 
@@ -119,33 +93,6 @@ LOCK TABLES `gamma` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `images`
---
-
-DROP TABLE IF EXISTS `images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `productId` int(11) DEFAULT NULL,
-  `image` blob DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `productId` (`productId`),
-  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `images`
---
-
-LOCK TABLES `images` WRITE;
-/*!40000 ALTER TABLE `images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `orders`
 --
 
@@ -193,15 +140,15 @@ CREATE TABLE `products` (
   `verificated` tinyint(1) DEFAULT NULL,
   `popularity` decimal(2,1) DEFAULT NULL,
   `categoryId` int(11) DEFAULT NULL,
-  `sellerId` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `userId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categoryId` (`categoryId`),
   KEY `userId` (`userId`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `products_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `products_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -215,29 +162,6 @@ LOCK TABLES `products` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `sellers`
---
-
-DROP TABLE IF EXISTS `sellers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sellers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `seller` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sellers`
---
-
-LOCK TABLES `sellers` WRITE;
-/*!40000 ALTER TABLE `sellers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sellers` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `users`
 --
 
@@ -248,19 +172,14 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(25) DEFAULT NULL,
   `surname` varchar(25) DEFAULT NULL,
-  `avatarId` int(11) DEFAULT NULL,
   `username` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
-  `permissionId` int(11) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `seller` varchar(15) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `sellerId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `avatarId` (`avatarId`),
-  KEY `sellerId` (`sellerId`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`avatarId`) REFERENCES `avatars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `users_ibfk_2` FOREIGN KEY (`sellerId`) REFERENCES `sellers` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -282,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08 19:55:11
+-- Dump completed on 2023-12-11 23:04:56
