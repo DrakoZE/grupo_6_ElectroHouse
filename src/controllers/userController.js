@@ -32,9 +32,9 @@ const userController = {
         let errors = validationResult(req);
 
         if(errors.isEmpty()) {
-            console.log(req.body.seller);
+
             if (req.body.seller == "true") {
-                let seller = await db.Seller.create({
+                let nuevoSeller = await db.Seller.create({
                     seller: req.body.seller
                 })
                 console.log(seller);
@@ -51,10 +51,8 @@ const userController = {
                     password: bcrypt.hashSync(req.body.password, 10, 12),
                     avatarId: nuevaFoto.id,
                     permissionId: req.body.seller,
-                    sellerId: seller.seller
+                    sellerId: nuevoSeller.seller
                 })
-                // console.log(nuevaFoto);
-                // console.log(nuevoUsuario);
                 
                 Promise.all([nuevaFoto, nuevoUsuario])
                     .then(([foto, usuario]) => {
@@ -94,7 +92,9 @@ const userController = {
     },
 
     update: async (req,res) => {
-        let usuario = await db.User.findByPk(req.params.id)
+        let usuario = await db.User.findByPk(req.params.id, {
+            include: ["avatars"]
+        })
         res.render("users/updateUser", {user: usuario})
     },
 

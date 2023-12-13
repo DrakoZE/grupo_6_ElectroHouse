@@ -1,17 +1,18 @@
 const fs = require("fs");
 const path = require("path");
 const db = require("../../database/models")
-let { validationResult } = require("express-validator")
+let { validationResult } = require("express-validator");
 
 const productController = {
 
   // Obtenemos los datos del JSON.
-  allProducts: (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/products/products.json"), "utf-8"))),
+  // allProducts: (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/products/products.json"), "utf-8"))),
 
   // Renderizamos la vista con los productos.
-  index: (req, res) => {
-    const products = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/products/products.json"), "utf-8"));
-    res.render("products/products", { products });
+  index: async(req, res) => {
+    let productos = await db.Product.findAll();
+    console.log(productos);
+    res.render("products/products", {products: productos})
   },
 
   // Renderizamos la vista con detalles de un producto.
@@ -24,9 +25,9 @@ const productController = {
           .then(function(category){
 
             db.Product.findByPk(req.params.id)
-              .then(function(product){
+              .then(function(products){
 
-                res.render("products/detailProduct", { color, category, product });
+                res.render("products/detailProduct", { color, category, products });
 
               })
 
@@ -49,7 +50,6 @@ const productController = {
 
         db.Category.findAll()
           .then(function(category){
-
             return res.render("products/create", { color, category });
 
           })
@@ -59,15 +59,17 @@ const productController = {
   },
 
   // Crea un nuevo elemento en la lista de productos.
-  create: (req, res) => {
+  create: async (req, res) => {
 
     let errors= validationResult(req);
 
-    console.log(req.body.title, req.body.description, req.body.price, req.body.off, req.body.stock, req.body.tradeMark)
     // Validamos que los datos se hayan cargado correctamente.
     if (errors.isEmpty()) {
-
-      db.Product.create({
+      let colors = req.body.color
+      let colorDefault = colors.shift();
+      console.log(colors);
+      console.log(colorDefault);
+      let productoNuevo = await db.Product.create({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
@@ -77,16 +79,25 @@ const productController = {
         verificated: false,
         popularity: 0,
         categoryId: req.body.category,
-        sellerId: req.body.seller,
+        sellerId: req.body.seller
       })
-
-      db.Image.create({
-
+      let imagenNueva = await db.Image.create({
+        productId: productoNuevo.id ,
         image: req.file,
         name: req.file.filename
       })
-      
-      res.redirect("/products")
+      console.log(req.body);
+      Promise.all([imagenNueva,productoNuevo])
+        .then(([imagen,producto]) => {
+          res.redirect("/products", {imagen, producto})
+        })
+        // .catch(err => {
+        //   console.log(err);
+        // })
+      // console.log(req.body)
+      // console.log(req.file);
+      // console.log(productoNuevo);
+      // console.log(imagenNueva);
 
     }else{
 

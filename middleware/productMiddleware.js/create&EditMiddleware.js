@@ -68,7 +68,7 @@ module.exports = [
     .custom((value, { req }) => {
 
       const file = req.file;
-      const validFormats = ['.jpg', 'jpeg', '.png', '.gif'];
+      const validFormats = ['.jpg', '.jpeg', '.png', '.gif'];
 
       if (!file) {
 

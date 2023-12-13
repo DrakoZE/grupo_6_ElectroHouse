@@ -35,7 +35,10 @@ module.exports = (sequelize,DataTypes) => {
         },
         sellerId: {
             type: DataTypes.INTEGER
-        }        
+        },
+        imageId: {
+            type: DataTypes.INTEGER
+        }
     },
     {
         createdAt: "created_at",
@@ -55,13 +58,13 @@ module.exports = (sequelize,DataTypes) => {
         });
 
         Product.belongsToMany(models.User, {
-            as: "users",
+            as: "orders",
             through: models.Order,
             foreignKey: "product_id",
             otherKey: "user_id"
         });
 
-          Product.belongsToMany(models.Color, {
+        Product.belongsToMany(models.Color, {
             as: "colors",
             through: "gamma",
             foreignKey: "product_id",

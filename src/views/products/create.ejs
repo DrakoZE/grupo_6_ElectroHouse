@@ -73,7 +73,6 @@
                     <% if (category) { %>
 
                         <% for( let i = 0; i < category.length; i++ ) { %>
-
                             <option value="<%= category[i].id %>" <%= locals.old && old.category === category[i].id ? "selected" : "" %> ><%= category[i].category %></option>
                             
                         <% } %>
@@ -100,16 +99,19 @@
 
                 <% if (color) { %>
                     
+                    <input type="hidden" name="color" value="Default">
+
                     <% for( let i = 0; i < color.length; i++ ) { %>
 
                         <style>
-                            main form section input[type="checkbox"]:nth-of-type(<%= i + 1 %>)::before {
+                            main form section input[type="checkbox"]:nth-of-type(<%= i + 2 %>)::before {
                               background-color: <%=color[i].code%>;
                               box-shadow: 0 0 5px <%=color[i].code%>;
                             }
                         </style>
 
                         <% if (locals.old) { %>
+                            
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosInt(old.color).includes( i + 1 ) ? "checked" : "" %>>
                         <% } else { %>
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= locals.old && old.color ? "checked" : "" %>>
