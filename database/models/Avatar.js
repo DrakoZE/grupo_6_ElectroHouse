@@ -19,7 +19,7 @@ module.exports = (sequelize,DataTypes) => {
         
         Avatar.hasOne(models.User, {
             as: "user",
-            foreignKey: "avatarId"
+            foreignKey: "id"
         });
 
     }

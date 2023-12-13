@@ -13,8 +13,6 @@ app.use(methodOverride("_method"));
 // Requerir middleware remember.
 const cookieMiddleware = require("./middleware/userMiddleware/cookieMiddleware");
 
-const middlewareDeSeguimiento = require("./middleware/othersMiddleware.js/middlewareDeSeguimiento")
-
 // Configurar Express para que use bodyParser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -31,7 +29,6 @@ app.use(cookieParser());
 
 // Usar middleware recordar.
 app.use(cookieMiddleware);
-app.use(middlewareDeSeguimiento);
 
 // Configurar Express para que use EJS como motor de plantillas.
 app.set("view engine", "ejs");

@@ -7,19 +7,16 @@ let { validationResult } = require("express-validator");
 const userController = {
     //lista de usuarios.
     index: async (req, res) => {
-        let usuarios = await db.User.findAll({
-            include: ["avatars"]
-        });
+        let usuarios = await db.User.findAll();
         console.log(usuarios);
         return res.render("users/users", {user:usuarios})
     },
 
     // Informacion de un usuario.
     show: async(req, res) => {
-        let usuarios = await db.User.findByPk(req.params.id, {
-            include: ["avatars"]
-        });
-        return res.render("users/profile", {user: usuarios})
+        let id = req.params.id
+        let usuarios = await db.User.findByPk(req.params.id);
+        return res.render("users/profile", {user: usuarios, id})
     },
 
     // Formulario de registro.
@@ -32,93 +29,42 @@ const userController = {
         let errors = validationResult(req);
 
         if(errors.isEmpty()) {
-
-            if (req.body.seller == "true") {
-                let nuevoSeller = await db.Seller.create({
+                let nuevoUsuario =  await db.User.create({
+                    firstName: req.body.firstName,
+                    surname: req.body.surname,
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, 10, 12),
+                    avatar: req.file.originalname,
+                    permissionId: 1,
                     seller: req.body.seller
                 })
-                console.log(seller);
-                
-                let nuevaFoto = await db.Avatar.create({
-                    name: req.file.originalname
-                })
-                // console.log(nuevaFoto.id);
-                let nuevoUsuario =  await db.User.create({
-                    firstName: req.body.firstName,
-                    surname: req.body.surname,
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, 10, 12),
-                    avatarId: nuevaFoto.id,
-                    permissionId: req.body.seller,
-                    sellerId: nuevoSeller.seller
-                })
-                
-                Promise.all([nuevaFoto, nuevoUsuario])
-                    .then(([foto, usuario]) => {
-                        res.redirect("/users")
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+                console.log(nuevoUsuario);
+                res.redirect("/users")
             } else {
-                let nuevaFoto = await db.Avatar.create({
-                    name: req.file.originalname
-                })
-                // console.log(nuevaFoto.id);
-                let nuevoUsuario =  await db.User.create({
-                    firstName: req.body.firstName,
-                    surname: req.body.surname,
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, 10, 12),
-                    avatarId: nuevaFoto.id,
-                    sellerId: null
-                })
-                // console.log(nuevaFoto);
-                // console.log(nuevoUsuario);
-                
-                Promise.all([nuevaFoto, nuevoUsuario])
-                    .then(([foto, usuario]) => {
-                        res.redirect("/users")
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+                res.render("users/register", { errors: errors.mapped(), old: req.body });
             }
-        } else {
-            res.render("users/register", { errors: errors.mapped(), old: req.body });
-        }
-    },
+        },
 
     update: async (req,res) => {
-        let usuario = await db.User.findByPk(req.params.id, {
-            include: ["avatars"]
-        })
-        res.render("users/updateUser", {user: usuario})
+        let id = req.params.id
+        let usuario = await db.User.findByPk(id)
+        res.render("users/updateUser", {user: usuario, id})
     },
 
     edit: async (req,res) => {
-        let fotoEditada = await db.Avatar.update({
-            name: req.file.originalname
-        },{
-            where: {id: req.params.id}
-        });
+        let idUsuario = req.params.id
         let usuarioEditado = await db.User.update({
             firstName: req.body.firstName,
-            surname: req.body.lastName,
+            surname: req.body.surname,
             username: req.body.username,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10, 12),
-            avatarId: fotoEditada.id,
-            permissionId: req.body.categoria
+            avatar: req.body.oldImg,
+            seller: req.body.seller
         },{
-            where: {id: req.params.id}
+            where: {id: idUsuario}
         })
-        Promise.all([fotoEditada,usuarioEditado])
-            .then(([foto, usuario]) => {
-                res.redirect("/users/" + req.params.id)
-            })
+        res.redirect("/users")
+
     },
 
     //formulario de LogIn.

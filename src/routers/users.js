@@ -33,8 +33,9 @@ router.post("/create", upload("user-avatar").single("avatar"), registerValidatio
 router.get("/profile", authMiddleware, controller.profile);
 
 // Formulario de edición de Perfil.
-//router.get("/edit", upload("user-avatar").single("avatar"), registerValidation, controller.update)
+router.get("/edit/:id", controller.update)
 
+router.post("/edit/:id", upload("user-avatar").single("avatar"), registerValidation, controller.edit)
 // Detalles de un Usuario.
 router.get("/:id", controller.show);
 
