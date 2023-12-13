@@ -18,18 +18,18 @@
             <section class="shop-var waos">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">
-                        <article style="background: linear-gradient(0deg, #000000, <%= products[i].color %>80); border: 1px solid <%= products[i].color1 %>;">
+                        <article>
                             <figure>
                                 <div style="align-self: center; font-style: italic;">
                                     <%= products[i].title %>
                                 </div>
                                 <img src="/images/product-img/<%= products[i].image %>" class="product_img">
-                                <h5 style="color: <%= products[i].color1 %>;"><%= products[i].price %>$</h5>
+                                <h5><%= products[i].price %>$</h5>
                             </figure>
                             <aside>
                                 <h5><%= products[i].categoryId %></h5>
                                 <h5><%= products[i].off %>% off</h6>
-                                <div style="color: <%= products[i].color1 %>;">
+                                <div>
                                     <i class="fa-regular fa-heart"></i>
                                     <i class="fa-solid fa-thumbtack"></i>
                                     <i class="fa-solid fa-share"></i>

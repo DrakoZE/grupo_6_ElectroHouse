@@ -12,9 +12,6 @@ module.exports = (sequelize,DataTypes) => {
         surname: {
             type: DataTypes.STRING(25)
         },
-        avatarId: {
-            type: DataTypes.INTEGER
-        },
         username: {
             type: DataTypes.STRING(15)
         },
@@ -24,11 +21,11 @@ module.exports = (sequelize,DataTypes) => {
         password: {
             type: DataTypes.STRING(200)
         },
-        permissionId: {
-            type: DataTypes.INTEGER
+        avatar: {
+            type: DataTypes.STRING(255)
         },
-        sellerId: {
-            type: DataTypes.INTEGER
+        seller: {
+            type: DataTypes.STRING(15)
         }
     },
     {
@@ -37,16 +34,6 @@ module.exports = (sequelize,DataTypes) => {
     });
 
     User.associate = function(models){
-
-        User.belongsTo(models.Avatar, {
-            as: "avatars",
-            foreignKey: "avatarId"
-        });
-
-        User.belongsTo(models.Seller, {
-            as: "sellers",
-            foreignKey: "sellerId",
-        });
 
         User.belongsToMany(models.Product, {
             as: "orders",
