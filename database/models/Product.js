@@ -38,9 +38,6 @@ module.exports = (sequelize,DataTypes) => {
         },
         image: {
             type: DataTypes.STRING(255)
-        },
-        colorId: {
-            type: DataTypes.STRING
         }
     },
     {

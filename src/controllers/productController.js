@@ -11,9 +11,10 @@ const productController = {
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
     let productos = await db.Product.findAll({
-      include: ["colors"]
+      include: ["gammas","user"]
     });
-    // console.log(productos);
+    console.log(productos);
+    // let colorBorde = productos[0].gammas[0].code
     res.render("products/products", {products: productos})
   },
 
@@ -22,7 +23,9 @@ const productController = {
 
     let colors = await db.Color.findAll();
     let categories = await db.Category.findAll();
-    let product = await db.Product.findByPk(req.params.id)
+    let product = await db.Product.findByPk(req.params.id, {
+      include: ["gammas"]
+    })
 
     res.render("products/detailProduct", { color: colors, category: categories, product });
   },
@@ -50,8 +53,6 @@ const productController = {
 
   // Crea un nuevo elemento en la lista de productos.
   create: async (req, res) => {
-    const gamma = db.sequelize.models.gamma
-    console.log(gamma);
     let errors= validationResult(req);
 
     // Validamos que los datos se hayan cargado correctamente.
@@ -59,28 +60,27 @@ const productController = {
 
       let colors = req.body.color;
       let colorDefault = colors.shift();
-      // let stringColors = colors.toString()
       let idColors = colors.map(string => parseInt(string))
       console.log(idColors);
-
       let productoNuevo = await db.Product.create({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
         off: req.body.off,
-        stock: req.body.stockx,
+        stock: req.body.stock,
         tradeMark: req.body.tradeMark,
         categoryId: req.body.category,
         image: req.file.originalname,
-      }, {
-        include: ["colors"]
+        userId: req.session.usuarioId
+      },{
+        include: ["gammas","user"]
       })
       let coloresSeleccionados = await db.Color.findAll({
         where: {id: idColors}
       })
-      console.log(coloresSeleccionados[0].id);
+      // console.log(coloresSeleccionados[0].id);
       await Promise.all(coloresSeleccionados.map(color => {
-        return gamma.create({
+        return db.Gamma.create({
           product_id: productoNuevo.id,
           color_id: color.id
         });
@@ -106,25 +106,17 @@ const productController = {
   },
 
   // Renderizamos el formulario de edicion de productos.
-  edit: (req, res) => {
-    
-    db.Color.findAll()
-      .then(function(color){
-
-        db.Category.findAll()
-          .then(function(category){
-
-            db.Product.findByPk(req.params.id)
-              .then(function(product){
-
-                res.render("products/update", { color, category, product });
-
-              })
-
-          })
-
-      })
-    
+  edit: async (req, res) => {
+    let idProduct = req.params.id;
+    let colors = await db.Color.findAll();
+    let categories = await db.Category.findAll();
+    let product = await db.Product.findByPk(idProduct, {
+      include: ["gammas", "categories"]
+    })
+    // let idColor = product.gammas[0].id;
+    // let code = product.gammas[0].code
+    // console.log(idColor,code);
+    res.render("products/update", { color: colors, category: categories, product});
   },
 
   // Actualiza un producto en la lista de productos.
@@ -163,18 +155,22 @@ const productController = {
 },
 
   // Elimina un producto de la lista de productos.
-  delete: (req, res) => {
+  delete: async (req, res) => {
 
     // Filtra los productos para obtener todos los productos excepto el que se desea eliminar.
-    let products = productController.allProducts;
+    //let products = db.Product.findAll();
     let productDelete = req.params.id;
-    let product = products.filter(waos => waos.id != productDelete);
+    await db.Product.destroy({
+      where: {id: productDelete}
+    })
+
+    // let product = products.filter(waos => waos.id != productDelete);
 
     // Redirecciona a la página de productos.
     res.redirect("/products")
 
     // Guarda la lista actualizada de productos en el archivo JSON.
-    fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
+    // fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
   },
 };
 module.exports = productController;

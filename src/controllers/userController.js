@@ -1,5 +1,3 @@
-const fs = require("fs");
-const path = require("path");
 const bcrypt = require("bcryptjs");
 const db = require("../../database/models")
 let { validationResult } = require("express-validator");
@@ -98,6 +96,7 @@ const userController = {
 
             // Encuentra al usuario con el correo electrónico y la contraseña coincidente
             const userToLog = users.find((user) => user.email === req.body.email && bcrypt.compareSync(req.body.password, user.password));
+            // console.log(userToLog.id);
 
             // Si no se encuentra un usuario, devuelve un error
             if (!userToLog) {
@@ -109,7 +108,6 @@ const userController = {
 
             // Guarda al usuario en la sesión
             req.session.logUser = userToLog;
-
             // Si el usuario marcó la casilla "recordarme", establece una cookie remember
             if (req.body.remind) {
                 res.cookie("remember", req.body.email, { maxAge: (60000) * 60 });
