@@ -38,6 +38,9 @@ module.exports = (sequelize,DataTypes) => {
         },
         image: {
             type: DataTypes.STRING(255)
+        },
+        colorId: {
+            type: DataTypes.STRING
         }
     },
     {
@@ -71,7 +74,6 @@ module.exports = (sequelize,DataTypes) => {
             otherKey: "color_id",
             timestamps: false
         });
-
     }
 
     return Product;

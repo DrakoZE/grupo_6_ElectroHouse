@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const db = require("../../database/models")
+const db = require("../../database/models");
 let { validationResult } = require("express-validator");
 
 const productController = {
@@ -10,31 +10,21 @@ const productController = {
 
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
-    let productos = await db.Product.findAll();
-    console.log(productos);
+    let productos = await db.Product.findAll({
+      include: ["colors"]
+    });
+    // console.log(productos);
     res.render("products/products", {products: productos})
   },
 
   // Renderizamos la vista con detalles de un producto.
-  show: (req, res) => {
+  show: async (req, res) => {
 
-    db.Color.findAll()
-      .then(function(color){
+    let colors = await db.Color.findAll();
+    let categories = await db.Category.findAll();
+    let product = await db.Product.findByPk(req.params.id)
 
-        db.Category.findAll()
-          .then(function(category){
-
-            db.Product.findByPk(req.params.id)
-              .then(function(products){
-
-                res.render("products/detailProduct", { color, category, products });
-
-              })
-
-          })
-
-      })
-    
+    res.render("products/detailProduct", { color: colors, category: categories, product });
   },
 
   // Renderizamos el carro de compras.
@@ -60,44 +50,42 @@ const productController = {
 
   // Crea un nuevo elemento en la lista de productos.
   create: async (req, res) => {
-
+    const gamma = db.sequelize.models.gamma
+    console.log(gamma);
     let errors= validationResult(req);
 
     // Validamos que los datos se hayan cargado correctamente.
     if (errors.isEmpty()) {
-      let colors = req.body.color
+
+      let colors = req.body.color;
       let colorDefault = colors.shift();
-      console.log(colors);
-      console.log(colorDefault);
+      // let stringColors = colors.toString()
+      let idColors = colors.map(string => parseInt(string))
+      console.log(idColors);
+
       let productoNuevo = await db.Product.create({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
         off: req.body.off,
-        stock: req.body.stock,
+        stock: req.body.stockx,
         tradeMark: req.body.tradeMark,
-        verificated: false,
-        popularity: 0,
         categoryId: req.body.category,
-        sellerId: req.body.seller
+        image: req.file.originalname,
+      }, {
+        include: ["colors"]
       })
-      let imagenNueva = await db.Image.create({
-        productId: productoNuevo.id ,
-        image: req.file,
-        name: req.file.filename
+      let coloresSeleccionados = await db.Color.findAll({
+        where: {id: idColors}
       })
-      console.log(req.body);
-      Promise.all([imagenNueva,productoNuevo])
-        .then(([imagen,producto]) => {
-          res.redirect("/products", {imagen, producto})
-        })
-        // .catch(err => {
-        //   console.log(err);
-        // })
-      // console.log(req.body)
-      // console.log(req.file);
-      // console.log(productoNuevo);
-      // console.log(imagenNueva);
+      console.log(coloresSeleccionados[0].id);
+      await Promise.all(coloresSeleccionados.map(color => {
+        return gamma.create({
+          product_id: productoNuevo.id,
+          color_id: color.id
+        });
+      }));
+      res.redirect("/products");
 
     }else{
 

@@ -8,7 +8,6 @@ const userController = {
     //lista de usuarios.
     index: async (req, res) => {
         let usuarios = await db.User.findAll();
-        console.log(usuarios);
         return res.render("users/users", {user:usuarios})
     },
 
@@ -39,7 +38,6 @@ const userController = {
                     permissionId: 1,
                     seller: req.body.seller
                 })
-                console.log(nuevoUsuario);
                 res.redirect("/users")
             } else {
                 res.render("users/register", { errors: errors.mapped(), old: req.body });
@@ -53,18 +51,32 @@ const userController = {
     },
 
     edit: async (req,res) => {
-        let idUsuario = req.params.id
-        let usuarioEditado = await db.User.update({
+        let idUsuario = req.params.id;
+
+        if (req.file) {
+            let usuarioEditado = await db.User.update({
             firstName: req.body.firstName,
             surname: req.body.surname,
             username: req.body.username,
-            avatar: req.body.oldImg,
+            avatar: req.file.originalname,
             seller: req.body.seller
         },{
             where: {id: idUsuario}
         })
         res.redirect("/users")
 
+        } else {
+            let usuarioEditado = await db.User.update({
+                firstName: req.body.firstName,
+                surname: req.body.surname,
+                username: req.body.username,
+                avatar: req.body.oldImg,
+                seller: req.body.seller
+            },{
+                where: {id: idUsuario}
+            })
+            res.redirect("/users")
+        }
     },
 
     //formulario de LogIn.
@@ -73,7 +85,7 @@ const userController = {
     },
 
     // Método de login de usuarios
-    loginUser: (req, res) => {
+    loginUser: async (req, res) => {
         
         // Valida los datos del formulario de login
         const errors = validationResult(req);
@@ -82,7 +94,7 @@ const userController = {
         if (errors.isEmpty()) {
 
             // Lee el archivo user.json, que contiene la lista de usuarios
-            const users = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/users/users.json"), "utf-8"));
+            const users = await db.User.findAll()
 
             // Encuentra al usuario con el correo electrónico y la contraseña coincidente
             const userToLog = users.find((user) => user.email === req.body.email && bcrypt.compareSync(req.body.password, user.password));
