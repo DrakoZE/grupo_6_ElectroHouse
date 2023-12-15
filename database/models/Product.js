@@ -68,8 +68,8 @@ module.exports = (sequelize,DataTypes) => {
         });
 
         Product.belongsToMany(models.Color, {
-            as: "colors",
-            through: "gamma",
+            as: "gammas",
+            through: models.Gamma,
             foreignKey: "product_id",
             otherKey: "color_id",
             timestamps: false

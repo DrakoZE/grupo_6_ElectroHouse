@@ -92,29 +92,31 @@ INSERT INTO `colors` VALUES (1,'Rojo Pasión','#FF7070'),(2,'Naranja Marte','#FF
 UNLOCK TABLES;
 
 --
--- Table structure for table `gamma`
+-- Table structure for table `gammas`
 --
 
-DROP TABLE IF EXISTS `gamma`;
+DROP TABLE IF EXISTS `gammas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gamma` (
-  `color_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  PRIMARY KEY (`color_id`,`product_id`),
+CREATE TABLE `gammas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `color_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Gammas_product_id_color_id_unique` (`color_id`,`product_id`),
   KEY `product_id` (`product_id`),
-  CONSTRAINT `gamma_ibfk_1` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `gamma_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `gammas_ibfk_1` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `gammas_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gamma`
+-- Dumping data for table `gammas`
 --
 
-LOCK TABLES `gamma` WRITE;
-/*!40000 ALTER TABLE `gamma` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gamma` ENABLE KEYS */;
+LOCK TABLES `gammas` WRITE;
+/*!40000 ALTER TABLE `gammas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gammas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -125,13 +127,15 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `amount` decimal(10,2) DEFAULT NULL,
   `status` varchar(255) DEFAULT 'active',
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`product_id`,`user_id`),
+  `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Orders_user_id_product_id_unique` (`product_id`,`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -200,10 +204,12 @@ CREATE TABLE `users` (
   `username` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
-  `permissionId` BOOLEAN DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `seller` varchar(15) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id`) REFERENCES `avatars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -225,4 +231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-11 23:04:56
+-- Dump completed on 2023-12-13 20:00:24
