@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/create&Edit.css">
 
     <%- include("../partials/head") %>
+    <script src="/js/preview.js"></script>
 </head>
 
 
@@ -23,11 +24,11 @@
 
             <section>
 
-                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>">
+                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>" id="1111">
                 <% if (locals.errors && errors.title) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p id="111"><i class="fa-solid fa-circle fa-2xs"></i></p>
                 <% } %>
 
                 <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
@@ -129,16 +130,27 @@
 
                 <div>
                     <p>introducir imagen <i class="fa-regular fa-image"></i></p>
-                    <input type="file" name="image">
+                    <input type="file" name="image" id="file-ip-1" onchange="showPreview(event);">
                 </div>
+                    
+                <div class="preview inwaos" style="border: none; background: none;">
+                    <img id="file-ip-1-preview">
+                </div>
+                
                 <% if (locals.errors && errors.image) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
-               <% } %>
-
-               <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : "" %>">
-
+                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
+                <% } else { %>
+                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
+                        
+                <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : "" %>">
+                        
             </section>
 
+            <div class="preview waos">
+                <img id="file-ip-2-preview">
+            </div>
+                    
             <section>
 
                 <div>

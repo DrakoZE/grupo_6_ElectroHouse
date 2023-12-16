@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
     <link rel="stylesheet" href="/css/create&Edit.css">
+    <script src="/js/preview.js"></script>
 
     <%- include("../partials/head") %>
 </head>
@@ -132,15 +133,26 @@
 
                 <div>
                     <p>introducir imagen <i class="fa-regular fa-image"></i></p>
-                    <input type="file" name="image">
+                    <input type="file" name="image" id="file-ip-1">
                 </div>
+
+                <div class="preview inwaos">
+                    <img id="file-ip-1-preview" src="/images/product-img/<%= product.image %>">
+                </div>
+
                 <% if (locals.errors && errors.image) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
-               <% } %>
+                <% } else { %>
+                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <% } %>
 
                <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : product.image %>">
 
             </section>
+
+            <div class="preview waos">
+                <img id="file-ip-2-preview">
+            </div>
 
             <section>
 

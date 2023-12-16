@@ -4,8 +4,9 @@
     <title>Register</title>
     <link rel="stylesheet" href="/css/sign&log.css">
     <link rel="stylesheet" href="/css/colores.css">
-    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/partials.css">  
     <%- include("../partials/head") %>
+    <script src="/js/preview.js"></script>
 </head>
 
 
@@ -65,8 +66,9 @@
 
             <div>
                 <p>introducir imagen <i class="fa-regular fa-image"></i></p>
-                <input type="file" name="avatar">
+                <input type="file" name="avatar" id="file-ip-1" onchange="showPreview(event);">
             </div>
+
             <% if (locals.errors && errors.avatar) { %>
                 <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.avatar.msg%> </p>
            <% } else { %>
@@ -86,6 +88,10 @@
             </div>
 
         </form>
+        
+        <div class="preview">
+            <img id="file-ip-1-preview">
+        </div>
         
     </main>
 

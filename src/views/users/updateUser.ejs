@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="/css/sign&log.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
+    <script src="/js/preview.js"></script>
+
     <%- include("../partials/head") %>
 </head>
 
@@ -60,7 +62,7 @@
 
             <div>
                 <p>introducir imagen <i class="fa-regular fa-image"></i></p>
-                <input type="file" name="avatar">
+                <input type="file" name="avatar" id="file-ip-1" onchange="showPreview(event);">
             </div>
             <% if (locals.errors && errors.avatar) { %>
                 <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.avatar.msg%> </p>
@@ -82,6 +84,10 @@
 
         </form>
         
+        <div class="preview">
+            <img id="file-ip-1-preview" src="/images/user-avatar/<%= product.image %>">
+        </div>
+
     </main>
 
 </body>

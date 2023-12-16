@@ -17,7 +17,7 @@ main h2{
 main form section{
     grid-template-columns: 1fr 1fr;
     background-color: #0a0a0a69;
-    align-items: center;
+    align-items: start;
     display: grid;
     padding: 10px;
     margin: 5px;
@@ -94,6 +94,22 @@ main form section:nth-child(4) div{
     border-radius: 7px;
     border: solid 1px #333;
 }
+.preview{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    background: none;
+    border: none;
+}
+.inwaos{
+    display: none;
+}
+.preview img{
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+}
 main form section div{
     position: relative;
 }
@@ -110,6 +126,7 @@ main form section div p{
 main form section input[type="file"]{
     opacity: 0;
     width: 100%;
+    height: 100%;
 }
 main form section:last-child div{
     background: #00000080;
@@ -127,8 +144,15 @@ main form section:last-child div button{
     opacity: 0;
     cursor: pointer;
 }
-
-
+.no{
+    color: #ff0000;
+}
+.waiting{
+    color: #ffff00;
+}
+.yes{
+    color: #00ff00;
+}
 @media(min-width: 361px){
     
 }
@@ -138,5 +162,18 @@ main form section:last-child div button{
     }
     main form section:nth-child(3){
         grid-template-columns: 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    }
+    main form section:nth-child(4){
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .preview{
+        height: 150px;
+        width: auto
+    }
+    .waos{
+        display: none;
+    }
+    .inwaos{
+        display: flex;
     }
 }
