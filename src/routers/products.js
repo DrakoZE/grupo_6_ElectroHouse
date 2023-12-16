@@ -28,6 +28,6 @@ router.get("/:id/edit", controller.edit);
 router.put("/:id", upload("product-img").single("image"), productValidation, controller.update);
 
 //Acción de borrado
-router.get("/:id/delete", controller.delete);
+router.post("/:id", controller.delete);
 
 module.exports = router

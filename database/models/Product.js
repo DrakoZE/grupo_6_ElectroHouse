@@ -71,7 +71,6 @@ module.exports = (sequelize,DataTypes) => {
             otherKey: "color_id",
             timestamps: false
         });
-
     }
 
     return Product;

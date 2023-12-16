@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= products.title %></title>
+    <title><%= product.title %></title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script> src ="https://kit.fontawesome.com/f7ce8fc261.js" </script>
@@ -28,7 +28,8 @@
                     <% if (locals.isLog) { %>
                         <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
                         <a href="/products/<%= product.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="/products/<%= product.id %>/delete"><i class="fa-solid fa-trash-can"></i></a>
+
+                        <a><form action="/products/<%= product.id %>" method="post"><button type="submit" style="background: none; border: 0px; font-size: 1.3rem;"><i class="fa-solid fa-trash-can"></i></button></form></a>
                         <a><i class="fa-solid fa-share"></i></a>
                     <% } else { %>
                         <a href="/users/login"><i class="fa-solid fa-cart-plus"></i></a>
