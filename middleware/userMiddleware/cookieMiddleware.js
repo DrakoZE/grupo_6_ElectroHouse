@@ -1,16 +1,15 @@
 const fs = require("fs");
 const path = require("path");
+const db = require("../../database/models")
 
-function cookieMiddleware(req, res, next) {
+async function cookieMiddleware(req, res, next) {
 
     // Verifica si la cookie remember existe y la propiedad logUser de la sesión no está establecida
     if (req.cookies.remember && !req.session.logUser) {
   
       // Lee el archivo products.json
-      const users = JSON.parse(
-        fs.readFileSync(path.join(__dirname, "../../src/data/users/users.json"), "utf-8")
-      );
-  
+      const users = await db.User.findAll()
+      console.log(users);
       // Encuentra al usuario con la dirección de correo electrónico coincidente
       const logUser = users.find((user) => user.email === req.cookies.remember);
   

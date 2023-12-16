@@ -13,7 +13,7 @@ const productController = {
     let productos = await db.Product.findAll({
       include: ["gammas","user"]
     });
-    console.log(productos);
+    // console.log(productos);
     // let colorBorde = productos[0].gammas[0].code
     res.render("products/products", {products: productos})
   },
@@ -37,7 +37,10 @@ const productController = {
 
   // Renderizamos el formulario de creacion de productos.
   add: (req, res) => {
+    let usuario =  req.session.logUser;
+    let userCategory = usuario.seller
 
+    if (userCategory == "Vendedor") {
     db.Color.findAll()
       .then(function(color){
 
@@ -48,7 +51,9 @@ const productController = {
           })
 
       })
-
+    } else {
+      res.send("NO ES UN VENDEDOR")
+    }
   },
 
   // Crea un nuevo elemento en la lista de productos.
@@ -58,6 +63,8 @@ const productController = {
     // Validamos que los datos se hayan cargado correctamente.
     if (errors.isEmpty()) {
 
+      let usuario =  req.session.logUser;
+      let idUser = usuario.id
       let colors = req.body.color;
       let colorDefault = colors.shift();
       let idColors = colors.map(string => parseInt(string))
@@ -71,7 +78,7 @@ const productController = {
         tradeMark: req.body.tradeMark,
         categoryId: req.body.category,
         image: req.file.originalname,
-        userId: req.session.usuarioId
+        userId: idUser
       },{
         include: ["gammas","user"]
       })
@@ -95,7 +102,7 @@ const productController = {
         db.Category.findAll()
           .then(function(category){
 
-            console.log(errors)
+            // console.log(errors)
             return res.render("products/create", { color, category, errors: errors.mapped(), old: req.body });
 
           })
@@ -158,12 +165,21 @@ const productController = {
   delete: async (req, res) => {
 
     // Filtra los productos para obtener todos los productos excepto el que se desea eliminar.
-    //let products = db.Product.findAll();
-    let productDelete = req.params.id;
+    let idProduct = req.params.id;
+    let product = await db.Product.findByPk(idProduct);
+    let imagen = product.image
+    let ruta = path.join(__dirname, "../../public/images/product-img", imagen)
     await db.Product.destroy({
-      where: {id: productDelete}
+      where: {id: idProduct}
     })
-
+    fs.unlink(ruta, (err) => {
+      if (err) {
+        console.error("Error al eliminar la imagen: " + err);
+        // Manejar el error según tus necesidades
+      } else {
+        console.log('Imagen eliminada con éxito');
+      }
+    } )
     // let product = products.filter(waos => waos.id != productDelete);
 
     // Redirecciona a la página de productos.
