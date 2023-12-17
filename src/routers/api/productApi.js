@@ -8,4 +8,6 @@ router.get("/products", controller.list);
 
 router.get("/product/:id", controller.show);
 
+router.get("/products/results", controller.search)
+
 module.exports = router

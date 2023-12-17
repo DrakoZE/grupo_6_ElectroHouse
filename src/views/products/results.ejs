@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ElectroHouse</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/partials.css">
+
+    <%- include("../partials/head") %>
+</head>
+
+
+<body>
+    <%- include("../partials/header") %>
+
+        <main>
+            <section class="shop-var waos">
+                <% for( let i = 0; i < products.length; i++ ) { %>
+                    <a href="/products/<%= products[i].id %>">
+                        <article>
+                            <figure>
+                                <div style="align-self: center; font-style: italic;">
+                                    <%= products[i].title %>
+                                </div>
+                                <img src="/images/product-img/<%= products[i].image %>" class="product_img">
+                                <h5><%= products[i].price %>$</h5>
+                            </figure>
+                            <aside>
+                                <h5><%= products[i].categoryId %></h5>
+                                <h5><%= products[i].off %>% off</h6>
+                                <div>
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                    <i class="fa-solid fa-share"></i>
+                                </div>
+                            </aside>
+                    
+                        </article>
+                    </a>
+                <% } %>
+            </section>
+        </main>
+
+        <%- include("../partials/footer") %>
+
+</body>
+
+</html>

@@ -1,13 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 const db = require("../../../database/models");
+const Op = db.Sequelize.Op;
 
 module.exports = {
     list: async (req,res) => {
 let products = await db.Product.findAll({
             include: ["categories", "gammas", "user"]
         })
-        console.log(products);
         return res.status(200).json({
             meta: {
             total: products.length,
@@ -28,7 +28,6 @@ let products = await db.Product.findAll({
             include: ["categories", "gammas", "user"]
         })
         let productArray = [product]
-        console.log(product);
         return res.status(200).json({
             meta: {
             url: req.url
@@ -50,4 +49,16 @@ let products = await db.Product.findAll({
             }))
         })
     },
+    search: async (req,res) => {
+        let titulo = req.query.title
+        let product = await db.Product.findAll({
+            where: {
+                title: {[Op.like]: "%" + titulo + "%"}
+            }
+        })
+        return res.status(200).json({
+            busqueda: "Busco el producto con el titulo: " + titulo,
+            productoBuscado: product
+        })
+    }
 }

@@ -30,4 +30,6 @@ router.post("/:id/edit", upload("product-img").single("image"), productValidatio
 //Acción de borrado
 router.post("/:id", controller.delete);
 
+router.get("/results/search", controller.search)
+
 module.exports = router

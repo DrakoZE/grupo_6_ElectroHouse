@@ -1,13 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const db = require("../../database/models");
+const Op = db.Sequelize.Op;
 let { validationResult } = require("express-validator");
 
 const productController = {
-
-  // Obtenemos los datos del JSON.
-  // allProducts: (JSON.parse(fs.readFileSync(path.join(__dirname, "../data/products/products.json"), "utf-8"))),
-
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
     let productos = await db.Product.findAll({
@@ -39,6 +36,7 @@ const productController = {
   add: (req, res) => {
     let usuario =  req.session.logUser;
     let userCategory = usuario.seller
+    console.log(usuario);
 
     if (userCategory == "Vendedor") {
     db.Color.findAll()
@@ -85,7 +83,6 @@ const productController = {
       let coloresSeleccionados = await db.Color.findAll({
         where: {id: idColors}
       })
-      // console.log(coloresSeleccionados[0].id);
       await Promise.all(coloresSeleccionados.map(color => {
         return db.Gamma.create({
           product_id: productoNuevo.id,
@@ -101,8 +98,6 @@ const productController = {
 
         db.Category.findAll()
           .then(function(category){
-
-            // console.log(errors)
             return res.render("products/create", { color, category, errors: errors.mapped(), old: req.body });
 
           })
@@ -160,25 +155,6 @@ const productController = {
       });
     }));
     res.redirect("/products");
-    // Obtenemos todos los productos existentes.
-    // let products = productController.allProducts;
-
-    // // Asigna el ID y la imagen del producto a actualizar.
-    // req.body.id = req.params.id;
-    // req.body.image = req.file ? req.file.filename : req.body.oldImg;
-
-    // // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
-    // let productUpdate = products.map(product => {
-    //   if (product.id == req.body.id){
-    //     res.redirect("/products")
-    //     return product = req.body;
-    //   }
-    //   return product;
-    // })
-
-    // //guarda la lista actualizada de productos en el archivo JSON.
-    // fs.writeFileSync(path.join(__dirname, "../data/products/products.json"), JSON.stringify(productUpdate, null, 2), "utf-8");
-    
   }else{
 
     let products = await db.Product.findByPk(req.params.id);
@@ -190,29 +166,43 @@ const productController = {
   // Elimina un producto de la lista de productos.
   delete: async (req, res) => {
 
-    // Filtra los productos para obtener todos los productos excepto el que se desea eliminar.
     let idProduct = req.params.id;
+
     let product = await db.Product.findByPk(idProduct);
+
     let imagen = product.image
     let ruta = path.join(__dirname, "../../public/images/product-img", imagen)
+
     await db.Product.destroy({
       where: {id: idProduct}
     })
+
     fs.unlink(ruta, (err) => {
       if (err) {
         console.error("Error al eliminar la imagen: " + err);
-        // Manejar el error según tus necesidades
       } else {
         console.log('Imagen eliminada con éxito');
       }
     } )
-    // let product = products.filter(waos => waos.id != productDelete);
 
-    // Redirecciona a la página de productos.
     res.redirect("/products")
+  },
+  // Buscar un producto segun su titulo
+  search: async (req,res) => {
+    let titulo = req.query.title
 
-    // Guarda la lista actualizada de productos en el archivo JSON.
-    // fs.writeFileSync(path.join(__dirname, "../Data/products/products.json"), JSON.stringify(product, null, 2), "utf-8");
+    if (titulo) {
+
+    let product = await db.Product.findAll({
+        where: {
+            title: {[Op.like]: "%" + titulo + "%"}
+        }
+    })
+
+    res.render("products/results", {products: product, titulo})
+    } else {
+      res.status(500).send("FALLO EN EL SERVIDOR")
+    }
   },
 };
 module.exports = productController;

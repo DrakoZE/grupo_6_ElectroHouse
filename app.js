@@ -51,6 +51,10 @@ app.use("/users", userRouter);
 app.use("/api", apiUserRouter)
 app.use("/api", apiProductRouter)
 
+app.use((req,res,next) => {
+    res.status(404).render("products/error")
+})
+
 db.sequelize.sync();
 
 // Iniciar el servidor

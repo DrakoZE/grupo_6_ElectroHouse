@@ -12,8 +12,8 @@
             <% } %>
             
         </article>
-        <form action="#" method="GET">
-            <input  placeholder="Buscar..."><button type="submit" class="fa fa-search"></button>
+        <form action="/products/results/search" method="GET">
+            <input  placeholder="Buscar..." name="title"><button type="submit" class="fa fa-search"></button>
         </form>
         <article>
 
@@ -34,8 +34,8 @@
             <a href="/"><img src="/images/logo.jpg" alt="Logo de electroHouse" width="100px" height="100px"></a>
         </div>
         <nav>
-            <form action="#" method="GET">
-                <input placeholder="Buscar productos..."><button type="submit" class="purplebox fa fa-search" style="color: #aa00ff"></button>
+            <form action="/products/results/search" method="GET">
+                <input placeholder="Buscar productos..." name="title"><button type="submit" class="purplebox fa fa-search" style="color: #aa00ff"></button>
             </form>
             <ul>
                 <% if (locals.isLog) { %>
