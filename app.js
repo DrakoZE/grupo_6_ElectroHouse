@@ -41,11 +41,13 @@ app.use(express.static(path.join(__dirname, "/public")));
 const homeRouter = require("./src/routers/home");
 const productRouter = require("./src/routers/products");
 const userRouter = require("./src/routers/users");
+const apiUserRouter = require("./src/routers/api/usersApi")
 
 // Configurar las rutas
 app.use("/", homeRouter);
 app.use("/products", productRouter);
 app.use("/users", userRouter);
+app.use("/api", apiUserRouter)
 
 db.sequelize.sync();
 

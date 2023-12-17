@@ -25,7 +25,7 @@ router.post("/", upload("product-img").single("image"), productValidation, contr
 router.get("/:id/edit", controller.edit);
 
 //Acción de edición (a donde se envía el formulario):
-router.put("/:id", upload("product-img").single("image"), productValidation, controller.update);
+router.post("/:id/edit", upload("product-img").single("image"), productValidation, controller.update);
 
 //Acción de borrado
 router.post("/:id", controller.delete);
