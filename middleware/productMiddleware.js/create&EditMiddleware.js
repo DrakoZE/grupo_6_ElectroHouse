@@ -18,15 +18,15 @@ module.exports = [
     .notEmpty()
     .withMessage('Precio Necesario'),
 
-  // Valida que el precio sea un número entero mayor o igual a 1.
+  // Valida que el precio sea un número decimal mayor o igual a 1.
   body('price')
-    .isInt({ min: 1 })
+    .isFloat({ min: 1 })
     .withMessage('Gratis? Imposible!'),
 
-  // Valida que el precio no tenga ceros a la izquierda.
-  body('price')
-    .isInt({ allow_leading_zeroes: false })
-    .withMessage('Sin ceros a la izquierda!'),
+  //Valida que el precio no tenga ceros a la izquierda.
+  //body('price')
+    //.isInt({ allow_leading_zeroes: false })
+    //.withMessage('Sin ceros a la izquierda!'),
 
   // Valida que el descuento no esté vacío.
   body('off')
