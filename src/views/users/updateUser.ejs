@@ -19,7 +19,7 @@
 
         <h2>Editar Datos</h2>
 
-        <form action="/users/edit/<%= id %>?_method=PUT" method="post" enctype="multipart/form-data">
+        <form action="/users/edit/<%= id %>" method="post" enctype="multipart/form-data">
 
             <input type="text" name="firstName" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : user.firstName%>">
             <% if (locals.errors && errors.firstName) { %>
