@@ -120,42 +120,68 @@ const productController = {
     let product = await db.Product.findByPk(idProduct, {
       include: ["gammas", "categories"]
     })
-    // let idColor = product.gammas[0].id;
-    // let code = product.gammas[0].code
-    // console.log(idColor,code);
     res.render("products/update", { color: colors, category: categories, product});
   },
 
   // Actualiza un producto en la lista de productos.
-  update: (req, res) => {
+  update: async (req, res) => {
 
     let errors= validationResult(req);
 
     // Validamos que los datos se hayan cargado correctamente.
     if (req.file && errors.isEmpty()) {
+      let idProduct = req.params.id
+      let colors = req.body.color;
+      let colorDefault = colors.shift();
+      let idColors = colors.map(string => parseInt(string))
+      console.log(idColors);
 
-    // Obtenemos todos los productos existentes.
-    let products = productController.allProducts;
-
-    // Asigna el ID y la imagen del producto a actualizar.
-    req.body.id = req.params.id;
-    req.body.image = req.file ? req.file.filename : req.body.oldImg;
-
-    // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
-    let productUpdate = products.map(product => {
-      if (product.id == req.body.id){
-        res.redirect("/products")
-        return product = req.body;
-      }
-      return product;
+    let productoEditado = await db.Product.update({
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      off: req.body.off,
+      stock: req.body.stock,
+      tradeMark: req.body.tradeMark,
+      categoryId: req.body.category,
+      image: req.file.originalname,
+    },{
+      where: {id: idProduct}
     })
+    console.log(productoEditado);
+    let coloresSeleccionados = await db.Color.findAll({
+      where: {id: idColors}
+    })
+    console.log(coloresSeleccionados);
+    await Promise.all(coloresSeleccionados.map(color => {
+      return db.Gamma.create({
+        product_id: productoEditado.id,
+        color_id: color.id
+      });
+    }));
+    res.redirect("/products");
+    // Obtenemos todos los productos existentes.
+    // let products = productController.allProducts;
 
-    //guarda la lista actualizada de productos en el archivo JSON.
-    fs.writeFileSync(path.join(__dirname, "../data/products/products.json"), JSON.stringify(productUpdate, null, 2), "utf-8");
+    // // Asigna el ID y la imagen del producto a actualizar.
+    // req.body.id = req.params.id;
+    // req.body.image = req.file ? req.file.filename : req.body.oldImg;
+
+    // // Busca el producto a actualizar y reemplaza sus datos con los nuevos.
+    // let productUpdate = products.map(product => {
+    //   if (product.id == req.body.id){
+    //     res.redirect("/products")
+    //     return product = req.body;
+    //   }
+    //   return product;
+    // })
+
+    // //guarda la lista actualizada de productos en el archivo JSON.
+    // fs.writeFileSync(path.join(__dirname, "../data/products/products.json"), JSON.stringify(productUpdate, null, 2), "utf-8");
     
   }else{
 
-    const products = productController.allProducts.find((detail) => detail.id == req.params.id);
+    let products = await db.Product.findByPk(req.params.id);
 
     res.render("products/update", { products, errors: errors.mapped(), old: req.body });
   }
