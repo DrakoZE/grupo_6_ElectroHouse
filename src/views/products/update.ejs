@@ -100,6 +100,14 @@
                         }
                         return result;
                     }
+
+                    function waosArray(waos){
+                        const wao = [];
+                        for (const index of waos) {
+                            wao.push(index.id);
+                        }
+                        return wao;
+                    }
                 %>
 
                 <% if (color) { %>
@@ -117,12 +125,12 @@
 
                         <% if (locals.old) { %>
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosInt(old.color).includes(i + 1) ? "checked" : "" %>>
-                        <% } else if(product.colors.id.includes(i + 1)){ %>
-                            <input type="checkbox" name="color" value="<%= color[i].id %>" <%= locals.old && old.color ? "checked" : "" %>>
+                        <% } else { %>
+                            <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosArray(product.gammas).includes(i + 1) ? "checked" : "" %>>
                         <% } %>   
                             
-
-                        <%= color[i] %>
+                            
+                        <%= color[i].color %>
                         
                     <% } %>
 

@@ -34,7 +34,7 @@
                 <p><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <input type="text" name="username" placeholder="Nombre de Usuario" value="<%=locals.old && old.username ? old.userName : ""%>">
+            <input type="text" name="username" placeholder="Nombre de Usuario" value="<%=locals.old && old.username ? old.username : ""%>">
             <% if (locals.errors && errors.username) { %>
                 <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.username.msg%> </p>
             <% } else { %>
