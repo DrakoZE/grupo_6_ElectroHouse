@@ -5,26 +5,17 @@ const Op = db.Sequelize.Op;
 let { validationResult } = require("express-validator");
 
 const productController = {
+
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
-    let productos = await db.Product.findAll({
-      include: ["gammas","user"]
-    });
-    // console.log(productos);
-    // let colorBorde = productos[0].gammas[0].code
-    res.render("products/products", {products: productos})
+    let products = await db.Product.findAll({ include: ["categories"] });
+    res.render("products/products", { products });
   },
 
   // Renderizamos la vista con detalles de un producto.
   show: async (req, res) => {
-
-    let colors = await db.Color.findAll();
-    let categories = await db.Category.findAll();
-    let product = await db.Product.findByPk(req.params.id, {
-      include: ["gammas"]
-    })
-
-    res.render("products/detailProduct", { color: colors, category: categories, product });
+    let product = await db.Product.findByPk(req.params.id, { include: ["gammas", "categories", "user"] })
+    res.render("products/detailProduct", { product });
   },
 
   // Renderizamos el carro de compras.
@@ -34,24 +25,13 @@ const productController = {
 
   // Renderizamos el formulario de creacion de productos.
   add: (req, res) => {
-    let usuario =  req.session.logUser;
-    let userCategory = usuario.seller
-    console.log(usuario);
-
-    if (userCategory == "Vendedor") {
-    db.Color.findAll()
-      .then(function(color){
-
-        db.Category.findAll()
-          .then(function(category){
-            return res.render("products/create", { color, category });
-
-          })
-
-      })
-    } else {
-      res.send("NO ES UN VENDEDOR")
-    }
+      db.Color.findAll()
+        .then(function(color){
+          db.Category.findAll()
+            .then(function(category){
+              return res.render("products/create", { color, category });
+            })
+        })
   },
 
   // Crea un nuevo elemento en la lista de productos.

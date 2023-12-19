@@ -36,16 +36,6 @@ main section article img{
     border-radius: 9px 15px 15px 9px;
     position: relative;
 }
-.second-div p{
-    display: flex;
-    left: 7px;
-    top: 2px;
-    background: #060008ed;
-    padding: 3px;
-    border-radius: 5px;
-    font-size: 2em;
-    position: absolute;
-}
 .second-div i{
     padding: 0 2px;
 }
@@ -77,66 +67,67 @@ main section article img{
     color: #888;
 }
 .shop-var{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-items: center;
+    gap: 3px;
 }
-.shop-var a{
-    margin: 5px;
-}
-.shop-var article{
-    display: flex;
-    font-size: 0.7em;
-    width: 45vw;
+.shop-var a article{
+    background: linear-gradient(0deg, #020202, #1313139c);
+    grid-template-columns: 1fr 1fr;
+    border: solid 1px #333;
     border-radius: 15px;
+    font-size: 0.7em;
     color: #666;
+    display: grid;
+    margin: 5px;
+    width: 200px;
+}
+.shop-var a article p{
+    justify-self: center;
+    margin: 0;
+}
+.shop-var a article p:first-child{
+    justify-self: start;
+    margin: 0 0 5px 10px;
+    font-style: italic;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.shop-var a article img{
+    grid-row-start: 2;
+    grid-row-end: 5;
+    align-self: center;
+    justify-self: center;
+    height: 100px;
+    width: auto;
+}
+.shop-var a article p:nth-of-type(2){
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.shop-var a article div{
+    display: flex;
     justify-content: space-between;
+    width: 50%;
+    justify-self: center;
+    align-self: center;
 }
-.shop-var article h5{
-    margin: 5px;
-}
-.shop-var figure{
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-}
-.shop-var figure img{
-    width: 6em;
-}
-.shop-var aside{
-    margin: 5px 5px 5px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.shop-var aside i{
-    padding: 3px;
+.shop-var a article p:last-child{
+    justify-self: start;
+    margin: 0 0 5px 10px;
 }
 .waos{
     margin: 25px 0 0 0;
 }
 @media (min-width: 475px){
-    .shop-var article{
-        width: 30vw;
-    }
 }
 @media (min-width: 635px){
-    .shop-var article{
-        width: 23vw;
-    }
 
 }
 @media(min-width: 768px){
     .history-var{
         margin-top: 130px;
-    }
-    .shop-var article{
-        font-size: 1em;
-        width: 30vw;
-    }
-    .shop-var figure img{
-        width: 8em;
     }
     .waos{
         margin: 120px 0 0 0;
@@ -146,9 +137,6 @@ main section article img{
     }
     .second-div{
         padding: 30px 50px;
-    }
-    .second-div p{
-        font-size: 4em;
     }
     .history-var article a{
         padding: 0 10px;
@@ -162,11 +150,4 @@ main section article img{
 }
 
 @media(min-width: 1024px){
-    .shop-var article{
-        font-size: 1em;
-        width: 23vw;
-    }
-    .shop-var aside{
-        margin: 5px 10px 5px 0px;
-    }
 }
