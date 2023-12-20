@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
-
     <%- include("../partials/head") %>
+    <script src="/js/hiddenButton.js"></script>
 </head>
 
 
@@ -15,12 +15,13 @@
     <%- include("../partials/header") %>
 
         <main style="display: flex; align-items: center;" >
-            <aside class="aside waos">
-                <section class="container-filter">
+
+            <aside class="aside waos" >
+                <section class="container-filter" style="position: relative;">
                     <form action="/products/results/filter_order" method="get" class="form-aside">
                         <h3 style="color: #888;">Filtrar productos</h3>
                         <label for="" style="color: white;">Por categoria
-                        <select name="categoryId" id="">
+                        <select name="category" id="">
                             <% if (category) { %>
                                 <option value="0">Ninguna</option>
                                 <% for( let i = 0; i < category.length; i++ ) { %>
@@ -57,9 +58,17 @@
                         </label>
 
                         <button type="submit" style="width: 50%;margin: auto;">Subir cambios</button>
+                        <button type="button" class="hiddenButton" style="position: absolute; right: 5px;top: 5px;"> < </button>
                     </form>
                 </section>
             </aside>
+
+            <div class="waos hidden">
+                <section class="container-filter minus-container-filter">
+                    <button type="button" class="hiddenButton  minus-boton" style="position: absolute; right: 5px;top: 5px;"> > </button>
+                </section>
+            </div>
+
             <section class="shop-var waos">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">
