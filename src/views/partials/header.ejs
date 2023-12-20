@@ -38,13 +38,13 @@
                 <input placeholder="Buscar productos..." name="title"><button type="submit" class="purplebox fa fa-search" style="color: #aa00ff"></button>
             </form>
             <ul>
-                <% if (locals.isLog) { %>
+                <% if (locals.isLog && locals.logUser.seller == "Vendedor"){ %>
                     <li style="z-index: 3;"><a href="/products/create">Vender</a></li>
                     <li style="z-index: 2;"><a href="/users">Usuarios</a></li>
-                    <li style="z-index: 1;"><a href="/products">Productos</a></li>
-                <% } else { %>
-                    <li style="z-index: 1;"><a href="/products">Productos</a></li> 
+                <% } else if(locals.isLog){ %>
+                    <li style="z-index: 2;"><a href="/users">Usuarios</a></li>
                 <% } %>
+                    <li style="z-index: 1;"><a href="/products">Productos</a></li> 
                 
             </ul>
         </nav>

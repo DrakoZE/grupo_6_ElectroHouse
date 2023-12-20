@@ -4,11 +4,12 @@ const router = express.Router();
 
 const controller = require("../controllers/userController");
 
-const upload = require("../../middleware/multerMiddleware")
-const logValidation = require("../../middleware/userMiddleware/logInMiddleware")
-const registerValidation = require("../../middleware/userMiddleware/registerMiddleware")
-const guestMiddleware = require("../../middleware/userMiddleware/guestMiddleware")
-const authMiddleware = require("../../middleware/userMiddleware/authmiddleware")
+const upload = require("../../middleware/multerMiddleware");
+const logValidation = require("../../middleware/userMiddleware/logInMiddleware");
+const registerValidation = require("../../middleware/userMiddleware/registerMiddleware");
+const editValidation = require("../../middleware/userMiddleware/editMiddleware");
+const guestMiddleware = require("../../middleware/userMiddleware/guestMiddleware");
+const authMiddleware = require("../../middleware/userMiddleware/authmiddleware");
 
 
 // Formulario de LogIn.
@@ -35,7 +36,7 @@ router.get("/profile", authMiddleware, controller.profile);
 // Formulario de edición de Perfil.
 router.get("/edit/:id", controller.update)
 
-router.post("/edit/:id", upload("user-avatar").single("avatar"), registerValidation, controller.edit)
+router.post("/edit/:id", upload("user-avatar").single("avatar"), editValidation, controller.edit)
 // Detalles de un Usuario.
 router.get("/:id", controller.show);
 

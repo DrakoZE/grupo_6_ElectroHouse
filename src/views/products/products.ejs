@@ -65,25 +65,19 @@
             <section class="shop-var waos">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">
-                        <article>
-                            <figure>
-                                <div style="align-self: center; font-style: italic;">
-                                    <%= products[i].title %>
-                                </div>
-                                <img src="/images/product-img/<%= products[i].image %>" class="product_img">
-                                <h5><%= products[i].price %>$</h5>
-                            </figure>
-                            <aside>
-                                <h5><%= products[i].categoryId %></h5>
-                                <h5><%= products[i].off %>% off</h6>
-                                <div>
-                                    <i class="fa-regular fa-heart"></i>
-                                    <i class="fa-solid fa-thumbtack"></i>
-                                    <i class="fa-solid fa-share"></i>
-                                </div>
-                            </aside>
-                    
-                        </article>
+                    <article>
+                        <p><%= products[i].title %></p>
+                        <img src="/images/product-img/<%= products[i].image %>" class="product_img">
+                        <p><%= products[i].categories.category %></p>
+                        <p><%= products[i].off %>% off</p>
+                        <div>
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-thumbtack"></i>
+                            <i class="fa-solid fa-share"></i>
+                        </div>
+                        <p><%= products[i].price %>$</p>
+                        
+                    </article>
                     </a>
                 <% } %>
             </section>

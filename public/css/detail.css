@@ -3,86 +3,107 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-main section{
-    display: flex;
-    margin: 30px 10px 5px 10px;
-    justify-content: flex-start;
-    border-radius: 20px;
-    border: solid 1px #999;
-    font-size: 0.9em;
+main article{
+    margin: 30px 0 8px 0;
 }
-main section div.left-side {
-    background: linear-gradient(45deg, #000000b8, #393939bd);
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: inset -10px 0px 4px -10px #ffffff;
-}
-main section div nav{
-    width: 95%;
-    color: #ccc;
-    background: #000000b5;
-    display: flex;
-    justify-content: space-between;
-    margin: 7px;
-    padding: 7px;
+main article section{
+    backdrop-filter: blur(3px) brightness(0.4);
+    background: #0a0a0a69;
+    border: solid 1px #333;
+    color: #666;
     border-radius: 10px;
+    margin: 8px 0;
 }
-main section div nav a{
-    text-decoration: none;
+main article section:first-child{
+    display: grid;
+    grid-template-columns: 25px 1fr 37% 20%;
+    grid-template-rows: 1fr 1fr 1fr;
 }
-main section div nav a i{
-    color: #999;
-    transition: all 0.5s;
+main article section:first-child p, main article section:last-child p{
+    justify-self: start;
 }
-main section div nav a i.fa-cart-plus:hover{
-    color: #21c021;
-    text-shadow: 0 0 5px #21c021;
-}
-main section div nav a i.fa-pencil:hover{
-    color: #267eaa;
-    text-shadow: 0 0 5px #267eaa;
-}
-main section div nav a i.fa-trash-can:hover{
-    color: #ff0000;
-    text-shadow: 0 0 5px #ff0000;
-}
-main section div nav a i.fa-share:hover{
-    color: #fff;
-    text-shadow: 0 0 5px #fff;
-}
-main section img{
-    width: 80%;
-    height: auto;
-    padding: 5px;
-    border-radius: 20px;
-    margin: 30px 0px;
-}
-main section article{
-    color: #ccc;
-    width: 60%;
-    background: #040404eb;
+.waos-nav{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    justify-items: center;
+    align-items: center;
     justify-content: space-evenly;
 }
-main section article p{
-    padding: 5px 15px;
-    margin: 0;
+.waos-nav a{
+    color: #666;
+    padding: 1px;
+}
+.waos-nav a:first-child:hover{
+    color: #00ff00;
+    text-shadow: 0 0 3px currentColor;
+}
+.waos-nav a:nth-child(2):hover{
+    color: #0080ff;
+    text-shadow: 0 0 3px currentColor;
+}
+.waos-nav a:nth-child(3) form button i{
+    font-size: 1.3em;
+}
+.waos-nav a:nth-child(3) form button i:hover{
+    color: #ff0000;
+    text-shadow: 0 0 3px currentColor;
+}
+.waos-nav a:last-child:hover{
+    color: #ffffff;
+    text-shadow: 0 0 3px currentColor;
+}
+main article img{
+    align-self: center;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    height: 100px;
+}
+main article section p{
+    margin: 5px;
+    justify-self: center;
+    align-self: center;
+}
+main article section:first-child p:nth-of-type(1){
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+main article section:first-child p:nth-of-type(2){
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+main article section:nth-child(2){
+    display: flex;
+    justify-content: space-around;
+}
+main article section:nth-child(2) p{
+    margin: 1px;
+}
+main article section:last-child{
+    display: grid;
+    grid-template-columns: 45% 1fr;
 }
 @media (min-width: 460px){
-    main section{
-        margin: 30px 15% 5px 15%;
+    main article img{
+        height: 200px;
+        margin: 0 0 0 10px;
+    }
+    .waos-nav{
+        margin: 0 0 0 10px;
     }
 }
 @media(min-width: 768px){
-    main section{
+    main article{
         font-size: 1.3em;
-        margin: 130px 15% 5px 15%;
+        margin: 130px 0 0 0 ;
+    }
+    main article img{
+        height: 350px;
+        margin: 0 0 0 25px;
+    }
+    .waos-nav{
+        margin: 0 0 0 25px;
     }
 }

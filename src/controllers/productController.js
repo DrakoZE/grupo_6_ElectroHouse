@@ -5,27 +5,17 @@ const Op = db.Sequelize.Op;
 let { validationResult } = require("express-validator");
 
 const productController = {
+
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
-    let productos = await db.Product.findAll({
-      include: ["gammas","user"]
-    });
-    let categories = await db.Category.findAll()
-    // console.log(productos);
-    // let colorBorde = productos[0].gammas[0].code
-    res.render("products/products", {products: productos, category: categories})
+    let products = await db.Product.findAll({ include: ["categories"] });
+    res.render("products/products", { products });
   },
 
   // Renderizamos la vista con detalles de un producto.
   show: async (req, res) => {
-
-    let colors = await db.Color.findAll();
-    let categories = await db.Category.findAll();
-    let product = await db.Product.findByPk(req.params.id, {
-      include: ["gammas"]
-    })
-
-    res.render("products/detailProduct", { color: colors, category: categories, product });
+    let product = await db.Product.findByPk(req.params.id, { include: ["gammas", "categories", "user"] })
+    res.render("products/detailProduct", { product });
   },
 
   // Renderizamos el carro de compras.
@@ -35,24 +25,13 @@ const productController = {
 
   // Renderizamos el formulario de creacion de productos.
   add: (req, res) => {
-    let usuario =  req.session.logUser;
-    let userCategory = usuario.seller
-    console.log(usuario);
-
-    if (userCategory == "Vendedor") {
-    db.Color.findAll()
-      .then(function(color){
-
-        db.Category.findAll()
-          .then(function(category){
-            return res.render("products/create", { color, category });
-
-          })
-
-      })
-    } else {
-      res.send("NO ES UN VENDEDOR")
-    }
+      db.Color.findAll()
+        .then(function(color){
+          db.Category.findAll()
+            .then(function(category){
+              return res.render("products/create", { color, category });
+            })
+        })
   },
 
   // Crea un nuevo elemento en la lista de productos.
@@ -127,47 +106,44 @@ const productController = {
     console.log(errors);
     console.log(req.body);
     // Validamos que los datos se hayan cargado correctamente.
-    if (oldImg && errors.isEmpty()) {
+    if (req.file || req.body.oldImg && errors.isEmpty()) {
       let idProduct = req.params.id
       let colors = req.body.color;
       let colorDefault = colors.shift();
       let idColors = colors.map(string => parseInt(string))
       console.log(idColors);
 
-    let productoEditado = await db.Product.update({
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      off: req.body.off,
-      stock: req.body.stock,
-      tradeMark: req.body.tradeMark,
-      categoryId: req.body.category,
-      image: req.file.originalname,
-    },{
-      where: {id: idProduct}
-    })
-    // console.log(productoEditado);
-    let coloresSeleccionados = await db.Color.findAll({
-      where: {id: idColors}
-    })
-    console.log(coloresSeleccionados);
-    await Promise.all(coloresSeleccionados.map(color => {
-      return db.Gamma.create({
-        product_id: productoEditado.id,
-        color_id: color.id
-      });
-    }));
-    console.log("TODO BIEN");
-    res.redirect("/products");
+      let productoEditado = await db.Product.update({
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        off: req.body.off,
+        stock: req.body.stock,
+        tradeMark: req.body.tradeMark,
+        categoryId: req.body.category,
+        image: req.file ? req.file.originalname : req.body.oldImg
+      },{
+        where: {id: idProduct}
+      })
+      console.log(productoEditado);
+      let coloresSeleccionados = await db.Color.findAll({
+        where: {id: idColors}
+      })
+      console.log(coloresSeleccionados);
+      await Promise.all(coloresSeleccionados.map(color => {
+        return db.Gamma.create({
+          product_id: productoEditado.id,
+          color_id: color.id
+        });
+      }));
+      res.redirect("/products");
   }else{
+    
+    let color = await db.Color.findAll();
+    let category = await db.Category.findAll();
+    let product = await db.Product.findByPk(req.params.id, { include: [ "gammas", "categories" ] });
 
-    let colors = await db.Color.findAll();
-    let categories = await db.Category.findAll();
-    let product = await db.Product.findByPk(req.params.id,{
-      include: ["gammas", "categories"]
-    });
-    console.log("FALLO XD");
-    res.render("products/update", { color: colors, category: categories, product, errors: errors.mapped(), old: req.body });
+    res.render("products/update", { color, category, product, errors: errors.mapped(), old: req.body });
   }
 },
 
