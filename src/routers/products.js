@@ -24,12 +24,16 @@ router.post("/", upload("product-img").single("image"), productValidation, contr
 //Formulario de edición de productos
 router.get("/:id/edit", controller.edit);
 
+router.post("/:id/popularity", controller.popularity)
+
 //Acción de edición (a donde se envía el formulario):
 router.post("/:id/edit", upload("product-img").single("image"), productValidation, controller.update);
 
 //Acción de borrado
 router.post("/:id", controller.delete);
 
-router.get("/results/search", controller.search)
+router.get("/results/search", controller.search);
+
+router.get("/results/filter_order", controller.filter_order)
 
 module.exports = router

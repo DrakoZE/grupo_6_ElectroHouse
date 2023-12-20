@@ -10,9 +10,10 @@ const productController = {
     let productos = await db.Product.findAll({
       include: ["gammas","user"]
     });
+    let categories = await db.Category.findAll()
     // console.log(productos);
     // let colorBorde = productos[0].gammas[0].code
-    res.render("products/products", {products: productos})
+    res.render("products/products", {products: productos, category: categories})
   },
 
   // Renderizamos la vista con detalles de un producto.
@@ -115,6 +116,7 @@ const productController = {
     let product = await db.Product.findByPk(idProduct, {
       include: ["gammas", "categories"]
     })
+    // console.log(product);
     res.render("products/update", { color: colors, category: categories, product});
   },
 
@@ -122,9 +124,10 @@ const productController = {
   update: async (req, res) => {
 
     let errors= validationResult(req);
-
+    console.log(errors);
+    console.log(req.body);
     // Validamos que los datos se hayan cargado correctamente.
-    if (req.file && errors.isEmpty()) {
+    if (oldImg && errors.isEmpty()) {
       let idProduct = req.params.id
       let colors = req.body.color;
       let colorDefault = colors.shift();
@@ -143,7 +146,7 @@ const productController = {
     },{
       where: {id: idProduct}
     })
-    console.log(productoEditado);
+    // console.log(productoEditado);
     let coloresSeleccionados = await db.Color.findAll({
       where: {id: idColors}
     })
@@ -154,12 +157,17 @@ const productController = {
         color_id: color.id
       });
     }));
+    console.log("TODO BIEN");
     res.redirect("/products");
   }else{
 
-    let products = await db.Product.findByPk(req.params.id);
-
-    res.render("products/update", { products, errors: errors.mapped(), old: req.body });
+    let colors = await db.Color.findAll();
+    let categories = await db.Category.findAll();
+    let product = await db.Product.findByPk(req.params.id,{
+      include: ["gammas", "categories"]
+    });
+    console.log("FALLO XD");
+    res.render("products/update", { color: colors, category: categories, product, errors: errors.mapped(), old: req.body });
   }
 },
 
@@ -189,20 +197,80 @@ const productController = {
   },
   // Buscar un producto segun su titulo
   search: async (req,res) => {
-    let titulo = req.query.title
-
+    let titulo = req.query.title || "";
+    // let category = req.query.category || 1;
+    // let order = req.query.order || "ASC";
+    // console.log(category, order, titulo);
     if (titulo) {
-
-    let product = await db.Product.findAll({
+    
+    let categories = await db.Category.findAll()
+    let products = await db.Product.findAll({
         where: {
-            title: {[Op.like]: "%" + titulo + "%"}
-        }
+          title: {[Op.like]: "%" + titulo + "%"},
+          // categoryId: category
+        },
+        // order: [
+        //   ['title', order],
+        // ],
+        
     })
 
-    res.render("products/results", {products: product, titulo})
+    res.render("products/results", {products: products, titulo, category: categories})
     } else {
       res.status(500).send("FALLO EN EL SERVIDOR")
     }
   },
+  popularity: async (req,res) => {
+    let product = await db.Product.findByPk(req.params.id)
+    let popularity = product.popularity++
+    console.log(popularity);
+    let productoEditado = await db.Product.update({
+      popularity: product.popularity + 0.1
+    },{
+      where: {id: req.params.id}
+    })
+
+    res.redirect("/products")
+  },
+
+  filter_order: async (req,res) => {
+
+    try {
+
+      let categories = await db.Category.findAll()
+
+      let { categoryId, price, order } = req.query;
+      // console.log(req.query);
+
+      let orderOptions = [];
+      if (order && ['ASC', 'DESC'].includes(order)) {
+        orderOptions.push(['title', order]);
+      }
+
+      let whereOptions = {};
+      if (price && price == "low") {
+        price = 100000
+        whereOptions.price = { [Op.lte]: parseInt(price, 10) };
+      } else if (price && price == "high") {
+        price = 100000
+        whereOptions.price = { [Op.gte]: parseInt(price, 10) };
+      }
+      if (categoryId) {
+        whereOptions.categoryId = categoryId;
+      }
+  
+      console.log(whereOptions);
+      const products = await db.Product.findAll({
+        where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
+        order: orderOptions.length > 0 ? orderOptions : undefined,
+      });
+      // console.log(products);
+
+      res.render('products/results', { products, categoryId, price, order, category: categories});
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('FALLO EN EL SERVIDOR');
+    }
+  }
 };
 module.exports = productController;

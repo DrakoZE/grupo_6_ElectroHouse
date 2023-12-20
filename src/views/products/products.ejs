@@ -6,15 +6,62 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
-
     <%- include("../partials/head") %>
+    <script src="/js/hiddenButton.js"></script>
 </head>
 
 
 <body>
     <%- include("../partials/header") %>
 
-        <main>
+        <main style="display: flex; align-items: center;" >
+
+            <aside class="aside waos" >
+                <section class="container-filter" style="position: relative;">
+                    <form action="/products/results/filter_order" method="get" class="form-aside">
+                        <h3 style="color: #888;">Filtrar productos</h3>
+                        <label for="" style="color: white;">Por categoria
+                        <select name="category" id="">
+                            <% if (category) { %>
+                                <option value="0">Ninguna</option>
+                                <% for( let i = 0; i < category.length; i++ ) { %>
+                                    <option value="<%= category[i].id %>" <%= locals.old && old.category === category[i].id ? "selected" : "" %> ><%= category[i].category %></option>
+                                    
+                                <% } %>
+        
+                            <% } %>
+                        </select>   
+                        </label>
+                            
+                        </label>
+
+                        <label for="" style="color: white;">Por precio
+                            <ul style="list-style: none; padding: 0px;">
+                                <li>
+                                    <input type="radio" name="price" value="low">Menor a 100000
+                                </li>
+                                <li>
+                                    <input type="radio" name="price" value="high">Mayor a 100000
+                                </li>
+                            </ul>
+                        </label>
+
+
+                        <h3 style="color: #888;">Ordenar productos</h3>
+
+                        <label for="" style="color: white;">
+                            <input type="radio" name="order" value="ASC">A-Z
+                        </label>
+
+                        <label for="" style="color: white;">
+                            <input type="radio"name="order" value="DESC">Z-A
+                        </label>
+
+                        <button type="submit" style="width: 50%;margin: auto;">Subir cambios</button>
+                        <button type="button" class="hiddenButton" style="position: absolute; right: 5px;top: 5px;"> < </button>
+                    </form>
+                </section>
+            </aside>
             <section class="shop-var waos">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">

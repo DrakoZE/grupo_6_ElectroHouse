@@ -11,7 +11,7 @@ const homeController = {
       include: ["gammas"]
     });
     // let colorBorde = productos[0].gammas[0].code;
-    res.render("products/products", {products: productos})
+    res.render("products/home", {products: productos})
   }
 }
 module.exports = homeController;

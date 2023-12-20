@@ -116,6 +116,32 @@ main section article img{
 .waos{
     margin: 25px 0 0 0;
 }
+
+.aside {
+    width: 30%;
+}
+
+.aside .form-aside {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-aside label {
+    padding: 5px 0px;
+}
+
+.container-filter {
+    margin-left: 5px;
+    box-shadow: 0px 0px 10px #aa00ff;
+    border-radius: 20px 0 0 20px;
+    background-color: #000000ad;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px 20px 5px;
+}
+
 @media (min-width: 475px){
     .shop-var article{
         width: 30vw;
