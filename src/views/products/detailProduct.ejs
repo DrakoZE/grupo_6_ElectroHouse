@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/detail.css">
     <%- include("../partials/head") %>
+
 </head>
 
 
@@ -22,14 +23,13 @@
 
     <main>
 
-        <section>
-            <div class="left-side">
-                <nav>
-                    <% if (locals.isLog) { %>
+        <article>
+            <section>
+                <nav class="waos-nav">
+                    <% if (locals.isLog && product.userId == locals.logUser.id ) { %>
                         <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
                         <a href="/products/<%= product.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
-
-                        <a><form action="/products/<%= product.id %>" method="post"><button type="submit" style="background: none; border: 0px; font-size: 1.3rem;"><i class="fa-solid fa-trash-can"></i></button></form></a>
+                        <a><form action="/products/<%= product.id %>" method="post"><button type="submit" style="background: none; border: 0px; color: #666"><i class="fa-solid fa-trash-can"></i></button></form></a>
                         <a><i class="fa-solid fa-share"></i></a>
                     <% } else { %>
                         <a href="/users/login"><i class="fa-solid fa-cart-plus"></i></a>
@@ -39,16 +39,38 @@
                     <% } %>
                 </nav>
                 <img src="/images/product-img/<%= product.image %>">
-            </div>
-            <article>
-                <p style="font-style: italic; color: #fff; font-size: 1.3em;"><%= product.title %></p>
-                <div style="display: flex; align-items: center;">
-                    <p style="color: #666;"><%= product.price %>$</p>
-                    <p style="font-size: 0.9em; color: #32e169; text-shadow: 0 0 1px #32e169;"><%= product.off %>% off</p>
-                </div>
-                <p style="font-size: 0.9em;"><%= product.description %></p>
-            </article>
-        </section>
+                
+                <p><%= product.title %> - <%= product.tradeMark %></p>
+                <p><%= product.categories.category %></p>
+                <p><%= product.price %>$</p>
+                <p><%= product.off %>% off</p>
+            </section>
+            <section>
+                <p>Colores disponibles: </p>
+                <% for( let i = 0; i < product.gammas.length; i++ ) { %>
+                    <p><i class="fa-solid fa-circle fa-2xs" style="color: <%= product.gammas[i].code %>; text-shadow: 0 0 3px #ffffff"></i></p>
+                <% } %>
+            </section>
+            <section>
+                <p><%= product.description %></p>
+            </section>
+            <section>
+                <p>Vendedor: <%= product.user.username %></p>
+                <p>Lanzamiento: <%= product.created_at.toLocaleDateString("es-ES") %></p>
+                <p>Disponible: <%= product.stock %></p>
+                <% if (product.verificated != null) { %>
+                    <p><%= product.verificated %> <i class="fa-regular fa-circle-check"></i></p>
+                <% } else { %>
+                    <p>No verificado <i class="fa-solid fa-circle-exclamation"></i></p>
+                <% } %>
+                <% if (product.popularity != null) { %>
+                    <p>Clasificacion: <%= product.popularity %><i class="fa-solid fa-star"></i></p>
+                <% } else { %>
+                    <p>Clasificacion: 0 <i class="fa-solid fa-star"></i></p>
+                <% } %>
+                <p></p>
+            </section>
+        </article>
 
     </main>
 

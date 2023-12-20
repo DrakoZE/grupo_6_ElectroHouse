@@ -5,75 +5,68 @@ let { validationResult } = require("express-validator");
 const userController = {
     //lista de usuarios.
     index: async (req, res) => {
-        let usuarios = await db.User.findAll();
-        return res.render("users/users", {user:usuarios})
+        let user = await db.User.findAll();
+        return res.render("users/users", {user})
     },
 
     // Informacion de un usuario.
     show: async(req, res) => {
-        let id = req.params.id
-        let usuarios = await db.User.findByPk(req.params.id);
-        return res.render("users/profile", {user: usuarios, id})
+        let user = await db.User.findByPk(req.params.id);
+        return res.render("users/profile", { user })
     },
 
     // Formulario de registro.
     add: (req, res) => {
         res.render("users/register");
     },
+
     // Crea un nuevo elemento en la lista de usuarios.
     create: async function (req, res) {
 
         let errors = validationResult(req);
 
-        if(errors.isEmpty()) {
-                let nuevoUsuario =  await db.User.create({
-                    firstName: req.body.firstName,
-                    surname: req.body.surname,
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, 10, 12),
-                    avatar: req.file.originalname,
-                    permissionId: 1,
-                    seller: req.body.seller
-                })
-                res.redirect("/users")
+        if (req.file || req.body.oldImg && errors.isEmpty()) {
+            let newUser =  await db.User.create({
+                firstName: req.body.firstName,
+                surname: req.body.surname,
+                username: req.body.username,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10, 12),
+                avatar: req.file.originalname,
+                seller: req.body.seller
+            })
+            res.redirect("/users")
             } else {
-                res.render("users/register", { errors: errors.mapped(), old: req.body });
+                let user = await db.User.findByPk(req.params.id)
+                res.render("users/register", { user, errors: errors.mapped(), old: req.body });
             }
         },
 
     update: async (req,res) => {
-        let id = req.params.id
-        let usuario = await db.User.findByPk(id)
-        res.render("users/updateUser", {user: usuario, id})
+        let user = await db.User.findByPk(req.params.id)
+        res.render("users/updateUser", { user })
     },
 
     edit: async (req,res) => {
-        let idUsuario = req.params.id;
 
-        if (req.file) {
-            let usuarioEditado = await db.User.update({
+        let errors= validationResult(req);
+
+        if (req.file || req.body.oldImg && errors.isEmpty()) {
+
+        let usuarioEditado = await db.User.update({
             firstName: req.body.firstName,
             surname: req.body.surname,
             username: req.body.username,
-            avatar: req.file.originalname,
+            avatar: req.file ? req.file.originalname : req.body.oldImg,
             seller: req.body.seller
         },{
-            where: {id: idUsuario}
+            where: {id: req.params.id}
         })
         res.redirect("/users")
-
         } else {
-            let usuarioEditado = await db.User.update({
-                firstName: req.body.firstName,
-                surname: req.body.surname,
-                username: req.body.username,
-                avatar: req.body.oldImg,
-                seller: req.body.seller
-            },{
-                where: {id: idUsuario}
-            })
-            res.redirect("/users")
+            let user = await db.User.findByPk(req.params.id)
+            console.log(errors)
+            res.render("users/updateUser", { user, errors: errors.mapped(), old: req.body });
         }
     },
 

@@ -73,7 +73,8 @@ main section article img{
     gap: 3px;
 }
 .shop-var a article{
-    background: linear-gradient(0deg, #020202, #1313139c);
+    backdrop-filter: blur(3px) brightness(0.4);
+    background: #00000069;
     grid-template-columns: 1fr 1fr;
     border: solid 1px #333;
     border-radius: 15px;
@@ -130,7 +131,7 @@ main section article img{
         margin-top: 130px;
     }
     .waos{
-        margin: 120px 0 0 0;
+        margin: 130px 0 0 0;
     }
     .first-div{
         width: 120px;

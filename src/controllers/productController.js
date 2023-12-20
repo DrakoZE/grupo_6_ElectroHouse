@@ -104,42 +104,44 @@ const productController = {
     let errors= validationResult(req);
 
     // Validamos que los datos se hayan cargado correctamente.
-    if (req.file && errors.isEmpty()) {
+    if (req.file || req.body.oldImg && errors.isEmpty()) {
       let idProduct = req.params.id
       let colors = req.body.color;
       let colorDefault = colors.shift();
       let idColors = colors.map(string => parseInt(string))
       console.log(idColors);
 
-    let productoEditado = await db.Product.update({
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      off: req.body.off,
-      stock: req.body.stock,
-      tradeMark: req.body.tradeMark,
-      categoryId: req.body.category,
-      image: req.file.originalname,
-    },{
-      where: {id: idProduct}
-    })
-    console.log(productoEditado);
-    let coloresSeleccionados = await db.Color.findAll({
-      where: {id: idColors}
-    })
-    console.log(coloresSeleccionados);
-    await Promise.all(coloresSeleccionados.map(color => {
-      return db.Gamma.create({
-        product_id: productoEditado.id,
-        color_id: color.id
-      });
-    }));
-    res.redirect("/products");
+      let productoEditado = await db.Product.update({
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        off: req.body.off,
+        stock: req.body.stock,
+        tradeMark: req.body.tradeMark,
+        categoryId: req.body.category,
+        image: req.file ? req.file.originalname : req.body.oldImg
+      },{
+        where: {id: idProduct}
+      })
+      console.log(productoEditado);
+      let coloresSeleccionados = await db.Color.findAll({
+        where: {id: idColors}
+      })
+      console.log(coloresSeleccionados);
+      await Promise.all(coloresSeleccionados.map(color => {
+        return db.Gamma.create({
+          product_id: productoEditado.id,
+          color_id: color.id
+        });
+      }));
+      res.redirect("/products");
   }else{
+    
+    let color = await db.Color.findAll();
+    let category = await db.Category.findAll();
+    let product = await db.Product.findByPk(req.params.id, { include: [ "gammas", "categories" ] });
 
-    let products = await db.Product.findByPk(req.params.id);
-
-    res.render("products/update", { products, errors: errors.mapped(), old: req.body });
+    res.render("products/update", { color, category, product, errors: errors.mapped(), old: req.body });
   }
 },
 
