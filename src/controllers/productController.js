@@ -8,8 +8,9 @@ const productController = {
 
   // Renderizamos la vista con los productos.
   index: async(req, res) => {
+    let category = await db.Category.findAll()
     let products = await db.Product.findAll({ include: ["categories"] });
-    res.render("products/products", { products });
+    res.render("products/products", { products , category });
   },
 
   // Renderizamos la vista con detalles de un producto.

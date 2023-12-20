@@ -15,7 +15,6 @@
     <%- include("../partials/header") %>
 
         <main style="display: flex; align-items: center;" >
-
             <aside class="aside waos" >
                 <section class="container-filter" style="position: relative;">
                     <form action="/products/results/filter_order" method="get" class="form-aside">
@@ -62,6 +61,11 @@
                     </form>
                 </section>
             </aside>
+            <div class="waos hidden">
+                <section class="container-filter minus-container-filter">
+                    <button type="button" class="hiddenButton  minus-boton" style="position: absolute; right: 5px;top: 5px;"> > </button>
+                </section>
+            </div>
             <section class="shop-var waos">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">
