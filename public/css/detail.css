@@ -44,6 +44,13 @@ main article section:first-child p, main article section:last-child p{
     color: #0080ff;
     text-shadow: 0 0 3px currentColor;
 }
+.waos-nav a:nth-child(2) form button{
+    color: #666;
+}
+.waos-nav a:nth-child(2) form button:hover{
+    color: #c83838;
+    text-shadow: 0 0 3px currentColor;
+}
 .waos-nav a:nth-child(3) form button i{
     font-size: 1.3em;
 }

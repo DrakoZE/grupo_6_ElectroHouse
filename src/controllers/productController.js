@@ -55,6 +55,8 @@ const productController = {
         off: req.body.off,
         stock: req.body.stock,
         tradeMark: req.body.tradeMark,
+        popularity: 0,
+        verificated: 0,
         categoryId: req.body.category,
         image: req.file.originalname,
         userId: idUser
@@ -179,35 +181,26 @@ const productController = {
     // let order = req.query.order || "ASC";
     // console.log(category, order, titulo);
     if (titulo) {
-    
-    let categories = await db.Category.findAll()
-    let products = await db.Product.findAll({
-        where: {
-          title: {[Op.like]: "%" + titulo + "%"},
-          // categoryId: category
-        },
-        // order: [
-        //   ['title', order],
-        // ],
-        
-    })
 
-    res.render("products/results", {products: products, titulo, category: categories})
+    let product = await db.Product.findAll({
+      include: ["gammas", "categories"], where: {
+        title: {[Op.like]: "%" + titulo + "%"}
+    }},)
+
+    res.render("products/results", {products: product, titulo, category: categories})
     } else {
       res.status(500).send("FALLO EN EL SERVIDOR")
     }
   },
-  popularity: async (req,res) => {
+  // Sube la Popularidad de un producto
+  like: async (req, res) => {
     let product = await db.Product.findByPk(req.params.id)
-    let popularity = product.popularity++
-    console.log(popularity);
-    let productoEditado = await db.Product.update({
-      popularity: product.popularity + 0.1
+    let liked = await db.Product.update({
+      popularity: ++product.popularity,
     },{
       where: {id: req.params.id}
     })
-
-    res.redirect("/products")
+    res.redirect(`/products/${req.params.id}`)
   },
 
   filter_order: async (req,res) => {
@@ -241,7 +234,9 @@ const productController = {
       const products = await db.Product.findAll({
         where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
         order: orderOptions.length > 0 ? orderOptions : undefined,
+        include: ["gammas", "categories"]
       });
+       // console.log(products);
 
       res.render('products/results', { products, categoryId, price, order, category: categories});
     } else {

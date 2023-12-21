@@ -68,7 +68,7 @@ main section article img{
 }
 .shop-var{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     justify-items: center;
     gap: 3px;
 }
@@ -82,9 +82,10 @@ main section article img{
     color: #666;
     display: grid;
     margin: 5px;
-    width: 200px;
+    width: 270px;
 }
 .shop-var a article p{
+    font-size: 1.5em;
     justify-self: center;
     margin: 0;
 }
@@ -108,13 +109,40 @@ main section article img{
     grid-column-end: 3;
 }
 .shop-var a article div{
+    font-size: 1.5em;
     display: flex;
     justify-content: space-between;
     width: 50%;
     justify-self: center;
     align-self: center;
+    align-items: center;
+}
+.shop-var a article div form i{
+    font-size: 1.3em;
+}
+
+.shop-var a article div i{
+    transition: all 0.5s;
+}
+.shop-var a article div form i:first-child:hover{
+    color: #d54343;
+    text-shadow: 0 0 2px currentColor;
+}
+.shop-var a article div i:nth-child(2):hover{
+    color: #439dd5;
+    text-shadow: 0 0 2px currentColor;
+}
+.shop-var a article div i:last-child:hover{
+    color: #d4d3d3;
+    text-shadow: 0 0 2px currentColor;
+}
+.shop-var a article p:nth-of-type(3){
+    color: #33b133;;
+    text-shadow: 0 0 2px currentColor;
 }
 .shop-var a article p:last-child{
+    color: #67188f;
+    text-shadow: 0 0 2px currentColor;
     justify-self: start;
     margin: 0 0 5px 10px;
 }

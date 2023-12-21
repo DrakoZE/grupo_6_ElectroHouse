@@ -9,6 +9,7 @@
 
     <%- include("../partials/head") %>
     <script src="/js/preview.js"></script>
+    <script src="/js/form.js"></script>
 </head>
 
 
@@ -24,38 +25,38 @@
 
             <section>
 
-                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>" id="1111">
+                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>" onchange="addClass(input);">
                 <% if (locals.errors && errors.title) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
                 <% } else { %>
-                    <p id="111"><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p class=""><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
                 <% } %>
 
                 <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
                 <% if (locals.errors && errors.description) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
                 <% } %>
 
                 <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : ""%>">
                 <% if (locals.errors && errors.price) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
                 <% } %>
                 <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : ""%>">
                 <% if (locals.errors && errors.off) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
                 <% } %>
 
                <input type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : ""%>">
                 <% if (locals.errors && errors.stock) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
                 <% } %>
 
             </section>
@@ -66,7 +67,7 @@
                 <% if (locals.errors && errors.tradeMark) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Marca comercial</p>
                 <% } %>
 
                 <select name="category">
@@ -82,7 +83,7 @@
 
                 </select>
 
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
 
             </section>
 
@@ -130,7 +131,7 @@
 
                 <div>
                     <p>introducir imagen <i class="fa-regular fa-image"></i></p>
-                    <input type="file" name="image" id="file-ip-1" onchange="showPreview(event);">
+                    <input type="file" name="image" id="file-ip-1" id="1a" onchange="showPreview(event);">
                 </div>
                     
                 <div class="preview inwaos" style="border: none; background: none;">
@@ -138,9 +139,9 @@
                 </div>
                 
                 <% if (locals.errors && errors.image) { %>
-                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
+                    <p id="image-point" class="err-msg no" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                 <% } else { %>
-                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p id="image-point" class="err-msg waiting" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i> Esperando imagen</p>
                 <% } %>
                         
                 <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : "" %>">
