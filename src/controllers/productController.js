@@ -217,8 +217,9 @@ const productController = {
       let categories = await db.Category.findAll()
 
       let { categoryId, price, order } = req.query;
-      // console.log(req.query);
 
+      if (categoryId != 0) {
+      
       let orderOptions = [];
       if (order && ['ASC', 'DESC'].includes(order)) {
         orderOptions.push(['title', order]);
@@ -241,9 +242,32 @@ const productController = {
         where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
         order: orderOptions.length > 0 ? orderOptions : undefined,
       });
-      // console.log(products);
 
       res.render('products/results', { products, categoryId, price, order, category: categories});
+    } else {
+      console.log("NINGUNA CATEGORIA");
+      let orderOptions = [];
+      if (order && ['ASC', 'DESC'].includes(order)) {
+        orderOptions.push(['title', order]);
+      }
+
+      let whereOptions = {};
+      if (price && price == "low") {
+        price = 100000
+        whereOptions.price = { [Op.lte]: parseInt(price, 10) };
+      } else if (price && price == "high") {
+        price = 100000
+        whereOptions.price = { [Op.gte]: parseInt(price, 10) };
+      }
+  
+      console.log(whereOptions);
+      const products = await db.Product.findAll({
+        where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
+        order: orderOptions.length > 0 ? orderOptions : undefined,
+      });
+
+      res.render('products/results', { products, price, order, category: categories});
+    }
     } catch (error) {
       console.log(error);
       res.status(500).send('FALLO EN EL SERVIDOR');
