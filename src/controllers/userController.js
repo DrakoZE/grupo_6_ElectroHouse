@@ -12,7 +12,7 @@ const userController = {
     // Informacion de un usuario.
     show: async(req, res) => {
         let user = await db.User.findByPk(req.params.id);
-        return res.render("users/profile", { user })
+        return res.render("users/detailUser", { user })
     },
 
     // Formulario de registro.
