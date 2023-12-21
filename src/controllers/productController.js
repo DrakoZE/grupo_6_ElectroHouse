@@ -200,7 +200,7 @@ const productController = {
     },{
       where: {id: req.params.id}
     })
-    res.redirect("/")
+    res.redirect(`/products/${req.params.id}`)
   },
 
   filter_order: async (req,res) => {
@@ -233,8 +233,9 @@ const productController = {
       const products = await db.Product.findAll({
         where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
         order: orderOptions.length > 0 ? orderOptions : undefined,
+        include: ["gammas", "categories"]
       });
-      // console.log(products);
+       // console.log(products);
 
       res.render('products/results', { products, categoryId, price, order, category: categories});
     } catch (error) {
