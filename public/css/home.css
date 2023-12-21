@@ -66,6 +66,109 @@ main section article img{
     margin: 0em;
     color: #888;
 }
+.filter-form{
+    position: relative;
+    backdrop-filter: blur(3px) brightness(0.4);
+    background: #00000069;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 24px 1fr 1fr 1fr;
+    border: solid 1px #333;
+    border-radius: 15px;
+    font-size: 0.7em;
+    color: #666;
+    display: grid;
+    margin: 5px;
+    width: 270px;
+    padding: 10px 0;
+    gap: 10px;
+}
+.filter-form h3:first-child{
+    font-size: 1.7em;
+    margin: 0;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: center;
+    align-self: center;
+}
+.filter-form input{
+    color: #666;
+    border-radius: 10px;
+    appearance: none;
+    margin: 0;
+    padding: 0 5px;
+    width: 70%;
+    height: 90%;
+    display: grid;
+    justify-self: center;
+    place-content: center;
+    border: solid 1px #333;
+    cursor: pointer;  
+}
+.filter-form input:nth-of-type(1)::before{
+    content: "Precio > a 100k";
+    width: 100%;
+    height: 100%;
+    border: solid 1px #00000000;
+    transition: 120ms all;
+}
+.filter-form input:nth-of-type(2)::before{
+    content: "Precio < a 100k";
+    width: 100%;
+    height: 100%;
+    border: solid 1px #00000000;
+    transition: 120ms all;
+}
+.filter-form input:nth-of-type(3)::before{
+    content: "Orden A-Z";
+    width: 100%;
+    height: 100%;
+    border: solid 1px #00000000;
+    transition: 120ms all;
+}
+.filter-form input:nth-of-type(4)::before{
+    content: "Orden Z-A";
+    width: 100%;
+    height: 100%;
+    border: solid 1px #00000000;
+    transition: 120ms all;
+}
+.filter-form input:checked{
+    border: solid 1px #aa00ff;
+    box-shadow: 0 0 3px #aa00ff;
+}
+.filter-form select{
+    justify-self: center;
+    outline: none;
+    width: 70%;
+    background: none;
+    border-radius: 7px;
+    border: solid 1px #333;
+    color: #666;
+}
+.filter-form select option{
+    background-color: #000000f0;
+}
+.filter-form button:last-child{
+    justify-self: center;
+    outline: none;
+    width: 70%;
+    background: none;
+    border-radius: 7px;
+    border: solid 1px #333;
+    color: #666;
+}
+.filter-form button.hide-button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #00000080;
+    border: solid 1px #333;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    align-self: center;
+    justify-self: center;
+}
 .shop-var{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -150,37 +253,6 @@ main section article img{
     margin: 25px 0 0 0;
 }
 
-.aside {
-    width: 30%;
-}
-
-.aside .form-aside {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-aside label {
-    padding: 5px 0px;
-}
-
-.container-filter {
-    margin-left: 5px;
-    box-shadow: 0px 0px 10px #aa00ff;
-    border-radius: 20px 0 0 20px;
-    background-color: #000000ad;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px 20px 5px;
-}
-
-.minus-container-filter {
-    width: 100%;
-    height: 321.875px;
-    position: relative;
-}
-
 .hidden {
     display: none;
 }
@@ -219,4 +291,5 @@ main section article img{
 }
 
 @media(min-width: 1024px){
+    
 }

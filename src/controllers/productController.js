@@ -259,7 +259,7 @@ const productController = {
       const products = await db.Product.findAll({
         where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
         order: orderOptions.length > 0 ? orderOptions : undefined,
-        include: ["categories","user","gammas"]
+        include: ["gammas", "categories"]
       });
 
       res.render('products/results', { products, price, order, category: categories});
