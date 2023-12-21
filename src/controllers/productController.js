@@ -25,14 +25,10 @@ const productController = {
   },
 
   // Renderizamos el formulario de creacion de productos.
-  add: (req, res) => {
-      db.Color.findAll()
-        .then(function(color){
-          db.Category.findAll()
-            .then(function(category){
-              return res.render("products/create", { color, category });
-            })
-        })
+  add: async (req, res) => {
+    let color = await db.Color.findAll();
+    let category = await db.Category.findAll(); 
+    return res.render("products/create", { color, category });
   },
 
   // Crea un nuevo elemento en la lista de productos.
@@ -177,11 +173,10 @@ const productController = {
   // Buscar un producto segun su titulo
   search: async (req,res) => {
     let titulo = req.query.title || "";
-    // let category = req.query.category || 1;
-    // let order = req.query.order || "ASC";
-    // console.log(category, order, titulo);
-    if (titulo) {
 
+    if (titulo) {
+    
+    let categories = await db.Category.findAll();
     let product = await db.Product.findAll({
       include: ["gammas", "categories"], where: {
         title: {[Op.like]: "%" + titulo + "%"}
@@ -214,8 +209,8 @@ const productController = {
       if (categoryId != 0) {
       
       let orderOptions = [];
-      if (order && ['ASC', 'DESC'].includes(order)) {
-        orderOptions.push(['title', order]);
+      if (order && ['popularity', 'created_at'].includes(order)) {
+        orderOptions.push([order, "DESC"]);
       }
 
       let whereOptions = {};
@@ -236,14 +231,13 @@ const productController = {
         order: orderOptions.length > 0 ? orderOptions : undefined,
         include: ["gammas", "categories"]
       });
-       // console.log(products);
 
       res.render('products/results', { products, categoryId, price, order, category: categories});
     } else {
       console.log("NINGUNA CATEGORIA");
       let orderOptions = [];
-      if (order && ['ASC', 'DESC'].includes(order)) {
-        orderOptions.push(['title', order]);
+      if (order && ['popularity', 'created_at'].includes(order)) {
+        orderOptions.push([ order, "DESC"]);
       }
 
       let whereOptions = {};
@@ -254,8 +248,7 @@ const productController = {
         price = 100000
         whereOptions.price = { [Op.gte]: parseInt(price, 10) };
       }
-  
-      console.log(whereOptions);
+
       const products = await db.Product.findAll({
         where: Object.keys(whereOptions).length > 0 ? whereOptions : undefined,
         order: orderOptions.length > 0 ? orderOptions : undefined,
