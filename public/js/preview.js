@@ -14,5 +14,9 @@ function showPreview(event){
         preview2.style.display = "block";
         preview2.style.width = "auto";
         preview2.style.height = "150px";
+
+        let point = document.querySelector("#image-point");
+        point.classList.add("yes");
+        point.innerHTML = `<i class="fa-solid fa-circle fa-2xs"></i> Imagen cargada`
     }
 }

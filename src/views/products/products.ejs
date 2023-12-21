@@ -24,7 +24,7 @@
                         <p><%= products[i].categories.category %></p>
                         <p><%= products[i].off %>% off</p>
                         <div>
-                            <i class="fa-regular fa-heart"></i>
+                            <form action="/products/<%= products[i].id %>/like" method="post"><button type="submit" style="padding: 0; background: none; border: 0px; color: #666"><i class="fa-regular fa-heart"></i></button></form>
                             <i class="fa-solid fa-thumbtack"></i>
                             <i class="fa-solid fa-share"></i>
                         </div>

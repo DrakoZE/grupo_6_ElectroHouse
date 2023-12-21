@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="/css/create&Edit.css">
     <script src="/js/preview.js"></script>
 
+    <% function waosInt(num) {
+        const result = [];
+        for (const index of num ) {
+            result.push(parseInt(index));
+        }
+        return result;
+    }
+
+    function waosArray(waos){
+        const wao = [];
+        for (const index of waos) {
+            wao.push(index.id);
+        }
+        return wao;
+    } %>
+
     <%- include("../partials/head") %>
 </head>
 
@@ -26,35 +42,35 @@
                 <% if (locals.errors && errors.title) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
                 <% } %>
 
                 <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : product.description%>">
                 <% if (locals.errors && errors.description) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
                 <% } %>
 
                 <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : product.price%>">
                 <% if (locals.errors && errors.price) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
                 <% } %>
                 
                 <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : product.off%>">
                 <% if (locals.errors && errors.off) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
                 <% } %>
 
                <input type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : product.stock%>">
                 <% if (locals.errors && errors.stock) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
                 <% } %>
 
             </section>
@@ -65,7 +81,7 @@
                 <% if (locals.errors && errors.tradeMark) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p><i class="fa-solid fa-circle fa-2xs"></i> Marca Comercial</p>
                 <% } %>
 
                 <select name="category">
@@ -86,29 +102,11 @@
 
                 </select>
 
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
 
             </section>
 
             <section>
-
-                <% 
-                    function waosInt(num) {
-                        const result = [];
-                        for (const index of num ) {
-                            result.push(parseInt(index));
-                        }
-                        return result;
-                    }
-
-                    function waosArray(waos){
-                        const wao = [];
-                        for (const index of waos) {
-                            wao.push(index.id);
-                        }
-                        return wao;
-                    }
-                %>
 
                 <% if (color) { %>
 
@@ -159,7 +157,7 @@
             </section>
 
             <div class="preview waos">
-                <img id="file-ip-2-preview" src="/images/product-img/<%= product.image %>">
+                <img id="file-ip-2-preview" src="/images/product-img/<%= product.image %>" style="height: 150px">
             </div>
 
             <section>

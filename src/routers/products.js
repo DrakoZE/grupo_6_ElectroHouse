@@ -3,9 +3,10 @@ const router = express.Router();
 
 const controller = require("../controllers/productController");
 
-const upload = require("../../middleware/multerMiddleware")
-const createValidation = require("../../middleware/productMiddleware/createMiddleware")
-const editValidation = require("../../middleware/productMiddleware/editMiddleware")
+const upload = require("../../middleware/multerMiddleware");
+const createValidation = require("../../middleware/productMiddleware/createMiddleware");
+const editValidation = require("../../middleware/productMiddleware/editMiddleware");
+const user = require("../../middleware/userMiddleware/authmiddleware");
 
 //Listado de productos
 router.get("/", controller.index);
@@ -30,6 +31,9 @@ router.post("/:id/edit", upload("product-img").single("image"), editValidation, 
 
 //Acción de borrado
 router.post("/:id", controller.delete);
+
+//Acción de like
+router.post("/:id/like", controller.like)
 
 router.get("/results/search", controller.search)
 

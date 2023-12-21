@@ -54,6 +54,8 @@ const productController = {
         off: req.body.off,
         stock: req.body.stock,
         tradeMark: req.body.tradeMark,
+        popularity: 0,
+        verificated: 0,
         categoryId: req.body.category,
         image: req.file.originalname,
         userId: idUser
@@ -176,15 +178,25 @@ const productController = {
     if (titulo) {
 
     let product = await db.Product.findAll({
-        where: {
-            title: {[Op.like]: "%" + titulo + "%"}
-        }
-    })
+      include: ["gammas", "categories"], where: {
+        title: {[Op.like]: "%" + titulo + "%"}
+    }},)
 
     res.render("products/results", {products: product, titulo})
     } else {
       res.status(500).send("FALLO EN EL SERVIDOR")
     }
   },
+
+  // Sube la Popularidad de un producto
+  like: async (req, res) => {
+    let product = await db.Product.findByPk(req.params.id)
+    let liked = await db.Product.update({
+      popularity: ++product.popularity,
+    },{
+      where: {id: req.params.id}
+    })
+    res.redirect("/")
+  }
 };
 module.exports = productController;

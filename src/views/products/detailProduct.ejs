@@ -58,16 +58,12 @@
                 <p>Vendedor: <%= product.user.username %></p>
                 <p>Lanzamiento: <%= product.created_at.toLocaleDateString("es-ES") %></p>
                 <p>Disponible: <%= product.stock %></p>
-                <% if (product.verificated != null) { %>
-                    <p><%= product.verificated %> <i class="fa-regular fa-circle-check"></i></p>
+                <% if (product.verificated == 1) { %>
+                    <p>Verificado <i class="fa-regular fa-circle-check"></i></p>
                 <% } else { %>
                     <p>No verificado <i class="fa-solid fa-circle-exclamation"></i></p>
                 <% } %>
-                <% if (product.popularity != null) { %>
                     <p>Clasificacion: <%= product.popularity %><i class="fa-solid fa-star"></i></p>
-                <% } else { %>
-                    <p>Clasificacion: 0 <i class="fa-solid fa-star"></i></p>
-                <% } %>
                 <p></p>
             </section>
         </article>
