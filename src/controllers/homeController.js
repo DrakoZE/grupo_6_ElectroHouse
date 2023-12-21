@@ -7,11 +7,11 @@ const homeController = {
 
   // Renderizamos home.
   home: async (req, res) => {
-    let products = await db.Product.findAll({
-      include: ["gammas", "categories"]
-    });
-    // let colorBorde = productos[0].gammas[0].code;
-    res.render("products/home", { products })
+    let products = await db.Product.findAll({include: ["gammas", "categories"]});
+    let liked = await db.Product.findAll({order: ["popularity"]});
+    let recent = await db.Product.findAll({order: ["created_at"]});
+
+    res.render("products/home", { products, liked, recent })
   }
 }
 module.exports = homeController;
