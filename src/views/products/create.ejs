@@ -9,7 +9,7 @@
 
     <%- include("../partials/head") %>
     <script src="/js/preview.js"></script>
-    <script src="/js/form.js"></script>
+    <script src="/js/formCreate.js"></script>
 </head>
 
 
@@ -25,52 +25,53 @@
 
             <section>
 
-                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>" onchange="addClass(input);">
+                <input class="title" type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : ""%>">
                 <% if (locals.errors && errors.title) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
+                    <p class="title err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
                 <% } else { %>
-                    <p class=""><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
+                    <p class="title no"><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
                 <% } %>
 
-                <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
+                <input class="description" type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : ""%>">
                 <% if (locals.errors && errors.description) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
+                    <p class="description err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
+                    <p class="description no"><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
                 <% } %>
 
-                <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : ""%>">
+                <input class="price" type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : ""%>">
                 <% if (locals.errors && errors.price) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
+                    <p class="price err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
-                <% } %>
-                <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : ""%>">
-                <% if (locals.errors && errors.off) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
-                <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
+                    <p class="price no"><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
                 <% } %>
 
-               <input type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : ""%>">
-                <% if (locals.errors && errors.stock) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
+                <input class="off" type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : ""%>">
+                <% if (locals.errors && errors.off) { %>
+                    <p class="off err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
+                    <p class="off no"><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
+                <% } %>
+
+               <input class="stock" type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : ""%>">
+                <% if (locals.errors && errors.stock) { %>
+                    <p class="stock err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
+                <% } else { %>
+                    <p class="stock no"><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
                 <% } %>
 
             </section>
             
             <section>
 
-                <input type="text" name="tradeMark" placeholder="Marca del producto" value="<%=locals.old && old.tradeMark ? old.tradeMark : ""%>">
+                <input class="trademark" type="text" name="tradeMark" placeholder="Marca del producto" value="<%=locals.old && old.tradeMark ? old.tradeMark : ""%>">
                 <% if (locals.errors && errors.tradeMark) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
+                    <p class="trademark err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Marca comercial</p>
+                    <p class="trademark no"><i class="fa-solid fa-circle fa-2xs"></i> Marca comercial</p>
                 <% } %>
 
-                <select name="category">
+                <select class="category" name="category">
 
                     <% if (category) { %>
 
@@ -83,7 +84,7 @@
 
                 </select>
 
-                <p><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
+                <p class="category"><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
 
             </section>
 
@@ -113,7 +114,6 @@
                         </style>
 
                         <% if (locals.old) { %>
-                            
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= waosInt(old.color).includes( i + 1 ) ? "checked" : "" %>>
                         <% } else { %>
                             <input type="checkbox" name="color" value="<%= color[i].id %>" <%= locals.old && old.color ? "checked" : "" %>>

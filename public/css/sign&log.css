@@ -35,9 +35,9 @@ main input{
   outline: none;
 }
 main form p{
-  text-shadow: 0 0 10px #ff0707;
-  margin: 3px 10px 10px 10px;
   color: #ff0707;
+  text-shadow: 0 0 10px currentColor;
+  margin: 3px 10px 10px 10px;
   font-size: 0.75em;
 }
 main form select{
@@ -126,6 +126,15 @@ main form div button{
   height: auto;
   width: auto;
   border-radius: 10px;
+}
+.no{
+  color: #ff0000;
+}
+.waiting{
+  color: #ffff00;
+}
+.yes{
+  color: #00ff00;
 }
 @media(min-width: 768px){
   main h2{

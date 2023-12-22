@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
     <link rel="stylesheet" href="/css/create&Edit.css">
+    <script src="/js/formCreate.js"></script>
     <script src="/js/preview.js"></script>
 
     <% function waosInt(num) {
@@ -38,53 +39,53 @@
             
             <section>
 
-                <input type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : product.title %>">
+                <input class="title" type="text" name="title" placeholder="Nombre del producto" value="<%=locals.old && old.title ? old.title : product.title %>">
                 <% if (locals.errors && errors.title) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
+                    <p class="title err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.title.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
+                    <p class="title no"><i class="fa-solid fa-circle fa-2xs"></i> Titulo</p>
                 <% } %>
 
-                <input type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : product.description%>">
+                <input class="description" type="text" name="description" placeholder="Descripción" value="<%=locals.old && old.description ? old.description : product.description%>">
                 <% if (locals.errors && errors.description) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
+                    <p class="description err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.description.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
+                    <p class="description no"><i class="fa-solid fa-circle fa-2xs"></i> Descripción</p>
                 <% } %>
 
-                <input type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : product.price%>">
+                <input class="price" type="number" name="price" placeholder="Precio" value="<%=locals.old && old.price ? old.price : product.price%>">
                 <% if (locals.errors && errors.price) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
+                    <p class="price err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.price.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
+                    <p class="price no"><i class="fa-solid fa-circle fa-2xs"></i> Precio</p>
                 <% } %>
                 
-                <input type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : product.off%>">
+                <input class="off" type="number" name="off" placeholder="Descuento" value="<%=locals.old && old.off ? old.off : product.off%>">
                 <% if (locals.errors && errors.off) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
+                    <p class="off err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.off.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
+                    <p class="off no"><i class="fa-solid fa-circle fa-2xs"></i> Descuento</p>
                 <% } %>
 
-               <input type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : product.stock%>">
+               <input class="stock" type="number" name="stock" placeholder="Cantidad" value="<%=locals.old && old.stock ? old.stock : product.stock%>">
                 <% if (locals.errors && errors.stock) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
+                    <p class="stock err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.stock.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
+                    <p class="stock no"><i class="fa-solid fa-circle fa-2xs"></i> Cantidad</p>
                 <% } %>
 
             </section>
             
             <section>
 
-                <input type="text" name="tradeMark" placeholder="Marca del producto" value="<%=locals.old && old.tradeMark ? old.tradeMark : product.tradeMark%>">
+                <input class="trademark" type="text" name="tradeMark" placeholder="Marca del producto" value="<%=locals.old && old.tradeMark ? old.tradeMark : product.tradeMark%>">
                 <% if (locals.errors && errors.tradeMark) { %>
-                    <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
+                    <p class="trademark err-msg no"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.tradeMark.msg%> </p>
                 <% } else { %>
-                    <p><i class="fa-solid fa-circle fa-2xs"></i> Marca Comercial</p>
+                    <p class="trademark no"><i class="fa-solid fa-circle fa-2xs"></i> Marca Comercial</p>
                 <% } %>
 
-                <select name="category">
+                <select class="category" name="category">
                     
                     <% if (category) { %>
                      
@@ -102,7 +103,7 @@
 
                 </select>
 
-                <p><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
+                <p class="category"><i class="fa-solid fa-circle fa-2xs"></i> Categoria</p>
 
             </section>
 
@@ -149,7 +150,7 @@
                 <% if (locals.errors && errors.image) { %>
                     <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.image.msg%> </p>
                 <% } else { %>
-                    <p class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i></p>
+                    <p id="image-point" class="err-msg" style="align-self: center;"><i class="fa-solid fa-circle fa-2xs"></i> Imagen Cargada</p>
                 <% } %>
 
                <input type="hidden" name="oldImg" value="<%=locals.old && old.image ? old.image : product.image %>">

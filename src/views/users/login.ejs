@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/css/sign&log.css">
         <link rel="stylesheet" href="/css/colores.css">
         <link rel="stylesheet" href="/css/partials.css">
+        <script src="/js/formLogin.js"></script>
         <%- include("../partials/head.ejs")%>
 
     </head>
@@ -21,25 +22,25 @@
 
         <form action="/users/login" method="post">
 
-            <input type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
+            <input class="email" type="email" name="email" placeholder="Correo Electrónico" value="<%=locals.old && old.email ? old.email : ""%>">
             <% if (locals.errors && errors.email) { %>
-                <p class="err-msg"> <%=errors.email.msg%> </p>
+                <p class="email err-msg no"> <%=errors.email.msg%> </p>
             <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p class="email no"><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <input class="last-imput" type="password" name="password" placeholder="Clave">
+            <input class="pass last-imput" type="password" name="password" placeholder="Clave">
             <% if (locals.errors && errors.password) { %>
-                <p class="err-msg"> <%=errors.password.msg%> </p>
+                <p class="pass err-msg no"> <%=errors.password.msg%> </p>
             <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p class="pass no"><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
             <div style="border: solid 1px #00000000; background: #00000000;">
-                <input type="checkbox" name="remind">
+                <input class="check" type="checkbox" name="remind">
             </div>
 
-            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <p class="check no"><i class="fa-solid fa-circle fa-2xs"></i></p>
             
            <div>
                 <p>Restablecer</p>

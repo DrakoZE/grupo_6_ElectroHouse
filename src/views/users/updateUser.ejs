@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="/css/sign&log.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
-    <script src="/js/preview.js"></script>
+    <script src="/js/formEditUser.js"></script>
+    <script src="/js/previewRegister.js"></script>
 
     <%- include("../partials/head") %>
 </head>
@@ -21,28 +22,28 @@
 
         <form action="/users/edit/<%= user.id %>" method="post" enctype="multipart/form-data">
 
-            <input type="text" name="firstName" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : user.firstName%>">
+            <input class="name" type="text" name="firstName" placeholder="Primer Nombre" value="<%=locals.old && old.firstName ? old.firstName : user.firstName%>">
             <% if (locals.errors && errors.firstName) { %>
-                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.firstName.msg%> </p>
+                <p class="name err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.firstName.msg%> </p>
             <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p class="name"><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <input type="text" name="surname" placeholder="Apellido" value="<%=locals.old && old.surname ? old.surname : user.surname%>">
+            <input class="surname" type="text" name="surname" placeholder="Apellido" value="<%=locals.old && old.surname ? old.surname : user.surname%>">
             <% if (locals.errors && errors.surname) { %>
-                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.surname.msg%> </p>
+                <p class="surname err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.surname.msg%> </p>
             <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p class="surname"><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <input type="text" name="username" placeholder="Nombre de Usuario" value="<%=locals.old && old.username ? old.username : user.username%>">
+            <input class="username" type="text" name="username" placeholder="Nombre de Usuario" value="<%=locals.old && old.username ? old.username : user.username%>">
             <% if (locals.errors && errors.username) { %>
-                <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.username.msg%> </p>
+                <p class="username err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.username.msg%> </p>
             <% } else { %>
-                <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+                <p class="username"><i class="fa-solid fa-circle fa-2xs"></i></p>
             <% } %>
 
-            <select name="seller">
+            <select class="class" name="seller">
 
                 <option value="Vendedor" <% if (locals.old && old.seller == "Vendedor"){ %>
                     selected
@@ -58,7 +59,7 @@
 
             </select>
 
-            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <p class="class yes"><i class="fa-solid fa-circle fa-2xs"></i></p>
 
             <div>
                 <p>introducir imagen <i class="fa-regular fa-image"></i></p>
@@ -67,7 +68,7 @@
             <% if (locals.errors && errors.avatar) { %>
                 <p class="err-msg"><i class="fa-solid fa-circle fa-2xs"></i> <%=errors.avatar.msg%> </p>
            <% } else { %>
-            <p><i class="fa-solid fa-circle fa-2xs"></i></p>
+            <p id="image-point" class="yes"><i class="fa-solid fa-circle fa-2xs"></i> Imagen cargada</p>
             <% } %>
 
            <input type="hidden" name="oldImg" value="<%=locals.old && old.avatar ? old.avatar : user.avatar %>">
