@@ -19,6 +19,7 @@ let products = await db.Product.findAll({
                 descripcion: product.description,
                 categoria: product.categories.category,
                 vendedor: product.user.username,
+                foto: "http://localhost:3001/images/product-img/" + product.image,
                 detalles: "http://localhost:3001/api/product/" + product.id
             }))
         })
