@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@600&family=Sometype+Mono:wght@500&display=swap');
-
+@import url('https://fonts.gstatic.com" crossorigin="anonymous');
+@import url('https://fonts.googleapis.com');
 
 * {
+  font-family: 'Gemunu Libre', sans-serif;
   margin: 0px;
   padding: 0px;
 }
 
 body {
   background-image: url("./assets//images/fondo.jpeg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
 }
+
+
 
 .App {
 
@@ -37,6 +40,10 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 .App-footer .footer-section .footer-article {
