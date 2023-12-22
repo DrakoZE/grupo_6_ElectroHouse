@@ -18,31 +18,6 @@ USE `electrohouse`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `avatars`
---
-
-DROP TABLE IF EXISTS `avatars`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `avatars` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `avatars`
---
-
-LOCK TABLES `avatars` WRITE;
-/*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `categories`
 --
 
@@ -53,7 +28,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +37,6 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Hogar'),(2,'Audio'),(3,'Entretenimiento'),(4,'SmartPhone'),(5,'Deporte'),(6,'Salud'),(7,'PC'),(8,'Construcción'),(9,'Electricidad'),(10,'Equipamiento');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +52,7 @@ CREATE TABLE `colors` (
   `color` varchar(25) DEFAULT NULL,
   `code` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +61,6 @@ CREATE TABLE `colors` (
 
 LOCK TABLES `colors` WRITE;
 /*!40000 ALTER TABLE `colors` DISABLE KEYS */;
-INSERT INTO `colors` VALUES (1,'Rojo Pasión','#FF7070'),(2,'Naranja Marte','#FFB870'),(3,'Amarillo Merengue','#FFFF70'),(4,'Verde Monasterio','#B8FF70'),(5,'Verde Lima','#70FF70'),(6,'Verde Menta','#70FFB8'),(7,'Cyan Aguamarina','#70FFFF'),(8,'Azul Larimar','#70B7FF'),(9,'Azul Majorelle','#7070FF'),(10,'Morado Lavanda','#B870FF'),(11,'Rosa Orquidea','#FF70FF'),(12,'Rosa Flamenco','#FF70B8'),(13,'Rojo Intenso','#ff0000'),(14,'Naranja Tigre','#ff8000'),(15,'Amarillo Canario','#ffff00'),(16,'Verde Peridoto','#80ff00'),(17,'Verde Digital','#00ff00'),(18,'Verde Crisoprasa','#00ff80'),(19,'Cyan Apatito','#00FFFF'),(20,'Azul Munsell','#007FFF'),(21,'Azul Imperial','#0000FF'),(22,'Morado Uva','#8000FF'),(23,'Rosa Chicle','#FF00FF'),(24,'Rosa Magenta','#FF0080'),(25,'Rojo Vino','#800000'),(26,'Naranja Jengibre','#804000'),(27,'Amarillo Oliva','#808000'),(28,'Verde Jungla','#408000'),(29,'Verde Trebol','#008000'),(30,'Verde Malaquita','#008040'),(31,'Azul Bondi','#008080'),(32,'Azul Cobalto','#004080'),(33,'Azul Marino','#000080'),(34,'Morado Medianoche','#400080'),(35,'Morado Mora','#800080'),(36,'Morado Mermelada','#800040'),(37,'Blanco Puro','#ffffff'),(38,'Gris Delfin','#808080'),(39,'Negro Absoluto','#000000'),(40,'Traslúcido','#ffffff50');
 /*!40000 ALTER TABLE `colors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,8 +181,7 @@ CREATE TABLE `users` (
   `seller` varchar(15) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id`) REFERENCES `avatars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -231,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-13 20:00:24
+-- Dump completed on 2023-12-21 22:21:24

@@ -12,8 +12,13 @@ const user = require("../../middleware/userMiddleware/authmiddleware");
 router.get("/", controller.index);
 
 //Vista del Carrito de Compras
-router.get("/cart", controller.cart);
+router.get("/cart/:id", controller.cart);
 
+//Acción de agregar un producto al carrito
+router.post("/cart", controller.addToCart);
+
+//Acción de borrado de una orden del carrito
+router.post("/cart/:id/delete", controller.deleteCart);
 //Formulario de creación de productos
 router.get("/create", controller.add);
 

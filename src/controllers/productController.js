@@ -20,8 +20,48 @@ const productController = {
   },
 
   // Renderizamos el carro de compras.
-  cart: (req, res) => {
-    res.render("products/cart");
+  cart: async (req, res) => {
+
+    let user = await db.User.findByPk(req.params.id);
+    let orders = await db.Order.findAll({
+      where: { user_id: req.params.id}
+    })
+
+    let waos = [];
+    for(let i = 0; i < orders.length; i++){
+      waos.push(orders[i].product_id)
+    }
+
+    let products = await db.Product.findAll({
+      where: {id: waos}
+    })
+    
+    res.render("products/cart", {user, products, orders});
+  },
+
+  // Procesamos una orden para el carrito de compras.
+  addToCart: async (req, res) => {
+    let product = await db.Product.findByPk(req.body.productId)
+    let user = await db.User.findByPk(req.body.userId)
+
+    let order = await db.Order.create({
+      amount: req.body.amount,
+      product_id: product.id,
+      user_id: user.id
+    })
+    let productAdded = await db.Product.update({
+      stock: --product.stock
+    },{
+      where: {id: product.id}
+    })
+    res.redirect("/products")
+  },
+
+  deleteCart: async (req, res) => {
+    let order = await db.Order.destroy({
+      where: {product_id: req.body.orderId}
+    })
+    res.redirect(`/products/cart/${req.params.id}`)
   },
 
   // Renderizamos el formulario de creacion de productos.

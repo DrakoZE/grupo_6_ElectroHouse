@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/colores.css">
     <link rel="stylesheet" href="/css/partials.css">
+    <% let likedReversed = liked.slice().reverse() %>
+    <% let recentReversed = recent.slice().reverse() %>
 
     <%- include("../partials/head") %>
 </head>
@@ -15,22 +17,31 @@
     <%- include("../partials/header") %>
 
         <main>
-
-            <section class="history-var">
-                <div class="first-div">
-                    <div class="second-div">
-                    </div>
-                </div>
-                <% for( let i = 0; i < Math.min(4, products.length); i++ ) { %>
-                <article><a href="/products/<%= products[i].id %>">
-                    <img src="/images/product-img/<%= products[i].image %>" class="product_img">
-                    <h5><%= products[i].title %></h5>
-                    <h6><%= products[i].price %>$</h6>
+            <section class="history-var waos" style="position: relative;">
+                <div><i class="fa-solid fa-heart-circle-plus"></i></div>
+                <% for( let i = 0; i < Math.min(9, likedReversed.length); i++ ) { %>
+                <article><a href="/products/<%= likedReversed[i].id %>">
+                    <img src="/images/product-img/<%= likedReversed[i].image %>" class="product_img">
+                    <h5><%= likedReversed[i].title %></h5>
+                    <h6><%= likedReversed[i].price %>$</h6>
                 </a></article>
                 <% } %>
+                <p style="position: absolute; right: 10px; color: #666;">Productos populares</p>
             </section>
 
-            <section class="shop-var">
+            <section class="history-var waos-min"style="position: relative;">
+                <div><i class="fa-solid fa-stopwatch"></i></div>
+                <% for( let i = 0; i < Math.min(9, recentReversed.length); i++ ) { %>
+                <article><a href="/products/<%= recentReversed[i].id %>">
+                    <img src="/images/product-img/<%= recentReversed[i].image %>" class="product_img">
+                    <h5><%= recentReversed[i].title %></h5>
+                    <h6><%= recentReversed[i].price %>$</h6>
+                </a></article>
+                <% } %>
+                <p style="position: absolute; right: 10px; color: #666;">Productos recientes</p>
+            </section>
+
+            <section class="shop-var waos-min">
                 <% for( let i = 0; i < products.length; i++ ) { %>
                     <a href="/products/<%= products[i].id %>">
                     <article>
