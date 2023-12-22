@@ -4,6 +4,12 @@ const db = require("../../../database/models");
 const Op = db.Sequelize.Op;
 
 module.exports = {
+    categories: async (req,res) => {
+        let categories = await db.Category.findAll();
+        return res.status(200).json({
+            categorias: categories
+        })
+    },
     list: async (req,res) => {
 let products = await db.Product.findAll({
             include: ["categories", "gammas", "user"]
@@ -19,6 +25,7 @@ let products = await db.Product.findAll({
                 descripcion: product.description,
                 categoria: product.categories.category,
                 vendedor: product.user.username,
+                precio: product.price,
                 foto: "http://localhost:3001/images/product-img/" + product.image,
                 detalles: "http://localhost:3001/api/product/" + product.id
             }))

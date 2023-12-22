@@ -21,8 +21,8 @@ function ContentDiv(props) {
 
     return (
         <section className="container">
-        <h1>ULTIMO PRODUCTO AGREGADO</h1>
-        {Array.isArray(product.products) && product.products.map((product, i) => <Card key={i + product.producto} titulo={product.producto} id={product.id} imagen={product.foto}></Card> )}
+        <h1>LISTADO DE PRODUCTOS</h1>
+        {Array.isArray(product.products) && product.products.map((product, i) => <Card key={i + product.producto} titulo={product.producto} id={product.id} imagen={product.foto} precio={product.precio}></Card> )}
         </section>
     )
 }

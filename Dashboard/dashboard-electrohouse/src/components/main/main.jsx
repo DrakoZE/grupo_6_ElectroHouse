@@ -6,6 +6,7 @@ import react, {useState, useEffect} from "react"
 
 function Main() {
 
+    const [ category, setCategory ] = useState({})
     const [ product, setProduct ] = useState({})
     useEffect(() => {
 
@@ -16,7 +17,16 @@ function Main() {
                 if(result.status == 200) {
                     setProduct(data)
                 }
-        }
+        };
+        async function getCategories() {
+            
+            const result = await fetch(`http://localhost:3001/api/categories`)
+            const data = await result.json();
+            if(result.status == 200) {
+                setCategory(data)
+            }
+    }
+        getCategories()
         getProducts()
     }, [])
 
@@ -50,7 +60,7 @@ function Main() {
 
             <section className="section-info">
                 <ContentDiv product={product}/>
-                <CategoryDiv/>
+                <CategoryDiv category={category}/>
             </section>
         
         </main>

@@ -115,7 +115,7 @@ body {
 }
 
 .container {
-  width: 35%;
+  width: 40%;
   padding: 10px;
   backdrop-filter: blur(3px) brightness(0.4);
     background: #0a0a0a69;

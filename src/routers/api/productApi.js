@@ -3,7 +3,8 @@ const router = express.Router();
 
 const controller = require("../../controllers/api/apiProductController");
 
-// Listado de usuarios.
+router.get("/categories", controller.categories)
+
 router.get("/products", controller.list);
 
 router.get("/product/:id", controller.show);
