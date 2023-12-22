@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const PORT = 3001;
+const cors = require("cors");
+app.use(cors())
 
 const db = require("./database/models")
 

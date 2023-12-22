@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@600&family=Sometype+Mono:wght@500&display=swap');
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-image: url("./assets//images/fondo.jpeg");
+  background-size: 100%;
+  background-position: center;
+}
+
+.App {
+
+}
+
+.App-header {
+  background-color: #030303;
+  border-bottom: 1px solid #aa00ff;
+}
+
+.App-main {
+}
+
+.App-main .section-buttons {
+  display: flex;
+  width: 100%;
+}
+
+.App-footer {
+  border-top: 1px solid #aa00ff;
+  background-color: #030303;
+  color: #888;
+  flex-wrap: wrap;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-footer .footer-section .footer-article {
+  font-size: 1.5rem;
+}
+
+.App-footer .footer-icons {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App-footer .footer-icons i {
+  padding: 10px;
+}
+
+.App-footer .footer-copy {
+  font-size: 0.6rem;
+}
+
+.App-header-navbar {
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-navbar {
+  width: 10%;
+  margin: 0px 10px;
+}
+
+.list-navbar {
+  display: flex;
+  width: 50%;
+  list-style: none;
+}
+
+.list-navbar li {
+  padding: 10px;
+  color: #888;
+  font-size: 1.3rem;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+
+
+
+
+.button-div {
+  width: 100%;
+  padding: 20px;
+
+}
+
+
+.button-div .button-body {
+  width: 80%;
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.8;
+  border: solid 1px #333;
+}
+
+.button-div .button-body .button-text {
+  margin-right: 10px;
+}
+
+.section-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container {
+  width: 35%;
+  padding: 10px;
+  backdrop-filter: blur(3px) brightness(0.4);
+    background: #0a0a0a69;
+    border: solid 1px #333;
+    color: #666;
+    border-radius: 10px;
+    margin: 8px 0;
+}
