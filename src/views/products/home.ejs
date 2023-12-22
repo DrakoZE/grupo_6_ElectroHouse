@@ -17,7 +17,7 @@
     <%- include("../partials/header") %>
 
         <main>
-            <section class="history-var waos">
+            <section class="history-var waos" style="position: relative;">
                 <div><i class="fa-solid fa-heart-circle-plus"></i></div>
                 <% for( let i = 0; i < Math.min(9, likedReversed.length); i++ ) { %>
                 <article><a href="/products/<%= likedReversed[i].id %>">
@@ -26,9 +26,10 @@
                     <h6><%= likedReversed[i].price %>$</h6>
                 </a></article>
                 <% } %>
+                <p style="position: absolute; right: 10px; color: #666;">Productos populares</p>
             </section>
 
-            <section class="history-var waos-min">
+            <section class="history-var waos-min"style="position: relative;">
                 <div><i class="fa-solid fa-stopwatch"></i></div>
                 <% for( let i = 0; i < Math.min(9, recentReversed.length); i++ ) { %>
                 <article><a href="/products/<%= recentReversed[i].id %>">
@@ -37,6 +38,7 @@
                     <h6><%= recentReversed[i].price %>$</h6>
                 </a></article>
                 <% } %>
+                <p style="position: absolute; right: 10px; color: #666;">Productos recientes</p>
             </section>
 
             <section class="shop-var waos-min">

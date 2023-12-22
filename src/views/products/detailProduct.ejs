@@ -27,13 +27,32 @@
             <section>
                 <nav class="waos-nav">
                     <% if (locals.isLog && product.userId == locals.logUser.id ) { %>
-                        <a href="/products/cart"><i class="fa-solid fa-cart-plus"></i></a>
-                        <a href="/products/<%= product.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
-                        <a><form action="/products/<%= product.id %>" method="post"><button type="submit" style="background: none; border: 0px; color: #666"><i class="fa-solid fa-trash-can"></i></button></form></a>
+                        <a><form action="/products/cart" method="post">
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <input type="hidden" name="userId" value="<%= locals.logUser.id %>">
+                            <input type="hidden" name="amount" value="<%= product.price * (1 - (product.off / 100)) %>">
+                            <button type="submit" style="background: none; border: 0px; color: #666">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </form></a>
+                        <a class="seller" href="/products/<%= product.id %>/edit"><i class="fa-solid fa-pencil"></i></a>
+                        <a class="seller"><form action="/products/<%= product.id %>" method="post"><button type="submit" style="background: none; border: 0px; color: #666"><i class="fa-solid fa-trash-can"></i></button></form></a>
+                        <a><i class="fa-solid fa-share"></i></a>
+                    <% } else if(locals.isLog && product.userId != locals.logUser.id) { %>
+                        <a><form action="/products/cart" method="post">
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <input type="hidden" name="userId" value="<%= locals.logUser.id %>">
+                            <input type="hidden" name="amount" value="<%= product.price * (1 - (product.off / 100)) %>">
+                            <button type="submit" style="background: none; border: 0px; color: #666">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </form></a>
+                        <a><form action="/products/<%= product.id %>/like" method="post"><button type="submit" style="background: none; border: 0px; font-size: 1.3rem;"><i class="fa-regular fa-heart"></i></button></form></a>
+                        <a><i class="fa-solid fa-thumbtack"></i></a>
                         <a><i class="fa-solid fa-share"></i></a>
                     <% } else { %>
                         <a href="/users/login"><i class="fa-solid fa-cart-plus"></i></a>
-                        <a><form action="/products/<%= product.id %>/like" method="post"><button type="submit" style="background: none; border: 0px; font-size: 1.3rem;"><i class="fa-regular fa-heart"></i></button></form></a>
+                        <a href="/users/login"><i class="fa-regular fa-heart"></i></a>
                         <a><i class="fa-solid fa-thumbtack"></i></a>
                         <a><i class="fa-solid fa-share"></i></a>
                     <% } %>
